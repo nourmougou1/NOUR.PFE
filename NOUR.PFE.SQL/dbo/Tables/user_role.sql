@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[user_role]
 (
 	[role_id] INT NOT NULL PRIMARY KEY, 
-    [role_name] NCHAR(10) NULL, 
-    [email] NCHAR(10) NULL
+    [role_code] VARCHAR(5) NULL, 
+    [role_name] VARCHAR(50) NULL
 )
+
