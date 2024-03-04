@@ -11,5 +11,5 @@
     [approval_date] DATETIME NULL,  
     [vehicule_type_id] INT NOT NULL
    CONSTRAINT [Request_To_Vehicule] FOREIGN KEY ([vehicule_id]) REFERENCES [vehicule] ([vehicule_id])
-   CONSTRAINT [Request_To_User] FOREIGN KEY ([user_id]) REFERENCES [user] ([user_id]) /*idont know whats the problem here*/
+   /*CONSTRAINT [Request_To_User] FOREIGN KEY ([user_id]) REFERENCES [user] ([user_id]) idont know whats the problem here*/
 )
