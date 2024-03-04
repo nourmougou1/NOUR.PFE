@@ -19,7 +19,7 @@ SELECT
 		u.user_creation_date
 	FROM
 		dbo.[app_user] u
-		INNER JOIN dbo.[def_user_role] dr ON dr.role_id = u.role_id
+		INNER JOIN dbo.[user_role] dr ON dr.role_id = u.role_id
 	WHERE
 		u.user_id = @userId
 

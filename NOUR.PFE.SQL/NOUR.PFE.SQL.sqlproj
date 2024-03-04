@@ -59,6 +59,7 @@
     <Folder Include="dbo" />
     <Folder Include="dbo\Tables" />
     <Folder Include="dbo\procedures" />
+    <Folder Include="Script" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\user_role.sql" />
@@ -70,11 +71,28 @@
     <Build Include="dbo\procedures\sp_user_insert.sql" />
     <Build Include="dbo\procedures\sp_user_role_get_all.sql" />
     <Build Include="dbo\procedures\sp_user_update.sql" />
+    <Build Include="dbo\procedures\sp_user_role_insert.sql" />
+    <Build Include="dbo\procedures\sp_user_role_delete.sql" />
+    <Build Include="dbo\procedures\sp_user_role_update.sql" />
+    <Build Include="dbo\Tables\vehicule.sql" />
+    <Build Include="dbo\Tables\vehicule_brand.sql" />
+    <Build Include="dbo\Tables\vehicule_type.sql" />
+    <Build Include="dbo\Tables\vehicule_path.sql" />
+    <Build Include="dbo\procedures\vehicule_brand_insert.sql" />
+    <Build Include="dbo\Tables\vehicule_maintenance.sql" />
+    <Build Include="dbo\Tables\maintenance_type.sql" />
+    <Build Include="dbo\Tables\vehicule_documents.sql" />
+    <Build Include="dbo\Tables\request.sql" />
+    <Build Include="dbo\procedures\vehicule_type_insert.sql" />
+    <Build Include="dbo\Tables\parc.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="NOUR.PFE.SQL.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NOUR.PFE.SQL.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script\Script.PostDeployment1.sql" />
   </ItemGroup>
 </Project>

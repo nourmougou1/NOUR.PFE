@@ -7,7 +7,7 @@ BEGIN
 		ISNULL(role_code, '') AS role_code,
 		ISNULL(role_name, '') AS role_name
 	FROM
-		dbo.[def_user_role] 
+		dbo.[user_role] 
 	ORDER BY
 		role_id ASC
 

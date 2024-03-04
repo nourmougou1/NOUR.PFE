@@ -1,5 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[sp_user_get_one_by_login]
-	@userLogin = VARCHAR(100)
+	@userLogin VARCHAR(100)
 AS
 BEGIN
 	SELECT 
@@ -18,7 +18,7 @@ BEGIN
 		u.user_creation_date
 		FROM
 		dbo.[app_user] u
-		INNER JOIN dbo.[def_user_role] dr ON dr.role_id = u.role_id
+		INNER JOIN dbo.[user_role] dr ON dr.role_id = u.role_id
 	WHERE
 		u.user_login = @userLogin
 
