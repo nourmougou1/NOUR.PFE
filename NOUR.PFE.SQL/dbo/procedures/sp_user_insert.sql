@@ -7,6 +7,7 @@
 	@email VARCHAR(100),
 	@phone VARCHAR(30), 
 	@birthDate DATE
+	
 AS
 BEGIN
 

@@ -8,4 +8,9 @@ BEGIN
 	INSERT INTO
 	dbo.user_role ( role_id, role_code,  role_name )
 	VALUES (@roleId,@roleCode, @roleName, GETDATE())
+	EXEC sp_user_role_insert @roleName = "Admin";
+	EXEC sp_user_role_insert @roleName = "User";
+	EXEC sp_user_role_insert @roleName = "parc_responsible";
+
+
 END

@@ -343,4 +343,25 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="parc_id" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="2b60d4ed-db75-4055-8941-ced692994c9d" ChangeDateTime="03/05/2024 15:16:13">
+    <Property Name="ElementName" Value="[dbo].[vehicule_maintenance].[maintenance_date]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicule_maintenance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="maintenance_date_debut" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="21aa82f2-33df-4f4b-95b9-19bb685703af" ChangeDateTime="03/05/2024 15:16:35">
+    <Property Name="ElementName" Value="[dbo].[vehicule_maintenance].[maintenance_date_debut]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicule_maintenance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="maintenance_date_beginning" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="eccd0ea3-6970-4483-89c1-aec85eb43ef9" ChangeDateTime="03/05/2024 15:16:54">
+    <Property Name="ElementName" Value="[dbo].[vehicule_maintenance].[maintenance_date_beginning]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicule_maintenance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="maintenance_date_debut" />
+  </Operation>
 </Operations>

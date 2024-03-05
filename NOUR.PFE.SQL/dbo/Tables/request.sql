@@ -7,7 +7,6 @@
     [mission_date] VARCHAR(100) NOT NULL, 
     [mission_location] VARCHAR(100) NOT NULL, 
     [status] BIT NOT NULL, 
-    [request_date] DATETIME NOT NULL ,
     [approval_date] DATETIME NULL,  
     [vehicule_type_id] INT NOT NULL
    CONSTRAINT [Request_To_Vehicule] FOREIGN KEY ([vehicule_id]) REFERENCES [vehicule] ([vehicule_id])

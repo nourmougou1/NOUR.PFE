@@ -78,13 +78,34 @@
     <Build Include="dbo\Tables\vehicule_brand.sql" />
     <Build Include="dbo\Tables\vehicule_type.sql" />
     <Build Include="dbo\Tables\vehicule_path.sql" />
-    <Build Include="dbo\procedures\vehicule_brand_insert.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_brand_insert.sql" />
     <Build Include="dbo\Tables\vehicule_maintenance.sql" />
     <Build Include="dbo\Tables\maintenance_type.sql" />
     <Build Include="dbo\Tables\vehicule_documents.sql" />
     <Build Include="dbo\Tables\request.sql" />
-    <Build Include="dbo\procedures\vehicule_type_insert.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_type_insert.sql" />
     <Build Include="dbo\Tables\parc.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_type_get_all.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_type_delete.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_type_update.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_brand_delete.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_brand_get_one_by_type.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_brand_get_all.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_brand_update.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_path_insert.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_path_delete.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_path_update.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_path_get_one_by_vehicule_id.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_path_get_all.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_maintenace_insert.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_maintenance_update.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_maintenance_delete.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_maintenance_get_one_by_vehicule_id.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_maintenance_get_all.sql" />
+    <Build Include="dbo\procedures\sp_request_insert.sql" />
+    <Build Include="dbo\procedures\sp_request_delete.sql" />
+    <Build Include="dbo\procedures\sp_request_update.sql" />
+    <Build Include="dbo\procedures\sp_request_get_all.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="NOUR.PFE.SQL.refactorlog" />
