@@ -27,7 +27,7 @@ namespace NOUR.PFE.Entities.Class
         public DateTime Birthday { get; set; }
         #endregion
 
-          
+        
 
     }
 }
