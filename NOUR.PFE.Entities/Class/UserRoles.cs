@@ -11,5 +11,21 @@ namespace NOUR.PFE.Entities
         public UserRoles() : base() { }
         public UserRoles(int capacity) : base(capacity) { }
         public UserRoles(IEnumerable<UserRole> collection) : base(collection) { }
+
+        #region Methods   
+
+        public override string Test()
+        {
+            try
+            {
+                return string.Empty;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+
+        #endregion
     }
 }
