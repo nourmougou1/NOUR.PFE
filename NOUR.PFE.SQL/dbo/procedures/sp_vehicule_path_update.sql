@@ -8,7 +8,7 @@ AS
 BEGIN
 	UPDATE dbo.[vehicule_path]
 	SET 
-	path_id = @pathId,
+	
 	path_lat = @pathLat,
 	path_lng = @pathLng,
 	vehicule_id = @vehiculeId

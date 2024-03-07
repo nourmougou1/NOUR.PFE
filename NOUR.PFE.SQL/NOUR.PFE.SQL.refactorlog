@@ -364,4 +364,18 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="maintenance_date_debut" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="0782cd52-cbd7-4e48-98e1-c5c30c47db73" ChangeDateTime="03/06/2024 13:39:23">
+    <Property Name="ElementName" Value="[dbo].[vehicule_maintenance].[maintenance_location]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicule_maintenance]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="maintenance_address" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="0af614d7-b282-4c1f-a8bb-6752721379c6" ChangeDateTime="03/07/2024 08:34:36">
+    <Property Name="ElementName" Value="[dbo].[vehicule].[vehicule_statut]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="vehicule_status" />
+  </Operation>
 </Operations>

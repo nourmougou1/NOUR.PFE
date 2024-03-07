@@ -13,9 +13,9 @@ BEGIN
 	u.user_password,
 	ISNULL(u.user_email, '') AS user_email,
 	ISNULL(u.user_phone, '') AS user_phone,
-		ISNULL(u.user_is_active, 0) AS user_is_active,
-		u.user_birth_date,
-		u.user_creation_date
+	ISNULL(u.user_is_active, 0) AS user_is_active,
+	u.user_birth_date,
+	u.user_creation_date
 	FROM 
 	dbo.[app_user] u
 		INNER JOIN dbo.[user_role] dr ON dr.role_id = u.role_id

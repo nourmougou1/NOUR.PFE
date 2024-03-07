@@ -7,7 +7,8 @@
 	@missionLocation VARCHAR(100),
 	@status BIT,
 	@approvalDate DATETIME,
-	@vehiculeTypeId int
+	@vehiculeTypeId int,
+	@requestDate DATETIME
 AS
 BEGIN
 	UPDATE 
@@ -21,7 +22,8 @@ BEGIN
 		mission_location = @missionLocation,
 		status = @status,
 		approval_date = @approvalDate,
-		vehicule_type_id = @vehiculeTypeId
+		vehicule_type_id = @vehiculeTypeId,
+		request_date = @requestDate
 	WHERE 
 		request_id = @requestId
 END

@@ -3,13 +3,7 @@
 AS
 	
 BEGIN
-INSERT INTO vehicule_type (type_name) VALUES (@typeName, GETDATE())
-EXEC sp_vehicule_type_insert @typeName = "Van";
-EXEC sp_vehicule_type_insert @typeName = "Pickup Truck";
-EXEC sp_vehicule_type_insert @typeName = "Truck";
-EXEC sp_vehicule_type_insert @typeName = "Bus";
-EXEC sp_vehicule_type_insert @typeName = "Limousine";
-EXEC sp_vehicule_type_insert @typeName = "Minivan";
-EXEC sp_vehicule_type_insert @typeName = "Motorcycle";
+INSERT INTO vehicule_type (type_name) VALUES (@typeName)
+
 
 END

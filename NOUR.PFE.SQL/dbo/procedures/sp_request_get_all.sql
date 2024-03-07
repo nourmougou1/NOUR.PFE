@@ -3,22 +3,22 @@
 AS
 BEGIN
 	SELECT 
-		request.request_id,
-		ISNULL(request.mission_description, '') AS mission_description,
-		ISNULL(user.user_id, '') AS user_id,
-		ISNULL(request.mission_date, '') AS mission_date,
-		ISNULL(request.mission_location, '') AS mission_location ,
-		ISNULL(request.status, '' ) AS status,
-		ISNULL(request.approval_date, '' )AS approval_date,
-		ISNULL(vehicule.vehicule_type_id, '') AS vehicule_type_id,
-		ISNULL(vehicule.vehicule_id, '') AS vehicule_id
+		r.request_id,
+		ISNULL(r.mission_description, '') AS mission_description,
+		ISNULL(u.user_id, '') AS user_id,
+		ISNULL(r.mission_date, '') AS mission_date,
+		ISNULL(r.mission_location, '') AS mission_location ,
+		ISNULL(r.status, '' ) AS status,
+		ISNULL(r.approval_date, '' )AS approval_date,
+		ISNULL(v.vehicule_type_id, '') AS vehicule_type_id,
+		ISNULL(v.vehicule_id, '') AS vehicule_id
 
 	FROM 
-		dbo.[request]
-		INNER JOIN dbo.[vehicule] ON vehicule.vehicule_id = request.vehicule_id
-		INNER JOIN dbo.[app_user] ON user.user_id = request.user_id
+		dbo.[request] r
+		INNER JOIN dbo.[vehicule] v ON v.vehicule_id = r.vehicule_id
+		INNER JOIN dbo.[app_user] u ON u.user_id = r.user_id
 	ORDER BY 
-		request_id ASC
+		r.request_id ASC
 
 END
 

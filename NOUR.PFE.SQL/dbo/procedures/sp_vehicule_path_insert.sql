@@ -8,6 +8,6 @@ AS
 BEGIN 
 	INSERT INTO 
 		dbo.[vehicule_path] (path_id, path_lat, path_lng)
-	VALUES (@pathId, @pathLat, @pathLng, GETDATE())
+	VALUES (@pathId, @pathLat, @pathLng)
 END
 

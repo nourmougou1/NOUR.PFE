@@ -4,7 +4,7 @@
 AS
 BEGIN
 SELECT
-	u.user_id,
+	    u.user_id,
 		u.role_id,
 		ISNULL(dr.role_code, '') AS role_code,
 		ISNULL(dr.role_name, '') AS role_name,

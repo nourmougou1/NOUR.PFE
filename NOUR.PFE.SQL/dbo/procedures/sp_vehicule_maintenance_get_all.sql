@@ -6,13 +6,14 @@ BEGIN
 	vm.maintenance_id,
 	vm.vehicule_id,
 	ISNULL(mt.maintenance_type_id, '') AS maintenance_type_id,
-	ISNULL(vm.maintenance_date_debut, '' ) AS maintenance_date_debut
+	ISNULL(vm.maintenance_date_debut, '' ) AS maintenance_date_debut,
+	ISNULL(vm.maintenance_address, '' ) AS maintenance_address
 	FROM
 	dbo.[vehicule_maintenance] vm
 	INNER JOIN dbo.[maintenance_type] mt ON vm.maintenance_type_id = mt.maintenance_type_id
 	ORDER BY
 		vm.maintenance_id ASC
-
+	
 END
 
 

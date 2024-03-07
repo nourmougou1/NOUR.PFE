@@ -4,7 +4,8 @@ AS
 BEGIN
 	SELECT 
          vehicule_brand_id,
-         ISNULL (brand_name, '') AS brand_name
+         ISNULL (brand_name, '') AS brand_name,
+         ISNULL (brand_logo, '') AS brand_logo
     FROM
          [dbo].[vehicule_brand]
     ORDER BY
