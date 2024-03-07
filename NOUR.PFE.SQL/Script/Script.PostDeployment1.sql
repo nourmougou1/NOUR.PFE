@@ -9,14 +9,15 @@ Modèle de script de post-déploiement
                SELECT * FROM [$(TableName)]					
 --------------------------------------------------------------------------------------
 */
+
 IF NOT EXISTS (SELECT 1 FROM dbo.[user_role])
 BEGIN
 	INSERT INTO dbo.[user_role]([role_id], [role_code], [role_name]) 
 	VALUES 
 		(1, N'ADMIN', N'Administrateur'),
 		(2, N'USER', N'Utilisateur'),
-		(3, N'PARC_RESPONSIBLE', N'Parc_Responsible')
-END
+		(3, N'RESP', N'Parc_Responsible')
+END 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[app_user])
 BEGIN

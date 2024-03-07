@@ -12,7 +12,7 @@ BEGIN
 	INSERT INTO 
 		dbo.[vehicule] (vehicule_id, vehicule_imm, vehicule_type_id, vehicule_brand_id, vehicule_kilometrage, document_id, parc_id)
 	VALUES 
-		(@vehiculeId, @vehiculeImm, @vehiculeTypeId, @vehiculeTypeId, @brandId, @vehiculeKilometrage, @vehiculeDocId, @parcId)
+		(@vehiculeId, @vehiculeImm,  @vehiculeTypeId, @brandId, @vehiculeKilometrage, @vehiculeDocId, @parcId)
 END
 
 
