@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34525.116
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "NOUR.PFE.SQL", "NOUR.PFE.SQL\NOUR.PFE.SQL.sqlproj", "{0D4A915D-93A8-4E79-B757-61D2197077B1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NOUR.PFE.Entities", "NOUR.PFE.Entities\NOUR.PFE.Entities.csproj", "{A0A42E01-8471-4931-8960-BA88A7D00D62}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{0D4A915D-93A8-4E79-B757-61D2197077B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0D4A915D-93A8-4E79-B757-61D2197077B1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0D4A915D-93A8-4E79-B757-61D2197077B1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{A0A42E01-8471-4931-8960-BA88A7D00D62}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0A42E01-8471-4931-8960-BA88A7D00D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0A42E01-8471-4931-8960-BA88A7D00D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0A42E01-8471-4931-8960-BA88A7D00D62}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
