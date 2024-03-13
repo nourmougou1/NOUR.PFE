@@ -14,7 +14,7 @@ namespace NOUR.PFE.Entities
 
         #region Methods   
 
-        public override string Test()
+        public string Test()
         {
             try
             {

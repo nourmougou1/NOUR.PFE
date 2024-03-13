@@ -4,15 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.Entities.Class
+namespace NOUR.PFE.Entities
+
 {
-    
+    public class Users : List<User>
     {
-        public class Users : List<User>
-        {
-            public Users() : base() { }
-            public Users(int capacity) : base(capacity) { }
-            public Users(IEnumerable<User> collection) : base(collection) { }
-        }
+        public Users() : base() { }
+        public Users(int capacity) : base(capacity) { }
+        public Users(IEnumerable<User> collection) : base(collection) { }
     }
+
 }
+

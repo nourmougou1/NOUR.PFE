@@ -14,7 +14,7 @@ BEGIN
 	INSERT INTO
 		dbo.[app_user] (role_id, user_first_name, user_last_name, user_login, user_password,
 					    user_email, user_phone, user_is_active, user_birth_date, user_creation_date) 
-	VALUES 
+	VALUES
 		(@roleId, @firstName, @lastName, @login, @password,
 		 @email, @phone, 1, @birthDate, GETDATE())
 

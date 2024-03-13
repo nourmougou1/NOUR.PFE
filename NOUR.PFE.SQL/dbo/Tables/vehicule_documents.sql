@@ -2,5 +2,6 @@
 (
 	[document_id] INT NOT NULL PRIMARY KEY, 
     [document_name] VARCHAR(100) NOT NULL, 
-    [description ] VARCHAR(100) NULL
+    [description ] VARCHAR(100) NULL, 
+    [document_status] BIT NULL
 )

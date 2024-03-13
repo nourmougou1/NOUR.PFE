@@ -12,8 +12,7 @@
     CONSTRAINT [FK_Vehicule_To_Vehicule_Type] FOREIGN KEY ([vehicule_type_id]) REFERENCES [vehicule_type]([vehicule_type_id])
     CONSTRAINT [FK_Vehicule_To_Vehicule_Document] FOREIGN KEY ([document_id]) REFERENCES [vehicule_documents]([document_id])
     CONSTRAINT [FK_Vehicule_To_Parc] FOREIGN KEY ([parc_id]) REFERENCES [parc] ([parc_id]), 
-    [purchase_date] DATETIME NOT NULL, 
-    [vehicule_path_id] INT NULL
+    [purchase_date] DATETIME NOT NULL
 
     
 

@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
-namespace NOUR.PFE.Entities.Class
+namespace NOUR.PFE.Entities
 {
-    internal class User
+    public class User
     {
-        #region Constructeur 
+
+        #region Constructors 
         public User()
         {
-
+            
         }
         #endregion
+
         #region Properties
-        public int Id { get; set; } 
+        public int Id { get; set; }
         public string FirstName { get; set; }
-        public string LasttName { get; set; }
+        public string LastName { get; set; }
+        public string Login { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public bool IsActive { get; set; }
@@ -26,8 +30,43 @@ namespace NOUR.PFE.Entities.Class
         public DateTime CreationDate { get; set; }
         public DateTime Birthday { get; set; }
         #endregion
+        #region Methods  
 
-        
+        public bool Authenticate(string Login, string Password)
+        {
+            try
+            {
+                if ((Login != null) && (Login.Trim() != string.Empty)
+                 && (this.Login != null) && (this.Login.Trim() != string.Empty)
+                 && (Password != null) && (Password.Trim() != string.Empty)
+                 && (this.Password != null) && (this.Password.Trim() != string.Empty))
+                {
+                    return Login.Trim().ToUpper().Equals(this.Login.Trim().ToUpper()) && Password.Equals(this.Password.Trim());
+                }
+
+                return false;
+            }
+            catch (Exception ex)
+            {
+                string _StrEX = ex.Message;
+                return false;
+            }
+        }
+
+        public override string ToString()
+        {
+            try
+            {
+                return string.Concat(this.FirstName, ' ', this.LastName);
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
+
+        #endregion
+
 
     }
 }

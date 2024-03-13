@@ -62,359 +62,361 @@ Motorcycle
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Honda%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Honda', N'')
+		(1, N'Honda', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Alfa Romeo%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Alfa Romeo', N'')
+		(2, N'Alfa Romeo', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Audi%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Audi', N'')
+		(3, N'Audi', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Bestune%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Bestune', N'')
+		(4, N'Bestune', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%BMW%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'BMW', N'')
+		(5, N'BMW', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%BYD%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'BYD', N'')
+		(6, N'BYD', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Changan%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Changan', N'')
+		(7, N'Changan', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Chery%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Chery', N'')
+		(8, N'Chery', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Chevrolet%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Chevrolet', N'')
+		(9, N'Chevrolet', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Cupra%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Cupra', N'')
+		(10,N'Cupra', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Ford%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Ford', N'')
+		(11, N'Ford', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Fiat%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Fiat', N'')
+		(12, N'Fiat', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%FAW%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'FAW', N'')
+		(13, N'FAW', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Desk%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Desk', N'')
+		(14, N'Desk', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Gacmotor%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Gacmotor', N'')
+		(15, N'Gacmotor', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Geely%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Geely', N'')
+		(16, N'Geely', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%GWM%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'GWM', N'')
+		(17, N'GWM', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Haval%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Haval', N'')
+		(18, N'Haval', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Jeep%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Jeep', N'')
+		(19, N'Jeep', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Jaguar%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Jaguar', N'')
+		(20, N'Jaguar', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Land Rover%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Land Rover', N'')
+		(21, N'Land Rover', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Kia%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Kia', N'')
+		(22, N'Kia', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Mahindra%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Mahindra', N'')
+		(23, N'Mahindra', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Mercedes Benz%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Mercedes Benz', N'')
+		(24, N'Mercedes Benz', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%MG%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'MG', N'')
+		(25, N'MG', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Nissan%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Nissan', N'')
+		(26, N'Nissan', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%OPEL%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'OPEL', N'')
+		(27, N'OPEL', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Mitsubishi Motors%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Mitsubishi Motors', N'')
+		(28, N'Mitsubishi Motors', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Peugeot%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Peugeot', N'')
+		(29, N'Peugeot', N'')
 END
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Porsches%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Porsches', N'')
+		(30, N'Porsches', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Renault%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Renault', N'')
+		(31, N'Renault', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Skoda%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Skoda', N'')
+		(32, N'Skoda', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Soueast%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Soueast', N'')
+		(33, N'Soueast', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Suzuki%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Suzuki', N'')
+		(34, N'Suzuki', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%TATA%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'TATA', N'')
+		(35, N'TATA', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Toyota%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Toyota', N'')
+		(36, N'Toyota', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Volkswagen%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Volkswagen', N'')
+		(37, N'Volkswagen', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Volvo%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Volvo', N'')
+		(38, N'Volvo', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Wallys%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Wallys', N'')
+		(39, N'Wallys', N'')
 END
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Citroen%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Citroen', N'')
+		(40, N'Citroen', N'')
 END
+
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Passat%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Passat', N'')
+		(41, N'Passat', N'')
 END
+
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Lamburgini%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Lamburgini', N'')
+		(42, N'Lamburgini', N'')
 END
 
 	IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Corvette";%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
-	VALUES 
-		(N'Corvette', N'')
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
+	VALUES
+		(43, N'Corvette', N'')
 END
 
 	IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Camaro%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Camaro', N'')
+		(44, N'Camaro', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Viper%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Viper', N'')
+		(45, N'Viper', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Ferrari%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Ferrari', N'')
+		(46, N'Ferrari', N'')
 END
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Shelpi%')
 BEGIN
-	INSERT INTO dbo.[vehicule_brand]([brand_name], [brand_logo]) 
+	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
-		(N'Shelpi', N'')
+		(47, N'Shelpi', N'')
 END

@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NOUR.PFE.DataLayer.DB\NOUR.PFE.DataLayer.DB.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.DataLayer\NOUR.PFE.DataLayer.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.Entities\NOUR.PFE.Entities.csproj" />
+  </ItemGroup>
+
+</Project>

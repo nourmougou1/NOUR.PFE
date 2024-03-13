@@ -27,7 +27,7 @@ namespace NOUR.PFE.Entities
 
         #endregion
 
-        #region Methods   
+        #region Methods    
 
         public override string ToString()
         {
