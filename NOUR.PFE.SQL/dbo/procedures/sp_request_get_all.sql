@@ -4,14 +4,15 @@ AS
 BEGIN
 	SELECT 
 		r.request_id,
+		ISNULL(v.vehicule_id, '') AS vehicule_id,
 		ISNULL(r.mission_description, '') AS mission_description,
 		ISNULL(u.user_id, '') AS user_id,
 		ISNULL(r.mission_date, '') AS mission_date,
-		ISNULL(r.mission_location, '') AS mission_location ,
+		ISNULL(r.mission_address, '') AS mission_address ,
 		ISNULL(r.status, '' ) AS status,
 		ISNULL(r.approval_date, '' )AS approval_date,
-		ISNULL(v.vehicule_type_id, '') AS vehicule_type_id,
-		ISNULL(v.vehicule_id, '') AS vehicule_id
+		ISNULL(v.vehicule_type_id, '') AS vehicule_type_id
+		
 
 	FROM 
 		dbo.[request] r

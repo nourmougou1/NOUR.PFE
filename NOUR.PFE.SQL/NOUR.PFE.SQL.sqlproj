@@ -109,14 +109,21 @@
     <Build Include="dbo\procedures\sp_vehicule_type_insert.sql" />
     <Build Include="dbo\procedures\sp_vehicule_type_update.sql" />
     <Build Include="dbo\procedures\sp_vehicule_update.sql" />
+    <Build Include="dbo\procedures\sp_maintenance_type_get_all.sql" />
+    <Build Include="dbo\procedures\sp_maintenance_type_insert.sql" />
+    <Build Include="dbo\procedures\sp_maintenance_type_delete.sql" />
+    <Build Include="dbo\procedures\sp_maintenance_type_update.sql" />
+    <Build Include="dbo\Tables\Vehicule_status.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_status_get_all.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_status_insert.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_status_update.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_status_delete.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="NOUR.PFE.SQL.refactorlog" />
   </ItemGroup>
   <ItemGroup>
     <None Include="NOUR.PFE.SQL.publish.xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <PostDeploy Include="Script\Script.PostDeployment1.sql" />
+    <None Include="Script\Script.sql" />
   </ItemGroup>
 </Project>

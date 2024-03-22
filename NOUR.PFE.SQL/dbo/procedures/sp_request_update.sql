@@ -19,7 +19,7 @@ BEGIN
 		mission_description = @missionDescription,
 		user_id = @userId,
 		mission_date = @missionDate,
-		mission_location = @missionLocation,
+		mission_address = @missionLocation,
 		status = @status,
 		approval_date = @approvalDate,
 		vehicule_type_id = @vehiculeTypeId,

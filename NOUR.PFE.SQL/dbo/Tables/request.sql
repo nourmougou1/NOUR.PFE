@@ -5,7 +5,7 @@
     [mission_description] VARCHAR(100) NULL, 
     [user_id] INT NOT NULL, 
     [mission_date] VARCHAR(100) NOT NULL, 
-    [mission_location] VARCHAR(100) NOT NULL, 
+    [mission_address] VARCHAR(100) NOT NULL, 
     [status] BIT NOT NULL, 
     [approval_date] DATETIME NULL,  
     [vehicule_type_id] INT NOT NULL,

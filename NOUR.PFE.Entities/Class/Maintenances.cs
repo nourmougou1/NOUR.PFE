@@ -8,9 +8,9 @@ namespace NOUR.PFE.Entities
 {
     public class Maintenances : List<Maintenance>
     {
-        public Maintenances(IEnumerable<Maintenances> enumerable) : base() { }
+        public Maintenances() : base() { }
         public Maintenances(int capacity) : base(capacity) { }
-        public Maintenances (IEnumerable<Maintenance> list) : base(list) { }
+        public Maintenances (IEnumerable<Maintenance> collection) : base(collection) { }
        
        
     }

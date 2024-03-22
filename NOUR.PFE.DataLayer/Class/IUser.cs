@@ -8,12 +8,14 @@ namespace NOUR.PFE.DataLayer.Class
 {
     public interface IUser
     {
-        IEnumerable<Entities.User> GetAll();
+        IEnumerable<Entities.User> GetAllUser();
         Entities.User GetOne(int userId);
         Entities.User GetOneByLogin(string userLogin);
 
         bool Add(Entities.User user);
         bool Update(Entities.User user);
         bool Remove(Entities.User user);
+
+       
     }
 }

@@ -378,4 +378,39 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="vehicule_status" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="5d74bd96-b964-42ad-aabb-788f1668c093" ChangeDateTime="03/16/2024 22:43:59">
+    <Property Name="ElementName" Value="[dbo].[request].[mission_location]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[request]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="mission_address" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="80051cf7-3f12-4267-857f-08943f58bfe8" ChangeDateTime="03/20/2024 21:38:35">
+    <Property Name="ElementName" Value="[dbo].[VehiculeStatus].[Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[VehiculeStatus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="status_Id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8d95d18d-e759-442f-9729-33f547a9e2a1" ChangeDateTime="03/20/2024 21:39:00">
+    <Property Name="ElementName" Value="[dbo].[VehiculeStatus].[status_Id]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[VehiculeStatus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="status_id" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="900a3ded-9df5-4fc2-bda4-8991e3bedb7c" ChangeDateTime="03/20/2024 21:39:02">
+    <Property Name="ElementName" Value="[dbo].[VehiculeStatus].[Status_name]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[VehiculeStatus]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="status_name" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="548faa59-dd63-4c2c-9e95-7641933ba2bc" ChangeDateTime="03/20/2024 21:41:38">
+    <Property Name="ElementName" Value="[dbo].[vehicule].[vehicule_status]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[vehicule]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="vehicule_status_id" />
+  </Operation>
 </Operations>

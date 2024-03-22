@@ -16,7 +16,7 @@ namespace NOUR.PFE.Entities
         public int Id { get; set; }
         public string Lat { get; set; }
         public string Lng { get; set; }
-        public Vehicule Vehicule { get; set; }
+        public int VehiculeId { get; set; } 
 
         #endregion
 

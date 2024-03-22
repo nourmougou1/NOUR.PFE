@@ -10,7 +10,10 @@ namespace NOUR.PFE.Entities
     public class VehiculeBrand
     {
         #region Constructors
-        public VehiculeBrand() { }
+        public VehiculeBrand() 
+        {
+
+        }
         #endregion
 
         #region Properties

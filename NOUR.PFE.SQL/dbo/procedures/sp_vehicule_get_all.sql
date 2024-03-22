@@ -8,7 +8,7 @@ BEGIN
         ISNULL(vehicule_type_id,'') AS vehicule_type_id,
        
         ISNULL(vehicule_kilometrage,'')AS vehicule_kilometrage,
-        ISNULL(vehicule_status, '' ) AS vehicule_status,
+        ISNULL(vehicule_status_id, '' ) AS vehicule_status_id,
         ISNULL(vehicule_kilometrage,'') AS vehicule_kilometrage,
         ISNULL(vehicule_imm,'') AS vehicule_imm,
         ISNULL(purchase_date,'') AS purchase_date,

@@ -12,7 +12,7 @@
 AS
 BEGIN
 	INSERT INTO 
-		dbo.[request] (request_id, vehicule_id, mission_description, user_id, mission_date, mission_location,
+		dbo.[request] (request_id, vehicule_id, mission_description, user_id, mission_date, mission_address,
 		status, vehicule_type_id, request_date)
 	VALUES 
 		(@requestId, @vehiculeId, @missionDescription,@userId, @missionDate, @missionLocation, @status,

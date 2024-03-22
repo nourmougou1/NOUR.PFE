@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.DataLayer.Class
+namespace NOUR.PFE.DataLayer
 {
     public interface IMaintenance
     {
-        IEnumerable<Entities.Maintenances> GetAll();
+        IEnumerable<Entities.Maintenance> GetAll();
         Entities.Maintenance GetOneByVehiculeId(int VehiculeId);
         bool Add(Entities.Maintenance maintenance);
         bool Update(Entities.Maintenance maintenance);
         bool Remove(Entities.Maintenance maintenance);
+        IEnumerable<Entities.MaintenanceType> GetAllMaintenanceTypes();
+        bool AddMaintenanceType(Entities.MaintenanceType maintenanceType);
+        bool UpdateMaintenanceType(Entities.MaintenanceType maintenanceType);
+        bool RemoveMaintenanceType(Entities.MaintenanceType maintenanceType);
     }
 }

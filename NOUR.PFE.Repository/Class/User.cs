@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.Repository.Class
+namespace NOUR.PFE.Repository
 {
     public static class User
     {
@@ -19,7 +19,7 @@ namespace NOUR.PFE.Repository.Class
         public static Entities.Users GetAll()
         {
             return (User_DL != null)
-                   ? new Entities.Users(User_DL.GetAll())
+                   ? new Entities.Users(User_DL.GetAllUser())
                    : null;
         }
 
@@ -57,6 +57,10 @@ namespace NOUR.PFE.Repository.Class
                    ? User_DL.Remove(user)
                    : false;
         }
+
+        #region UserRole
+       
+        #endregion
 
     }
 }

@@ -1,4 +1,5 @@
-﻿using NOUR.PFE.DataLayer.Class;
+﻿using NOUR.PFE.DataLayer;
+using NOUR.PFE.DataLayer.Class;
 using NOUR.PFE.DataLayer.DB.Class;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.Repository.Class
+namespace NOUR.PFE.Repository
 {
     public static class Request
     {

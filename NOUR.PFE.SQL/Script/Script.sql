@@ -1,15 +1,5 @@
-﻿/*
-Modèle de script de post-déploiement							
---------------------------------------------------------------------------------------
- Ce fichier contient des instructions SQL qui seront ajoutées au script de compilation.		
- Utilisez la syntaxe SQLCMD pour inclure un fichier dans le script de post-déploiement.			
- Exemple :      :r .\monfichier.sql								
- Utilisez la syntaxe SQLCMD pour référencer une variable dans le script de post-déploiement.		
- Exemple :      :setvar TableName MyTable							
-               SELECT * FROM [$(TableName)]					
---------------------------------------------------------------------------------------
-*/
-
+﻿ 
+ GO
 IF NOT EXISTS (SELECT 1 FROM dbo.[user_role])
 BEGIN
 	INSERT INTO dbo.[user_role]([role_id], [role_code], [role_name]) 
@@ -18,6 +8,7 @@ BEGIN
 		(2, N'USER', N'Utilisateur'),
 		(3, N'RESP', N'Parc_Responsible')
 END 
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[app_user])
 BEGIN
@@ -27,6 +18,18 @@ BEGIN
 		(1, N'ADMIN', N'ADMIN', N'ADMIN', N'1w7USZx2lywZENk8S0Cv8g==', N'admin@mail.com', N'00 00000000', 1, '19700101', GETDATE())
 		/*(2, N'RESPONSIBLE', N'RESPONSIBLE', N'RESPONSIBLE', N'1w7USZx2lywZENk8S0Cv8g==', N'responsible@mail.com', N'00 00000000', 1, '19700101', GETDATE())*/
 END
+/*------------------------------------------vehicule status-----------------------------------------*/
+GO
+IF NOT EXISTS (SELECT 1 FROM dbo.[Vehicule_status])
+BEGIN
+	INSERT INTO dbo.[Vehicule_status]([status_id],[status_name])
+	VALUES
+		(1,N'Reserved'),
+		(2,N'Available'),
+		(3,N'Unavailable')
+
+END
+ GO
 
 /*-----------------------------(Vehicule Type)----------------------------------------------------*/
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_type])
@@ -42,6 +45,7 @@ BEGIN
 		(7,N'Motorcycle')
 
 END 
+ GO
 
 
 /*
@@ -66,6 +70,7 @@ BEGIN
 	VALUES 
 		(1, N'Honda', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Alfa Romeo%')
 BEGIN
@@ -73,6 +78,7 @@ BEGIN
 	VALUES 
 		(2, N'Alfa Romeo', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Audi%')
 BEGIN
@@ -80,6 +86,7 @@ BEGIN
 	VALUES 
 		(3, N'Audi', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Bestune%')
 BEGIN
@@ -87,6 +94,7 @@ BEGIN
 	VALUES 
 		(4, N'Bestune', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%BMW%')
@@ -95,6 +103,7 @@ BEGIN
 	VALUES 
 		(5, N'BMW', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%BYD%')
 BEGIN
@@ -102,6 +111,7 @@ BEGIN
 	VALUES 
 		(6, N'BYD', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Changan%')
 BEGIN
@@ -109,6 +119,7 @@ BEGIN
 	VALUES 
 		(7, N'Changan', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Chery%')
@@ -117,6 +128,7 @@ BEGIN
 	VALUES 
 		(8, N'Chery', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Chevrolet%')
@@ -125,6 +137,7 @@ BEGIN
 	VALUES 
 		(9, N'Chevrolet', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Cupra%')
@@ -133,6 +146,7 @@ BEGIN
 	VALUES 
 		(10,N'Cupra', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Ford%')
@@ -141,6 +155,7 @@ BEGIN
 	VALUES 
 		(11, N'Ford', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Fiat%')
@@ -149,6 +164,7 @@ BEGIN
 	VALUES 
 		(12, N'Fiat', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%FAW%')
@@ -157,6 +173,7 @@ BEGIN
 	VALUES 
 		(13, N'FAW', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Desk%')
@@ -165,6 +182,7 @@ BEGIN
 	VALUES 
 		(14, N'Desk', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Gacmotor%')
@@ -173,6 +191,7 @@ BEGIN
 	VALUES 
 		(15, N'Gacmotor', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Geely%')
@@ -181,6 +200,7 @@ BEGIN
 	VALUES 
 		(16, N'Geely', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%GWM%')
@@ -189,6 +209,7 @@ BEGIN
 	VALUES 
 		(17, N'GWM', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Haval%')
@@ -197,6 +218,7 @@ BEGIN
 	VALUES 
 		(18, N'Haval', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Jeep%')
@@ -205,6 +227,7 @@ BEGIN
 	VALUES 
 		(19, N'Jeep', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Jaguar%')
 BEGIN
@@ -212,6 +235,7 @@ BEGIN
 	VALUES 
 		(20, N'Jaguar', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Land Rover%')
 BEGIN
@@ -219,6 +243,7 @@ BEGIN
 	VALUES 
 		(21, N'Land Rover', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Kia%')
 BEGIN
@@ -226,6 +251,7 @@ BEGIN
 	VALUES 
 		(22, N'Kia', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Mahindra%')
 BEGIN
@@ -233,6 +259,7 @@ BEGIN
 	VALUES 
 		(23, N'Mahindra', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Mercedes Benz%')
@@ -241,6 +268,7 @@ BEGIN
 	VALUES 
 		(24, N'Mercedes Benz', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%MG%')
@@ -249,6 +277,7 @@ BEGIN
 	VALUES 
 		(25, N'MG', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Nissan%')
@@ -257,6 +286,7 @@ BEGIN
 	VALUES 
 		(26, N'Nissan', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%OPEL%')
@@ -265,6 +295,7 @@ BEGIN
 	VALUES 
 		(27, N'OPEL', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Mitsubishi Motors%')
@@ -273,6 +304,7 @@ BEGIN
 	VALUES 
 		(28, N'Mitsubishi Motors', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Peugeot%')
@@ -281,12 +313,15 @@ BEGIN
 	VALUES 
 		(29, N'Peugeot', N'')
 END
+ GO
+
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Porsches%')
 BEGIN
 	INSERT INTO dbo.[vehicule_brand]([vehicule_brand_id], [brand_name], [brand_logo]) 
 	VALUES 
 		(30, N'Porsches', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Renault%')
@@ -295,6 +330,7 @@ BEGIN
 	VALUES 
 		(31, N'Renault', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Skoda%')
@@ -303,6 +339,7 @@ BEGIN
 	VALUES 
 		(32, N'Skoda', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Soueast%')
@@ -311,6 +348,7 @@ BEGIN
 	VALUES 
 		(33, N'Soueast', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Suzuki%')
@@ -319,6 +357,7 @@ BEGIN
 	VALUES 
 		(34, N'Suzuki', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%TATA%')
@@ -327,6 +366,7 @@ BEGIN
 	VALUES 
 		(35, N'TATA', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Toyota%')
@@ -335,6 +375,7 @@ BEGIN
 	VALUES 
 		(36, N'Toyota', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Volkswagen%')
@@ -343,6 +384,7 @@ BEGIN
 	VALUES 
 		(37, N'Volkswagen', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Volvo%')
@@ -351,6 +393,7 @@ BEGIN
 	VALUES 
 		(38, N'Volvo', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Wallys%')
@@ -359,6 +402,7 @@ BEGIN
 	VALUES 
 		(39, N'Wallys', N'')
 END
+ GO
 
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Citroen%')
@@ -367,6 +411,7 @@ BEGIN
 	VALUES 
 		(40, N'Citroen', N'')
 END
+ GO
 
 
 
@@ -376,6 +421,7 @@ BEGIN
 	VALUES 
 		(41, N'Passat', N'')
 END
+ GO
 
 
 
@@ -385,6 +431,7 @@ BEGIN
 	VALUES 
 		(42, N'Lamburgini', N'')
 END
+ GO
 
 	IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Corvette";%')
 BEGIN
@@ -392,6 +439,7 @@ BEGIN
 	VALUES
 		(43, N'Corvette', N'')
 END
+ GO
 
 	IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Camaro%')
 BEGIN
@@ -399,6 +447,7 @@ BEGIN
 	VALUES 
 		(44, N'Camaro', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Viper%')
 BEGIN
@@ -406,6 +455,7 @@ BEGIN
 	VALUES 
 		(45, N'Viper', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Ferrari%')
 BEGIN
@@ -413,6 +463,7 @@ BEGIN
 	VALUES 
 		(46, N'Ferrari', N'')
 END
+ GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[vehicule_brand] WHERE brand_name LIKE'%Shelpi%')
 BEGIN
@@ -420,3 +471,4 @@ BEGIN
 	VALUES 
 		(47, N'Shelpi', N'')
 END
+ GO

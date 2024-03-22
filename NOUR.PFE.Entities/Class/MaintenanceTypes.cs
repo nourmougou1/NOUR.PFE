@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace NOUR.PFE.Entities
 {
-    public class MaintenanceTypes : List<Maintenance>
+    public class MaintenanceTypes : List<MaintenanceType>
     {
-        public MaintenanceTypes(IEnumerable<MaintenanceTypes> enumerable) : base() { }
+        public MaintenanceTypes() : base() { }
         public MaintenanceTypes(int capacity) : base(capacity) { }
-        public MaintenanceTypes(IEnumerable<Maintenance> list) : base(list) { }
+        public MaintenanceTypes(IEnumerable<MaintenanceType> collection) : base(collection) { }
        
     }
 }

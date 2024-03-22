@@ -15,13 +15,12 @@ namespace NOUR.PFE.Entities
         #region Properties
         public int Id { get; set; }
         public string Description { get; set; }
-        public User User { get; set; }
         public DateTime MissionDate { get; set; }
         public DateTime ApprovalDate { get; set; }
-        public Vehicule Vehicule { get; set; }
         public DateTime RequestDate { get; set; }
-        public string MissionLocation { get; set; }
-        public VehiculeType VehiculeType { get; set;}
+        public string MissionAddress { get; set; }
+        public User User { get; set; }
+        public Vehicule Vehicule { get; set; }
         public bool Status { get; set; }
 
         #endregion

@@ -17,6 +17,7 @@ namespace NOUR.PFE.Entities
         #region Properties
 
         public int Id { get; set; }
+        public string Name { get; set; }
         public bool Status { get; set; }
         public string Description { get; set; }
         public Vehicule Vehicule { get; set; }

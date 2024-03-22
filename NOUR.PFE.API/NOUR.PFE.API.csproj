@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NOUR.PFE.DataLayer.DB\NOUR.PFE.DataLayer.DB.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.Entities\NOUR.PFE.Entities.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.Repository\NOUR.PFE.Repository.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.Utils\NOUR.PFE.Utils.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -6,14 +6,13 @@
 	AS
 
     BEGIN
-	UPDATE
-	dbo.[user_role]
-	SET
-	role_id = @roleId,
-	role_name = @roleName,
-	role_code = @roleCode
-	WHERE
-	role_id = @roleId
+		UPDATE
+			dbo.[user_role]
+		SET 
+			role_name = @roleName,
+			role_code = @roleCode
+		WHERE
+			role_id = @roleId
     END
 
 
