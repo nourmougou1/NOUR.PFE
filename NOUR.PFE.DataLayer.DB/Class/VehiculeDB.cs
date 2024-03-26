@@ -26,17 +26,11 @@ namespace NOUR.PFE.DataLayer.DB
             brandLogo,
             StatusId,
             StatusName,
-            Kilometrage,
-            documentId,
-            documentName,
-            documentDescription,
-            documentStatus,
+            Kilometrage,  
             parcId,
             parcName,
             parcAdress,
-            PurshaseDate
-
-
+            PurshaseDate 
         }
         #endregion
 
@@ -110,26 +104,6 @@ namespace NOUR.PFE.DataLayer.DB
                                            ? DR[(int)enumQryVehiculeFields.Kilometrage].ToString()
                                            : string.Empty,
 
-                                document = new VehiculeDocument()
-                                {
-                                    Id = (!DR.IsDBNull((int)enumQryVehiculeFields.documentId))
-                                            ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.documentId])
-                                            : 0,
-
-                                    Name = (!DR.IsDBNull((int)enumQryVehiculeFields.documentName))
-                                              ? DR[(int)enumQryVehiculeFields.documentName].ToString()
-                                              : string.Empty,
-
-                                    Description = (!DR.IsDBNull((int)enumQryVehiculeFields.documentDescription))
-                                              ? DR[(int)enumQryVehiculeFields.documentDescription].ToString()
-                                              : string.Empty,
-
-                                    Status = (!DR.IsDBNull((int)enumQryVehiculeFields.documentStatus))
-                                              ? Convert.ToBoolean(DR[(int)enumQryVehiculeFields.documentStatus].ToString())
-                                              : false,
-
-                                },
-
                                 parc = new Parc()
                                 {
                                     Id = (!DR.IsDBNull((int)enumQryVehiculeFields.parcId))
@@ -143,7 +117,6 @@ namespace NOUR.PFE.DataLayer.DB
                                               : string.Empty,
 
                                 },
-
 
                                 PurshaseDate = (!DR.IsDBNull((int)enumQryVehiculeFields.PurshaseDate))
                                                ? Convert.ToDateTime(DR[(int)enumQryVehiculeFields.PurshaseDate].ToString())
@@ -233,6 +206,10 @@ namespace NOUR.PFE.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
+
+                        command.Parameters.Add("@vehiculeId", SqlDbType.VarChar);
+                        command.Parameters["@vehiculeId"].Value = vehicule.Id;
+                         
                         command.Parameters.Add("@vehiculeImm", SqlDbType.VarChar);
                         command.Parameters["@vehiculeImm"].Value = vehicule.Imm;
 
@@ -243,19 +220,14 @@ namespace NOUR.PFE.DataLayer.DB
                         command.Parameters["@brandId"].Value = vehicule.VehiculeBrand.Id;
 
                         command.Parameters.Add("@vehiculeKilometrage", SqlDbType.VarChar);
-                        command.Parameters["@vehiculeKilometrage"].Value = vehicule.Kilometrage;
-
-                        command.Parameters.Add("@parcId", SqlDbType.Int);
-                        command.Parameters["@parcId"].Value = vehicule.parc.Id;
+                        command.Parameters["@vehiculeKilometrage"].Value = vehicule.Kilometrage; 
 
                         command.Parameters.Add("@statusId", SqlDbType.Int);
                         command.Parameters["@statusId"].Value = vehicule.Status.Status_id;
 
                         command.Parameters.Add("@purschaseDate", SqlDbType.DateTime);
                         command.Parameters["@purschaseDate"].Value = vehicule.PurshaseDate;
-
-
-
+                         
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -272,7 +244,34 @@ namespace NOUR.PFE.DataLayer.DB
         }
         public bool Remove(Vehicule vehicule)
         {
-            throw new NotImplementedException();
+            int Ret = -1;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_vehicule_delete", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@vehiculeId", SqlDbType.Int);
+                        command.Parameters["@vehiculeId"].Value = vehicule.Id;
+
+
+                        conn.Open();
+                        Ret = command.ExecuteNonQuery();
+                    }
+                }
+
+                return Ret > -1;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
         }
 
         public Vehicule GetOneByType(Type type)
@@ -690,20 +689,14 @@ namespace NOUR.PFE.DataLayer.DB
                 {
                     using (SqlCommand command = new SqlCommand("sp_vehicule_path_insert", conn))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@pathId", SqlDbType.Int);
-                        command.Parameters["pathId"].Value = vehiculePath.Id;
-
+                        command.CommandType = CommandType.StoredProcedure;  
 
                         command.Parameters.Add("@pathLat", SqlDbType.VarChar);
                         command.Parameters["@pathLat"].Value = vehiculePath.Lat;
-
-
+                         
                         command.Parameters.Add("@pathLng", SqlDbType.VarChar);
                         command.Parameters["@pathLng"].Value = vehiculePath.Lng;
-
-
+                         
                         command.Parameters.Add("@vehiculeId", SqlDbType.Int);
                         command.Parameters["@vehiculeId"].Value = vehiculePath.VehiculeId;
 
@@ -734,9 +727,8 @@ namespace NOUR.PFE.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.Add("@pathId", SqlDbType.Int);
-                        command.Parameters["@pathId"].Value = vehiculePath.Id;
-
+                        command.Parameters.Add("@vehiculePathId", SqlDbType.Int);
+                        command.Parameters["@vehiculePathId"].Value = vehiculePath.Id;
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();

@@ -126,4 +126,7 @@
     <None Include="NOUR.PFE.SQL.publish.xml" />
     <None Include="Script\Script.sql" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script\Script.PostDeployment1.sql" />
+  </ItemGroup>
 </Project>

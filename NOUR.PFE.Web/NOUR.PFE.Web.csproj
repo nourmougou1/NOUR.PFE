@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NOUR.PFE.DataLayer.DB\NOUR.PFE.DataLayer.DB.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.Entities\NOUR.PFE.Entities.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.Repository\NOUR.PFE.Repository.csproj" />
+    <ProjectReference Include="..\NOUR.PFE.Utils\NOUR.PFE.Utils.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Shared\_Layout_full.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\images\" />
+    <Folder Include="wwwroot\assets\icons\" />
+  </ItemGroup>
+
+</Project>
