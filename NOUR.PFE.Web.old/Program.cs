@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.WEB
+namespace NOUR.PFE.Web
 {
     public class Program
     {

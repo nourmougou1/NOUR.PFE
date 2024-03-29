@@ -1,6 +1,6 @@
 using System;
 
-namespace NOUR.PFE.WEB.Models
+namespace NOUR.PFE.Web.Models
 {
     public class ErrorViewModel
     {

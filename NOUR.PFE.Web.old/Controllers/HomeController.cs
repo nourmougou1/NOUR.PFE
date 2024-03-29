@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using NOUR.PFE.WEB.Models;
+using NOUR.PFE.Web.Models;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.Web.Controllers
 {
     public class HomeController : Controller
     {
