@@ -1,0 +1,46 @@
+﻿ @model NOUR.PFE.WEB.Models.UserViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Users</title>
+</head>
+<body>
+    <table class="table" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Login</th>
+                <th>Email</th>
+                <th>User Phone</th>
+                <th>User Role</th>
+                <th>Creation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var User in Model.Users)
+            {
+                <tr>
+                    <td>@User.Id</td>
+                    <td>@User.FirstName</td>
+                    <td>@User.LastName</td>
+                    <td>@User.Login</td>
+                    <td>@User.Email</td>
+                    <td>@User.UserPhone</td>
+                    <td>@User.UserRole</td>
+                    <td>@User.CreationDate</td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

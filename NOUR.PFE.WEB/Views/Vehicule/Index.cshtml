@@ -1,0 +1,49 @@
+﻿@model NOUR.PFE.WEB.Models.VehiculeViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Vehicules</title>
+</head>
+<body>
+    <h1>Vehicules</h1>
+
+    <table class="table" style="margin-top:50px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Matricule</th>
+                <th>Type</th>
+                <th>Brand</th>
+                <th>Status</th>
+                <th>kilometrage</th>
+                <th>Parc</th>
+                <th>Purchase Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Vehicule in Model.Vehicules)
+            {
+                <tr>
+                    <td>@Vehicule.Id</td>
+                    <td>@Vehicule.Imm</td>
+                    <td>@Vehicule.VehiculeType.TypeName</td>
+                    <td>@Vehicule.VehiculeBrand.Name</td>
+                    <td>@Vehicule.Status.Status_name</td>
+                    <td>@Vehicule.Kilometrage</td>
+                    <td>@Vehicule.document</td>
+                    <td>@Vehicule.parc.Name</td>
+                    <td>@Vehicule.PurshaseDate</td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>

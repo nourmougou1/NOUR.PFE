@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+    <table style="margin-left:100px">
+        <tr style="margin-top:60px">
+            <td>
+                <h1>User Roles</h1>
+            </td>
+            <td>
+                <a style="margin-left:400px" asp-controller="" asp-action="" class="btn btn-primary">
+                    <i  class="fa btn-default primary"></i> &nbsp; Add User Role
+                </a>
+            </td>
+        </tr>
+    </table>
+
+    <table class="table" style="margin-left:100px; margin-top:50px">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Role Name</th>
+                <th>Role Code</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var role in Model.UserRoles)
+            {
+                <tr >
+                    <td>@role.Id</td>
+                    <td>@role.Name</td>
+                    <td>@role.Code</td> 
+                    <td>
+                        <!-- Edit Button -->
+                        <a href="@Url.Action("Edit", "User", new { id = role.Id })" class="btn btn-primary" style="margin-right:20px">
+                            <i class="fas fa-user-edit"></i>
+                        </a>
+
+                        <!-- Delete Button -->
+                        <a href="@Url.Action("Delete", "User", new { id = role.Id })" class="btn btn-danger" style="margin-right:20px">
+                            <i class="fas fa-user-times"></i>
+
+                        </a>
+
+                        <!-- Details Button -->
+                        <a href="@Url.Action("Details", "User", new { id = role.Id })" class="btn btn-info" >
+                            <i class="fas fa-user" style="margin-right:10px"> &nbsp; Details</i>
+
+                        </a>
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+
+
+</body>
+</html>
