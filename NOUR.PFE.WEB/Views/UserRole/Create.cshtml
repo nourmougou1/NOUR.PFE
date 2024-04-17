@@ -1,0 +1,91 @@
+﻿@model NOUR.PFE.WEB.Models.UserRoleViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+
+        <div asp-action="Create" class="row">
+            <div class="col-md-6">
+                <div class="text-danger" asp-validation-summary="ModelOnly">
+
+                <div class="card card-primary card-outline">
+                    <form class ="form-horizontal" asp-action="Create" enctype="multipart/form-data">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Add User Role
+                            </h3>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label asp-for="Name">Role Name</label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input asp-for="Name" type="text" class="form-control" placeholder="Role Name">
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                                </br>
+
+                                <label asp-for="Code">Role Code</label>
+
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                                    </div>
+                                    <input asp-for="Code" type="text" class="form-control" placeholder="Role Code">
+                                <span asp-validation-for="Code" class="text-danger"></span>
+
+                                </div>
+                                </br>
+
+                                <tr>
+                                    <td>
+                                        <button type="button" asp-action="Index" class="btn  btn-warning">
+                                            <i class="fas fa-arrow-left"></i>
+                                            Back
+                                        </button>
+                                    </td>
+                                    <td>
+                                        <button asp-action="Create" type="button" class="btn  btn-success">
+                                            <i class="fa fa-check"></i>
+                                            Add
+                                        </button>
+                                    </td>
+                                </tr>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+   
+<style>
+    .card {
+        margin-left: 300px;
+        width: 500px;
+        margin-top: 50px;
+    }
+
+    h2 {
+        padding-left: 185px;
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+    .btn-warning {
+        margin-right: 200px;
+        margin-left: 30px;
+    }
+
+    .card-title {
+        margin-left: 185px;
+    }
+</style>
+
+</html>

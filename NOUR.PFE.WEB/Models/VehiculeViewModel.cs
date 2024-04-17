@@ -10,9 +10,11 @@ namespace NOUR.PFE.WEB.Models
         public Vehicules Vehicules { get; set; }
         public int Id { get; set; }
         public string Imm { get;}
-        public VehiculeType VehiculeType { get; set; }
-        public VehiculeBrand VehiculeBrand { get; set; }
+        public VehiculeType vehiculeType { get; set; }
+        public VehiculeTypes VehiculeTypes { get; set; }
+        public VehiculeBrands VehiculeBrands { get; set; }
         public VehiculeStatus Status { get; set; }
+        public VehiculeStatuss Statuss { get; set; }
         public String Kilometrage { get; set; }
         public VehiculeDocument document { get; set; }
         public Parc parc { get; set; }

@@ -20,8 +20,8 @@ namespace NOUR.PFE.Entities
         #region Properties
         public int Id { get; set; }
         public MaintenanceType MaintenanceType { get; set; }
-        public DateTime dateDebut { get; set; }
-        public string address { get; set; }
+        public DateTime DateDebut { get; set; }
+        public string Address { get; set; }
         public Vehicule Vehicule { get; set; } 
         #endregion
 

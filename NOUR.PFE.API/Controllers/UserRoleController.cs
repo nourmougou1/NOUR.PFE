@@ -57,6 +57,46 @@ namespace NOUR.PFE.API.Controllers
             }
         }
 
+        [HttpGet    ]
+        [Route("GetUserRoleById")]
+        public ApiResponse GetUserRoleById(int id) 
+        {
+            try
+            {
+                Entities.UserRole _Data = Repository.Config.GetUserRoleByID(id);
+                if (_Data != null)
+                {
+                    return new ApiResponse
+                    {
+                        Success = true,
+                        Error = -1,
+                        Message = "Success",
+                        Data = _Data
+                    };
+                }
+                else
+                {
+                    return new ApiResponse
+                    {
+                        Success = false,
+                        Error = 2,
+                        Message = "No Data Found!!!",
+                        Data = null
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse
+                {
+                    Success = false,
+                    Error = 0,
+                    Message = ex.Message,
+                    Data = null
+                };
+            }
+
+        } 
 
         [HttpPost]
         [Route("AddUserRole")]

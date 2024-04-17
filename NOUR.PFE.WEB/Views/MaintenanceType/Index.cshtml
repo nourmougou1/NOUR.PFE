@@ -1,0 +1,63 @@
+﻿@model NOUR.PFE.WEB.Models.MaintenanceTypeViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+    <div class="container p-2">
+        <div class="row pt-5">
+            <div class="col-6">
+                <h1>Maintenance Types List</h1>
+            </div>
+            <div class="col-6">
+                <a style="margin-left:400px" asp-controller="" asp-action="" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> &nbsp; Add Maintenance Type
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card box-shadow">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var maintenanceType in Model.MaintenanceTypes)
+                    {
+                        <tr>
+                            <td>@maintenanceType.Id</td>
+                            <td>@maintenanceType.Name</td>
+
+                            <td class="buttons">
+                                <!-- Edit Button -->
+                                <a href="@Url.Action("Edit", "MaintenanceType", new { id = maintenanceType.Id })" class="btn btn-primary" style="margin-right:20px">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
+
+                                <!-- Delete Button -->
+                                <a href="@Url.Action("Delete", "MaintenanceType", new { id = maintenanceType.Id })" class="btn btn-danger" style="margin-right:20px">
+                                    <i class="fas fa-user-times"></i>
+
+                                </a>
+
+                                <!-- Details Button -->
+                                <a href="@Url.Action("Details", "MaintenanceType", new { id = maintenanceType.Id })" class="btn btn-info">
+                                    <i class="fas fa-user" style="margin-right:10px"> &nbsp; Details</i>
+
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+

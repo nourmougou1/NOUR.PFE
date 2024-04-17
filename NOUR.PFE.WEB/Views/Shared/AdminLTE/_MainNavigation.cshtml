@@ -1,7 +1,17 @@
-﻿
-@*
-    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    NOUR.PFE.Entities.User curUser = null;
+    string strUser = HttpContextAccessor.HttpContext.Session.GetString("User");
+
+    if (!string.IsNullOrEmpty(strUser))
+    {
+        curUser = Newtonsoft.Json.JsonConvert.DeserializeObject<NOUR.PFE.Entities.User>(strUser);
+    }
+}
+
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -14,99 +24,181 @@
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-            <div class="image">
-                <img src="~/img/user1-128x128.jpg" class="img-circle elevation-2" alt="User Image">
-            </div>
+            @* <div class="image">
+                <img src="~/uploads/@curUser.ImageUrl" class="img-circle elevation-4" alt="User Image">
+            </div> *@
             <div class="info">
-                <a href="#" class="d-block">ADMIN</a>
+                <a href="#" class="d-block">
+                    @{
+                        if(@curUser != null) {
+                            @curUser.Login
+                        }
+                    }
+                </a>
             </div>
         </div>
-
-
-
+         
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                <!-- Add icons to the links using the .nav-icon class
-                     with font-awesome or any other icon font library -->
-               @*  <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+               @if ((curUser != null)
+                && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+                ))
+                {  
+                    <li class="nav-item">
+                        <a asp-controller="Dashboard" asp-action="Index" class="nav-link">
+                            <i class="fas fa-tachometer-alt" style="margin-right:10px"></i>
+                            <p>
+                                Dashboard
+                            </p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a  class="nav-link">
+                            <i class="fas fa-users" style="margin-right:10px"></i>
+                            <p>
+                                Users
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-controller="User" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        Users list
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="UserRole" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        User Roles list
+                                    </p>
+                                </a>
+                            </li>
+
+                    </ul>
+                    </li>
+               }  
+
+                
+               
+                <li class="nav-item menu-open">
+                    <a  class="nav-link">
+                        <i class="fa fa-car" style="margin-right:10px"></i>
                         <p>
-                            Starter Pages
+                            Vehicles
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link active">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
+                            <a asp-controller="Vehicule" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list" style="margin-right:10px"></i>
+                                <p>
+                                    vehicles list
+                                </p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                            <a asp-controller="VehiculeBrand" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list" style="margin-right:10px"></i>
+                                <p>
+                                    vehicles brands list
+                                </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a asp-controller="VehiculeType" asp-action="Index" class="nav-link">
+                                <i class="fas fa-list" style="margin-right:10px"></i>
+                                <p>
+                                    vehicles types list
+                                </p>
+                            </a>
+                        </li>
+                       
                     </ul>
-                </li> *@
-             @*    <li >
-                    <a href="../Views/User/Index.cshtml" class="nav-link" >
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                          Users
-                       </p>
-                    </a>
-                </li> *@
-                <li class="nav-item">
-                    <a asp-controller="Dashboard" asp-action="Index" class="nav-link">
-                        <i class=" fas fa-tachometer-alt" style="margin-right:10px"></i>
-                        <p>
-                            Dashboard
-                        </p>
-                    </a>
                 </li>
-                <li class="nav-item">
-                    <a asp-controller="User" asp-action="Index" class="nav-link">
-                        <i class="fas fa-users" style="margin-right:10px"></i>
+                @if ((curUser != null)
+           && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+           ))
+                {
+                    <li class="nav-item menu-open">
+                        <a class="nav-link">
+                            <i class="fas fa-tools" style="margin-right:10px"></i>
+                            <p>
+                                Maintenances
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-controller="Maintenance" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        Maintenance list
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="MaintenanceType" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        Maintenance Types list
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                }
+                <li class="nav-item menu-open">
+                    <a class="nav-link">
+                        <i class="fa fa-bell" style="margin-right:10px"></i>
                         <p>
-                            Users
+                            Reservations
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a asp-controller="UserRole" asp-action="Index" class="nav-link">
-                        <i class="fas fa-list" style="margin-right:10px"></i>
-                        <p>
-                            User Roles list
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a asp-controller="Vehicule" asp-action="Index" class="nav-link">
-                        <i class="fa fa-car" style="margin-right:10px"></i>
-                        <p>
-                            Vehicles
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-list" style="margin-right:10px"></i>
-                        <p>
-                            vehicles brands list
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-list" style="margin-right:10px"></i>
-                        <p>
-                            vehicles types list
-                        </p>
-                    </a>
+                    <ul class="nav nav-treeview">
+                        @if ((curUser != null)
+                           && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+                           ))
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="MaintenanceType" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        approved reservations
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="MaintenanceType" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        pending reservations
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                        @if ((curUser != null)
+                            && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.USER)
+                            ))
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="MaintenanceType" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        My reservations
+                                    </p>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
                 </li>
             </ul>
         </nav>

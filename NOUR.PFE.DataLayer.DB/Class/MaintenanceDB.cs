@@ -33,79 +33,84 @@ namespace NOUR.PFE.DataLayer.DB
             typeDescription,
             address
         }
+        private enum enumQryMaintenanceTypesFields
+        { 
+            typeId = 0,
+            typeName,
+            typeDescription
+        }
         #endregion
 
-        public IEnumerable<Maintenance> GetAll() 
-        {
-            Entities.Maintenances Ret = new Entities.Maintenances();
-            SqlDataReader DR = null;
+        //public IEnumerable<Maintenance> GetAll() 
+        //{
+        //Entities.Maintenances Ret = new Entities.Maintenances();
+        //SqlDataReader DR = null;
 
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
-                {
-                    using (SqlCommand command = new SqlCommand("sp_vehicule_type_get_all", conn))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        conn.Open();
-                        DR = command.ExecuteReader();
+        //try
+        //{
+        //    using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+        //    {
+        //        using (SqlCommand command = new SqlCommand("sp_vehicule_maintenance_get_all", conn))
+        //        {
+        //            command.CommandType = CommandType.StoredProcedure;
+        //            conn.Open();
+        //            DR = command.ExecuteReader();
 
-                        while (DR.Read())
-                        {
-                            Ret.Add(new Entities.Maintenance()
-                            {
-                                Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.id))
-                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.id])
-                                         : 0,
-                                Vehicule = new Vehicule()
-                                {
-                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.vehiculeId))
-                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.vehiculeId])
-                                         : 0,
+        //            while (DR.Read())
+        //            {
+        //                Ret.Add(new Entities.Maintenance()
+        //                {
+        //                    Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.id))
+        //                             ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.id])
+        //                             : 0,
+        //                    Vehicule = new Vehicule()
+        //                    {
+        //                        Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.vehiculeId))
+        //                             ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.vehiculeId])
+        //                             : 0,
 
-                                },
+        //                    },
 
+        //                    DateDebut = (!DR.IsDBNull((int)enumQryMaintenanceFields.dateDebut))
+        //                                   ? Convert.ToDateTime(DR[(int)enumQryMaintenanceFields.dateDebut].ToString())
+        //                                   : new DateTime(1970, 1, 1),
+        //                    MaintenanceType = new MaintenanceType()
+        //                    {
+        //                        Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeId))
+        //                             ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.typeId])
+        //                             : 0,
+        //                        Name = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeName))
+        //                               ? DR[(int)enumQryMaintenanceFields.typeName].ToString()
+        //                               : string.Empty,
+        //                        Description = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeDescription))
+        //                               ? DR[(int)enumQryMaintenanceFields.typeDescription].ToString()
+        //                               : string.Empty,
+        //                    },
+        //                    Address = (!DR.IsDBNull((int)enumQryMaintenanceFields.address))
+        //                               ? DR[(int)enumQryMaintenanceFields.address].ToString()
+        //                               : string.Empty,
 
-                                dateDebut = (!DR.IsDBNull((int)enumQryMaintenanceFields.dateDebut))
-                                               ? Convert.ToDateTime(DR[(int)enumQryMaintenanceFields.dateDebut].ToString())
-                                               : new DateTime(1970, 1, 1),
-                                MaintenanceType = new MaintenanceType()
-                                {
-                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeId))
-                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.typeId])
-                                         : 0,
-                                    Name = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeName))
-                                           ? DR[(int)enumQryMaintenanceFields.typeName].ToString()
-                                           : string.Empty,
-                                    Description = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeDescription))
-                                           ? DR[(int)enumQryMaintenanceFields.typeDescription].ToString()
-                                           : string.Empty,
-                                },
-                                address = (!DR.IsDBNull((int)enumQryMaintenanceFields.address))
-                                           ? DR[(int)enumQryMaintenanceFields.address].ToString()
-                                           : string.Empty,
+        //                });
+        //            }
+        //        }
+        //    }
+        //    return Ret;
+        //}
+        //catch (Exception ex)
+        //{
+        //    string strEx = ex.Message;
+        //    throw;
+        //}
+        //finally
+        //{
+        //    if (DR != null)
+        //    {
+        //        DR.Close();
+        //        DR = null;
+        //    }
 
-                            });
-                        }
-                    }
-                }
-                return Ret;
-            }
-            catch (Exception ex)
-            {
-                string strEx = ex.Message;
-                throw;
-            }
-            finally
-            {
-                if (DR != null)
-                {
-                    DR.Close();
-                    DR = null;
-                }
-
-            }
-        }
+        //}
+        //}
 
         #region enumMaintenanceType
         private enum enumQryMaintenanceTypeFields
@@ -195,12 +200,123 @@ namespace NOUR.PFE.DataLayer.DB
 
         IEnumerable<Maintenance> IMaintenance.GetAll()
         {
-            throw new NotImplementedException();
+            Entities.Maintenances Ret = new Entities.Maintenances();
+            SqlDataReader DR = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_vehicule_maintenance_get_all", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
+                        DR = command.ExecuteReader();
+
+                        while (DR.Read())
+                        {
+                            Ret.Add(new Entities.Maintenance()
+                            {
+                                Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.id))
+                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.id])
+                                         : 0,
+                                Vehicule = new Vehicule()
+                                {
+                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.vehiculeId))
+                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.vehiculeId])
+                                         : 0,
+
+                                },
+
+                                DateDebut = (!DR.IsDBNull((int)enumQryMaintenanceFields.dateDebut))
+                                               ? Convert.ToDateTime(DR[(int)enumQryMaintenanceFields.dateDebut].ToString())
+                                               : new DateTime(1970, 1, 1),
+                                MaintenanceType = new MaintenanceType()
+                                {
+                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeId))
+                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.typeId])
+                                         : 0,
+                                    Name = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeName))
+                                           ? DR[(int)enumQryMaintenanceFields.typeName].ToString()
+                                           : string.Empty,
+                                    Description = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeDescription))
+                                           ? DR[(int)enumQryMaintenanceFields.typeDescription].ToString()
+                                           : string.Empty,
+                                },
+                                Address = (!DR.IsDBNull((int)enumQryMaintenanceFields.address))
+                                           ? DR[(int)enumQryMaintenanceFields.address].ToString()
+                                           : string.Empty,
+
+                            });
+                        }
+                    }
+                }
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+
+            }
         }
 
         IEnumerable<MaintenanceType> IMaintenance.GetAllMaintenanceTypes()
         {
-            throw new NotImplementedException();
+            Entities.MaintenanceTypes Ret = new Entities.MaintenanceTypes();
+            SqlDataReader DR = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_maintenance_type_get_all", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        conn.Open();
+                        DR = command.ExecuteReader();
+
+                        while (DR.Read())
+                        {
+                            Ret.Add(new Entities.MaintenanceType()
+                            {
+                                Id = (!DR.IsDBNull((int)enumQryMaintenanceTypesFields.typeId))
+                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceTypesFields.typeId])
+                                         : 0,
+                                Name = (!DR.IsDBNull((int)enumQryMaintenanceTypesFields.typeName))
+                                           ? DR[(int)enumQryMaintenanceTypesFields.typeName].ToString()
+                                           : string.Empty,
+                                Description = (!DR.IsDBNull((int)enumQryMaintenanceTypesFields.typeDescription))
+                                           ? DR[(int)enumQryMaintenanceTypesFields.typeDescription].ToString()
+                                           : string.Empty,
+                            });
+                        }
+                    }
+                }
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+
+            }
         }
     }
 }

@@ -1,0 +1,94 @@
+﻿@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Add Maintenance</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Add Maintenance
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Maintenance's Name</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-tools"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Maintenance's Name">
+                        </div>
+                        </br>
+
+                        <label>Maintenance's Description</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-pen"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Maintenance's Description">
+                        </div>
+                        </br>
+
+
+                        <tr>
+                            <td>
+                                <button type="button" asp-action="Index" class="btn  btn-warning">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Back
+                                </button>
+                            </td>
+                            <td>
+                                <button asp-action="Create" type="button" class="btn  btn-success">
+                                    <i class="fa fa-check"></i>
+                                    Add
+                                </button>
+                            </td>
+                        </tr>
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+</body>
+<style>
+    .card {
+        margin-left: 300px;
+        width: 500px;
+        margin-top: 50px;
+    }
+
+    h2 {
+        padding-left: 185px;
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+    .btn-warning {
+        margin-right: 200px;
+        margin-left: 30px;
+    }
+
+    .card-title {
+        margin-left: 185px;
+    }
+</style>
+
+
+</html>

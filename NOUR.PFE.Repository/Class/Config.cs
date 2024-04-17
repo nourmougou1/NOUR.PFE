@@ -21,7 +21,6 @@ namespace NOUR.PFE.Repository
             return (Config_DL != null)
                  ? new Entities.UserRoles(Config_DL.GetUserRoles())
                  : null;
-
         }
         public static Entities.UserRole GetUserRoleByCode(string code)
         {
@@ -53,10 +52,10 @@ namespace NOUR.PFE.Repository
 
         public static bool DeleteUserRole(Entities.UserRole UserRole)
         {
+
             return (Config_DL != null)
                    ? Config_DL.DeleteUserRole(UserRole)
                    : false;
         }
-
     }
 }

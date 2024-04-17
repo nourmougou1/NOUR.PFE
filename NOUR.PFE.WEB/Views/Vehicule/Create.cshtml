@@ -1,0 +1,133 @@
+﻿@model NOUR.PFE.WEB.Models.VehiculeViewModel
+
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create Vehicule</title>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+
+            <div class="card card-primary card-outline">
+                <div class="card-header">
+                    <h3 class="card-title">
+
+                        Add Vehicule
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+
+                        <label>Vehicle's registration number </label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-car"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Registration Number">
+                        </div>
+                        </br>
+
+                        <label asp-for="Id">Vehicle's Type</label>
+                        <div class="input-group">
+                            
+                             <select asp-for="Id" asp-items="@(new SelectList(Model.VehiculeTypes,"Id", "TypeName"))" class="form-control select2bs4" style="width: 100%;">
+                                 <option id="1" value="Van">-- Select --</option>
+                                
+                            </select> 
+                            <span asp-validation-for="Id" class="text-danger"></span>
+                        </div>
+                        <label asp-for="Id">Vehicle's brand </label>
+
+                        <div class="input-group">
+                                 <select asp-for="Id"  class="form-control"
+                                asp-items="@(new SelectList(Model.VehiculeBrands,"Id", "Name"))">
+                                <span class="input-group-text"><i class="fa fa-car"></i></span>
+
+                                <option id="0" value="0">-- select --</option>
+
+                                </select>
+                                <span asp-validation-for="Id" class="text-danger"></span> 
+                        </div>
+                        <br/>
+
+                        <label asp-for="Id">Vehicle's status</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-car"></i></span>
+                            </div>
+                           @* <select asp-for="Id" class="form-control"
+                                    asp-items="@(new SelectList(Model.Statuss,"Id", "Name"))">
+                                <option id="0" value="0">-- Select --</option>
+                                <span asp-validation-for="Id" class="text-danger"></span>
+
+                            </select> *@
+                        </div>
+                        </br>
+
+                        <label>Vehicle's Mileage</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Vehicle's Mileage">
+                        </div>
+                        </br>
+
+                        <tr>
+                            <td>
+                                <button type="button" asp-action="Index" class="btn  btn-warning">
+                                    <i class="fas fa-arrow-left"></i>
+                                    Back
+                                </button>
+                            </td>
+                            <td>
+                                <button asp-action="Create" type="button" class="btn  btn-success">
+                                    <i class="fa fa-check"></i>
+                                    Add
+                                </button>
+                            </td>
+                        </tr>
+
+
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+</body>
+</html>
+<style>
+    .card {
+        margin-left: 300px;
+        width: 500px;
+        margin-top: 50px;
+    }
+
+    h2 {
+        padding-left: 185px;
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+    .btn-warning {
+        margin-right: 200px;
+        margin-left: 30px;
+    }
+
+    .card-title {
+        margin-left: 185px;
+    }
+</style>

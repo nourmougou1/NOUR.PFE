@@ -27,8 +27,10 @@ namespace NOUR.PFE.Entities
         public bool IsActive { get; set; }
         public string UserPhone { get; set; }
         public UserRole UserRole { get; set; }
-        public DateTime CreationDate { get; set; }
+        
         public DateTime Birthday { get; set; }
+        public string Image { get; set; }
+        public DateTime CreationDate { get; set; }
         #endregion
         #region Methods  
 

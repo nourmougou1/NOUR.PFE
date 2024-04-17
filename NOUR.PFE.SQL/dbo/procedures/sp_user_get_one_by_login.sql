@@ -14,6 +14,7 @@ BEGIN
 		ISNULL(u.user_email, '') AS user_email,
 		ISNULL(u.user_phone, '') AS user_phone,
 		ISNULL(u.user_is_active, 0) AS user_is_active,
+		ISNULL(u.user_img,'')AS user_img,
 		u.user_birth_date,
 		u.user_creation_date
 		FROM

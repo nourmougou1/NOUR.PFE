@@ -6,16 +6,18 @@
 	@password VARCHAR(250),
 	@email VARCHAR(100),
 	@phone VARCHAR(30), 
-	@birthDate DATE
+	@birthDate DateTime,
+	@img VARCHAR(1000),
+	@userCreationDate DateTime
 	
 AS
 BEGIN
 
 	INSERT INTO
 		dbo.[app_user] (role_id, user_first_name, user_last_name, user_login, user_password,
-					    user_email, user_phone, user_is_active, user_birth_date, user_creation_date) 
+					    user_email, user_phone, user_is_active, user_birth_date,user_img, user_creation_date) 
 	VALUES
 		(@roleId, @firstName, @lastName, @login, @password,
-		 @email, @phone, 1, @birthDate, GETDATE())
+		 @email, @phone, 1, @birthDate, @img, GETDATE())
 
 END

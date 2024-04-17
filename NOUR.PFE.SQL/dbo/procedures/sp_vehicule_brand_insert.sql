@@ -1,7 +1,7 @@
 ﻿CREATE PROCEDURE [dbo].[sp_vehicule_brand_insert]
 @brandId int,
 @brandName VARCHAR(100),
-@brandLogo VARCHAR(50)
+@brandLogo VARCHAR(MAX)
 
 AS
 BEGIN

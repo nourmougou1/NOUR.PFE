@@ -29,7 +29,7 @@ namespace NOUR.PFE.Web.Controllers
         {
             if (HttpContext.Session.GetString("User") != null)
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Dashboard");
             }
 
             return View();
@@ -51,7 +51,18 @@ namespace NOUR.PFE.Web.Controllers
                         }
 
                         HttpContext.Session.SetString("User", JsonConvert.SerializeObject(_User));
-                        return RedirectToAction("Index", "Home");
+
+                        if ((_User.UserRole.Id == (int)Entities.Enumeration.Enumeration.UserRole.ADMIN) 
+                         || (_User.UserRole.Id == (int)Entities.Enumeration.Enumeration.UserRole.RESPO))
+                        {
+                            return RedirectToAction("Index", "Dashboard");
+                        }
+                        else
+                        {
+                            return RedirectToAction("Index", "Dashboard");
+                        }
+
+                       
                     }
                     else
                     {

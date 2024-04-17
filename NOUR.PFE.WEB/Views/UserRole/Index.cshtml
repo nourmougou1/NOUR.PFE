@@ -11,58 +11,83 @@
     <meta name="viewport" content="width=device-width" />
 </head>
 <body>
-    <table style="margin-left:100px">
-        <tr style="margin-top:60px">
-            <td>
-                <h1>User Roles</h1>
-            </td>
-            <td>
-                <a style="margin-left:400px" asp-controller="" asp-action="" class="btn btn-primary">
-                    <i  class="fa btn-default primary"></i> &nbsp; Add User Role
+    <div class="container p-2">
+        <div class="row pt-5">
+            <div class="col-6">
+                <h1>User Roles List</h1>
+            </div>
+            <div class="col-6">
+                <a style="margin-left:400px" asp-controller="UserRole" asp-action="Create" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> &nbsp; Add Role
                 </a>
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
 
-    <table class="table" style="margin-left:100px; margin-top:50px">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Role Name</th>
-                <th>Role Code</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var role in Model.UserRoles)
-            {
-                <tr >
-                    <td>@role.Id</td>
-                    <td>@role.Name</td>
-                    <td>@role.Code</td> 
-                    <td>
-                        <!-- Edit Button -->
-                        <a href="@Url.Action("Edit", "User", new { id = role.Id })" class="btn btn-primary" style="margin-right:20px">
-                            <i class="fas fa-user-edit"></i>
-                        </a>
+    </div>
 
-                        <!-- Delete Button -->
-                        <a href="@Url.Action("Delete", "User", new { id = role.Id })" class="btn btn-danger" style="margin-right:20px">
-                            <i class="fas fa-user-times"></i>
+    
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">User Roles List</h3>
+        </div>
+        <!-- /.card-header -->
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Role Name</th>
+                        <th>Role Code</th>
+                    </tr>
+                </thead>
+                <tbody>
+                     @foreach (var role in Model.UserRoles)
+                    {
+                    <tr>
+                            <td>@role.Name</td>
+                            <td>@role.Code</td>
+                            <td>
+                                <!-- Edit Button -->
+                                <a href="@Url.Action("Edit", "UserRole", new { id = role.Id })" class="btn btn-primary" style="margin-left:100px;margin-right:20px">
+                                    <i class="fas fa-user-edit"></i>
+                                </a>
 
-                        </a>
+                                <!-- Delete Button -->
+                                <a href="@Url.Action("Delete", "UserRole", new { id = role.Id })" class="btn btn-danger" style="margin-right:20px">
+                                    <i class="fas fa-user-times"></i>
 
-                        <!-- Details Button -->
-                        <a href="@Url.Action("Details", "User", new { id = role.Id })" class="btn btn-info" >
-                            <i class="fas fa-user" style="margin-right:10px"> &nbsp; Details</i>
+                                </a>
 
-                        </a>
-                    </td>
-                </tr>
+                                <!-- Details Button -->
+                                <a href="@Url.Action("Details", "UserRole", new { id = role.Id })" class="btn btn-info">
+                                    <i class="fas fa-user" style="margin-right:10px"> &nbsp; Details</i>
 
-            }
-        </tbody>
-    </table>
+                                </a>
+                            </td>
+                    </tr>
+
+                  
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /.card -->
 
 
 </body>
 </html>
+<style>
+    h1 {
+        margin-bottom: 50px;
+        margin-left: 90px;
+    }
+    .card{
+        width:800px;
+        margin-left: 175px;
+    }
+
+    .table {
+        width : 750px;
+    } 
+   
+</style>

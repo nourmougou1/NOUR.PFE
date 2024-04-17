@@ -1,0 +1,156 @@
+﻿@model NOUR.PFE.WEB.Models.UserViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+  
+    <div asp-action="Create" class="row">
+        <div class="col-md-6">
+            <div class="text-danger" asp-validation-summary="ModelOnly" >
+
+            </div>
+
+            <div class="card card-primary card-outline">
+                
+                <form class="form-horizontal" asp-action="Create" enctype="multipart/form-data">
+                    <div class="card-header">
+                        <h3 class="card-title">
+                        
+                            Add User
+                        </h3>
+                    </div>
+
+                    <div class="card-body"> 
+
+                        <div class="form-group">
+                            <label asp-for="Image" class="col-sm-2 col-form-label">Image</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fa fa-image"></i></span>
+                                </div>
+                                <input type="file" name="File" asp-for="Image" class="form-control" />
+                                <span asp-validation-for="Image" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <label asp-for="FirstName">Firstname</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input asp-for="FirstName" type="text" class="form-control" placeholder="Firstname">
+                            <span asp-validation-for="FirstName" class="text-danger"></span>
+                        </div>
+                        
+                        <br />
+
+                            <label asp-for="LastName">Lastname</label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input asp-for="LastName" type="text" class="form-control" placeholder="Lastname">
+                                <span asp-validation-for="LastName" class="text-danger"></span> 
+                            </div>
+                        <br />
+
+                            <label asp-for="Login">Login</label>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text"><i class="fa fa-user"></i></span>
+                                </div>
+                                <input asp-for="Login" type="text" class="form-control" placeholder="Login">
+                                <span asp-validation-for="Login" class="text-danger"></span> 
+                            </div>
+                        
+                            <br/>
+                        <label asp-for="Password">Password</label>
+                        <div class="form-group" >
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text"><i class="fas fa-lock"></i></span>
+                                </div>
+                                <input asp-for="Password" type="text" class="form-control" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span> 
+                            </div> 
+                        </div>
+                        <br />
+                        <label asp-for="Email">Email </label>
+                        <div class="form-group">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span  class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                </div>
+                                <input asp-for="Email" type="email" class="form-control" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span> 
+                            </div> 
+                        </div>
+                          <br/>
+
+                          <label asp-for="Birthday">Birthday</label>
+                          <div class="form-group">
+                              <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-birthday-cake"></i></span>
+                            </div>
+                            <input asp-for="Birthday" type="date" class="form-control" placeholder="Birthday" />
+                            <span asp-validation-for="Birthday" class="text-danger"></span>
+
+                        </div> 
+                          </div>
+
+
+                        <label asp-for="UserPhone">Phone Number</label>
+                        <div class="form-group">
+                            
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                </div>
+                                <input asp-for="UserPhone" type="text" class="form-control" placeholder="Phone Number">
+                                <span asp-validation-for="UserPhone" class="text-danger"></span> 
+                                
+                            </div>
+                        </div>
+
+                        <label asp-for="UserRoleId">User's Role</label>
+                        <div class="form-group select">
+                            <div class="input-group">
+                                    <Select asp-for="UserRoleId"  class="form-control"
+                                             asp-items="@(new SelectList(Model.UserRoles,"Id", "Name"))"  style="width: 100%;">
+                                        <span class="input-group-text"><i class="fa fa-users"></i></span>
+                            
+                                        <option id="0" value="0">-- select --</option>
+
+                            </select>
+                                <span asp-validation-for="UserRoleId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                       
+                    </div>
+            
+
+                    <div class="card-footer">
+                        <button asp-controller="User" asp-action="Create" class="btn  btn-success  float-right"> <i class="fa fa-check"></i> Add</button>
+
+                        <button asp-controller="User" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Retour</button>
+                    </div>
+                      
+                </form>
+            </div>
+             
+        </div>
+        
+    </div>
+    <style>
+        .card{
+            margin-left:260px;
+            margin-top:100px;
+            width: 550px;
+        }
+    </style>
+        
+ 
