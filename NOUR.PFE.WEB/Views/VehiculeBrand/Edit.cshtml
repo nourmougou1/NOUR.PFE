@@ -1,0 +1,91 @@
+﻿@model NOUR.PFE.WEB.Models.BrandViewModel
+
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<div asp-action="Create" class="row">
+    <div class="col-md-6">
+        <div class="card card-primary card-outline">
+            <form class="form-horizontal" asp-controller="VehiculeBrand" asp-action="Edit" enctype="multipart/form-data">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Edit Vehicule Brand
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Name">brand's Name</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
+                            </div>
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Name">
+                            <span asp-validation-for="Name"></span>
+                        </div>
+                        <br />
+                        <label asp-for="Logo">Brand's Logo</label>
+                        <div class="input-group">
+                            <div class="input-group-text">
+                                <span class="input-group-text"> <img src="@Model.Logo" height="10px" width="10px" /> </span>
+
+                            </div>
+                            <input asp-for="Logo" type="text" class="form-control" placeholder="Logo's URL " />
+                            <span asp-validation-for="Logo"></span>
+
+
+                        </div>
+
+                       
+
+                    </div>
+
+                    <div class="card-footer" style="">
+                        <tr>
+                            <td>
+                                <button asp-controller="VehiculeBrand" asp-action="Edit" class="btn btn-success  float-right"> <i class="fa fa-check"></i>  Save</button>
+
+                            </td>
+                            <td>
+                                <button asp-controller="VehiculeBrand" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Back</button>
+
+                            </td>
+                        </tr>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<style>
+    .card {
+        margin-left: 300px;
+        width: 500px;
+        margin-top: 50px;
+    }
+
+    h2 {
+        padding-left: 185px;
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+
+
+    .card-title {
+        margin-left: 185px;
+    }
+</style>
+
+
+

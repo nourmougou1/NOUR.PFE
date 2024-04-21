@@ -14,8 +14,10 @@ namespace NOUR.PFE.DataLayer
         bool Update(Entities.Maintenance maintenance);
         bool Remove(Entities.Maintenance maintenance);
         IEnumerable<Entities.MaintenanceType> GetAllMaintenanceTypes();
+        IEnumerable<Entities.Vehicule> GetAllVehicule();
         bool AddMaintenanceType(Entities.MaintenanceType maintenanceType);
         bool UpdateMaintenanceType(Entities.MaintenanceType maintenanceType);
         bool RemoveMaintenanceType(Entities.MaintenanceType maintenanceType);
+        Entities.MaintenanceType GetMaintenanceTypeById(int id);
     }
 }

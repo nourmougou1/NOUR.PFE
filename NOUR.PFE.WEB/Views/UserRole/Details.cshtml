@@ -1,0 +1,58 @@
+﻿@model NOUR.PFE.WEB.Models.UserRoleViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+
+        <div class="card  card-teal card-outline">
+            
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Role Name</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.UserRole.Name)
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong> Role Code</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.UserRole.Code)</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-success  float-right" href='@Url.Action("Edit", "Userole", new { id = @Model.Id })'>
+                            <i class=" fa fa-edit"></i>
+                            Edit
+                        </a>
+
+                        <a class="btn btn-warning  float-left" href='@Url.Action("Index", "UserRole")'>
+                            <i class="fas fa-arrow-left"></i>
+                            Retour
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .card{
+        width:600px;
+        margin-top:100px;
+        margin-left:250px;
+    }
+</style>

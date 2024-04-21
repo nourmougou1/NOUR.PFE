@@ -28,10 +28,23 @@ namespace NOUR.PFE.Repository
                 : null;
         }
 
+        //public static Entities.Maintenances GetAllVehicule()
+        //{
+        //    return (Maintenance_DL != null)
+        //        ? new Entities.Maintenances(Maintenance_DL.GetAllVehicule())
+        //        : null;
+        //}
+
         public static Entities.Maintenance GetOneByVehiculeId(int VehiculeId)
         {
             return (Maintenance_DL != null)
                    ? Maintenance_DL.GetOneByVehiculeId(VehiculeId)
+                   : null;
+        }
+        public static Entities.MaintenanceType GetMaintenanceTypeById(int MaintenanceTypeId)
+        {
+            return (Maintenance_DL != null)
+                   ? Maintenance_DL.GetMaintenanceTypeById(MaintenanceTypeId)
                    : null;
         }
 

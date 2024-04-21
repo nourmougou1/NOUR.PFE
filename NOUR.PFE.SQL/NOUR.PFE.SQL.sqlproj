@@ -119,6 +119,10 @@
     <Build Include="dbo\procedures\sp_vehicule_status_update.sql" />
     <Build Include="dbo\procedures\sp_vehicule_status_delete.sql" />
     <Build Include="dbo\procedures\sq_user_role_get_one_by_id.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_get_one_by_id.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_brand_get_one_by_id.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_type_get_one_by_id.sql" />
+    <Build Include="dbo\procedures\sp_maintenance_type_get_one_by_id.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="NOUR.PFE.SQL.refactorlog" />

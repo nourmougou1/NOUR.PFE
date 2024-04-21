@@ -38,10 +38,13 @@ namespace NOUR.PFE.WEB.Models
 
         public int UserRoleId { get; set; }
         public string Image { get; set; }
+        public IFormFile File { get; set; }
+
 
         public DateTime CreationDate { get; set; }
  
         public DateTime Birthday { get; set; }
+
 
         public IEnumerable<UserRole> UserRoles { get; set; }
     }

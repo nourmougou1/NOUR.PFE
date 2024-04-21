@@ -1,4 +1,5 @@
 ﻿CREATE PROCEDURE [dbo].[sp_user_insert]
+	
 	@roleId int,
 	@firstName VARCHAR(100),
 	@lastName VARCHAR(100),
@@ -7,8 +8,7 @@
 	@email VARCHAR(100),
 	@phone VARCHAR(30), 
 	@birthDate DateTime,
-	@img VARCHAR(1000),
-	@userCreationDate DateTime
+	@img VARCHAR(MAX)
 	
 AS
 BEGIN

@@ -42,19 +42,19 @@
                             <td>@Type.TypeName</td>
                             <td>
                                 <!-- Edit Button -->
-                                <a href="@Url.Action("Edit", "VehiculeBrand", new { id = Type.Id })" class="btn btn-primary" style="margin-left:25px; margin-right:20px">
-                                    <i class="fas fa-user-edit"></i>
+                                <a href="@Url.Action("Edit", "Vehiculetype", new { id = Type.Id })" class="btn btn-primary" style="margin-left:25px; margin-right:20px">
+                                    <i class="fa fa-edit"></i>
                                 </a>
 
                                 <!-- Delete Button -->
-                                <a href="@Url.Action("Delete", "VehiculeBrand", new { id = Type.Id })" class="btn btn-danger" style="margin-right:20px">
-                                    <i class="fas fa-user-times"></i>
+                                <a href="@Url.Action("Delete", "VehiculeType", new { id = Type.Id })" class="btn btn-danger" style="margin-right:20px">
+                                    <i class="fa fa-trash"></i>
 
                                 </a>
 
                                 <!-- Details Button -->
-                                <a href="@Url.Action("Details", "VehiculeBrand", new { id = Type.Id })" class="btn btn-info">
-                                    <i class="fas fa-user"></i>
+                                <a href="@Url.Action("Details", "VehiculeType", new { id = Type.Id })" class="btn btn-info">
+                                    <i class="fa fa-info-circle"></i>
 
                                 </a>
                             </td>
@@ -76,7 +76,7 @@
 
     .card {
         width: 500px;
-        margin-left: 190px;
+        margin-left: 300px;
     }
 
     .table {

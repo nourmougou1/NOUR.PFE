@@ -4,109 +4,122 @@
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
+<div class="card card-primary card-outline">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create Vehicule</title>
-</head>
-<body>
-    <div class="row">
-        <div class="col-md-6">
+    <div class="card-header">
+        <h3 class="card-title">
 
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                    <h3 class="card-title">
+            Add Vehicule
+        </h3>
+    </div>
 
-                        Add Vehicule
-                    </h3>
+    <div class="card-body">
+        <form asp-action="Create">
+            <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+             
+
+            <label asp-for="RegNumber">RegNumber</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
                 </div>
-                <div class="card-body">
-                    <div class="form-group">
+                <input asp-for="RegNumber" type="text" class="form-control" placeholder="RegNumber">
+                <span asp-validation-for="RegNumber"></span>
+            </div>
+            </br>
 
-                        <label>Vehicle's registration number </label>
+            <label asp-for="TypeId">Vehicle's Type</label>
+            <div class="input-group"> 
+                <select asp-for="TypeId" asp-items="@(new SelectList(Model.VehiculeTypes,"Id", "TypeName"))" class="form-control select2bs4" style="width: 100%;">
+                    <option id="1" value="Van">-- Select --</option>
+                </select>
+                <span asp-validation-for="TypeId" class="text-danger"></span>
+            </div>
+            <br />
 
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-car"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Registration Number">
-                        </div>
-                        </br>
+            <label asp-for="BrandId">Vehicle's brand </label>
+            <div class="input-group">
+                <select asp-for="BrandId" class="form-control" asp-items="@(new SelectList(Model.VehiculeBrands,"Id", "Name"))">
+                    <option id="0" value="0">-- select --</option>
+                </select>
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <br />
 
-                        <label asp-for="Id">Vehicle's Type</label>
-                        <div class="input-group">
-                            
-                             <select asp-for="Id" asp-items="@(new SelectList(Model.VehiculeTypes,"Id", "TypeName"))" class="form-control select2bs4" style="width: 100%;">
-                                 <option id="1" value="Van">-- Select --</option>
-                                
-                            </select> 
-                            <span asp-validation-for="Id" class="text-danger"></span>
-                        </div>
-                        <label asp-for="Id">Vehicle's brand </label>
+            <label asp-for="StatusId">Vehicle's status</label>
+            <div class="input-group">
+                <select asp-for="StatusId" class="form-control" asp-items="@(new SelectList(Model.Statuss,"Status_id", "Status_name"))">
+                    <option id="0" value="0">-- select --</option>
 
-                        <div class="input-group">
-                                 <select asp-for="Id"  class="form-control"
-                                asp-items="@(new SelectList(Model.VehiculeBrands,"Id", "Name"))">
-                                <span class="input-group-text"><i class="fa fa-car"></i></span>
+                </select>
+                <span asp-validation-for="StatusId" class="text-danger"></span>
+            </div>
+            <br />  
 
-                                <option id="0" value="0">-- select --</option>
+            <label asp-for="Kilometrage">Vehicle's Mileage</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
+                </div>
+                <input asp-for="Kilometrage" type="text" class="form-control" placeholder="Vehicle's Mileage">
+                <span asp-validation-for="Kilometrage"></span>
+            </div>
+            </br>
 
-                                </select>
-                                <span asp-validation-for="Id" class="text-danger"></span> 
-                        </div>
-                        <br/>
+            <label asp-for="PurshaseDate">Purshase Date</label>
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                    </div>
+                    <input asp-for="PurshaseDate" type="date" class="form-control" placeholder="Purshase Date" />
+                    <span asp-validation-for="PurshaseDate" class="text-danger"></span>
+                </div>
+            </div>
 
-                        <label asp-for="Id">Vehicle's status</label>
+            <label asp-for="parc">Parc</label>
+            <div class="form-group">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-parking"></i></span>
+                    </div>
+                    @*<select asp-for="Id" class="form-control" asp-items="@(new SelectList(Model.parc,"Id", "Name"))">
+                    <span class="input-group-text"><i class="fa fa-car"></i></span>
 
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-car"></i></span>
-                            </div>
-                           @* <select asp-for="Id" class="form-control"
-                                    asp-items="@(new SelectList(Model.Statuss,"Id", "Name"))">
-                                <option id="0" value="0">-- Select --</option>
-                                <span asp-validation-for="Id" class="text-danger"></span>
+                    <option id="0" value="0">-- select --</option>
 
-                            </select> *@
-                        </div>
-                        </br>
-
-                        <label>Vehicle's Mileage</label>
-
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Vehicle's Mileage">
-                        </div>
-                        </br>
-
-                        <tr>
-                            <td>
-                                <button type="button" asp-action="Index" class="btn  btn-warning">
-                                    <i class="fas fa-arrow-left"></i>
-                                    Back
-                                </button>
-                            </td>
-                            <td>
-                                <button asp-action="Create" type="button" class="btn  btn-success">
-                                    <i class="fa fa-check"></i>
-                                    Add
-                                </button>
-                            </td>
-                        </tr>
-
+                    </select>
+                    <span asp-validation-for="parc" class="text-danger"></span>
 
                     </div>
-                    <!-- /.card-body -->
+                    </div>  *@
+
+                    <input asp-for="parc.Id" type="text" class="form-control" placeholder="Parc Id">
+                    <span asp-validation-for="parc.Id"></span>
                 </div>
-                <!-- /.card -->
+
+                <tr>
+                    <td>
+                        <button asp-controller="Vehicule" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Back</button>
+
+                    </td>
+                    <td>
+                        <button asp-controller="Vehicule" asp-action="Create" class="btn  btn-success  "> <i class="fa fa-check"></i> Add</button>
+                    </td>
+                </tr>
+
+                @* <div class="card-footer">
+                <button asp-controller="User" asp-action="Create" class="btn  btn-success  float-right"> <i class="fa fa-check"></i> Add</button>
+
+                <button asp-controller="User" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Retour</button>
+                </div>*@
+
             </div>
-        </div>
-</body>
-</html>
+        </form>
+    </div>
+</div>
+
+
 <style>
     .card {
         margin-left: 300px;

@@ -1,60 +1,55 @@
-﻿@{
+﻿@model NOUR.PFE.WEB.Models.VehiculeTypeViewModel
+@{
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Add Vehicle Type</title>
-</head>
-<body>
-    <div class="row">
-        <div class="col-md-6">
+<div class="col-md-6">
+    <div class="text-danger" asp-validation-summary="ModelOnly"> </div>
 
-            <div class="card card-primary card-outline">
-                <div class="card-header">
-                    <h3 class="card-title">
-                        Add Vehicle Type
-                    </h3>
-                </div>
-                <div class="card-body">
-                    <div class="form-group">
-                        <label>Type's Name</label>
+    <div class="card card-primary card-outline">
 
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-car"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Type's Name">
-                        </div>
-                        </br>
+        <form class="form-horizontal" asp-action="Create" enctype="multipart/form-data">
 
-                      
-                        <tr>
-                            <td>
-                                <button type="button" asp-action="Index" class="btn  btn-warning">
-                                    <i class="fas fa-arrow-left"></i>
-                                    Back
-                                </button>
-                            </td>
-                            <td>
-                                <button asp-action="Create" type="button" class="btn  btn-success">
-                                    <i class="fa fa-check"></i>
-                                    Add
-                                </button>
-                            </td>
-                        </tr>
-
-
-                    </div>
-                    <!-- /.card-body -->
-                </div>
-                <!-- /.card -->
+            <div class="card-header">
+                <h3 class="card-title">
+                    Add User Role
+                </h3>
             </div>
-        </div>
-</body>
+
+            <div class="card-body">
+
+                <label asp-for="TypeName">Type Name</label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fa fa-user"></i></span>
+                    </div>
+                    <input asp-for="TypeName" type="text" class="form-control" placeholder="Type Name">
+                    <span asp-validation-for="TypeName" class="text-danger"></span>
+                </div>
+
+
+
+            </div>
+
+
+            <div class="card-footer">
+                <button asp-controller="VehiculeType" asp-action="Create" class="btn  btn-success  float-right"> <i class="fa fa-check"></i> Add</button>
+
+                <button asp-controller="VehiculeType" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Retour</button>
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+
+
+
+
+
 <style>
     .card {
         margin-left: 300px;
@@ -70,10 +65,7 @@
         width: 100px;
     }
 
-    .btn-warning {
-        margin-right: 200px;
-        margin-left: 30px;
-    }
+
 
     .card-title {
         margin-left: 185px;

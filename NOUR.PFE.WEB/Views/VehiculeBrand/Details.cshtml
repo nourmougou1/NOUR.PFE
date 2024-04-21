@@ -1,0 +1,70 @@
+﻿@model NOUR.PFE.WEB.Models.BrandViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+
+        <div class="card  card-teal card-outline">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Brand Name</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.VehiculeBrand.Name)
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong> Brand Logo</strong>
+                            <br />
+                            <br />
+                            @{
+                                var Brand = Model.VehiculeBrand;
+                                if (@Brand.Logo.ToUpper().StartsWith(@"HTTP"))
+                                {
+                                    <img src="@Brand.Logo" width="60" height="60">
+                                }
+                                else
+                                {
+                                    <img src="~/img/@Brand.Logo" width="60" height="60">
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-success  float-right" href='@Url.Action("Edit", "VehiculeBrand", new { id = @Model.Id })'>
+                            <i class=" fa fa-edit"></i>
+                            Edit
+                        </a>
+
+                        <a class="btn btn-warning  float-left" href='@Url.Action("Index", "VehiculeBrand")'>
+                            <i class="fas fa-arrow-left"></i>
+                            Retour
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .card {
+        width: 500px;
+        margin-top: 100px;
+        margin-left: 250px;
+    }
+</style>

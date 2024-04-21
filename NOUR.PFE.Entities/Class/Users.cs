@@ -12,6 +12,7 @@ namespace NOUR.PFE.Entities
         public Users() : base() { }
         public Users(int capacity) : base(capacity) { }
         public Users(IEnumerable<User> collection) : base(collection) { }
+
     }
 
 }

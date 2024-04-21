@@ -1,0 +1,84 @@
+﻿@model NOUR.PFE.WEB.Models.RequestViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+
+
+<div class="container p-2">
+    <div class="row pt-5">
+        <div class="col-6">
+            <h1 style="margin-left:100px">Reservations List</h1>
+        </div>
+        <div class="col-6">
+            <a style="margin-left:200px" asp-controller="Reservration" asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> &nbsp; Make a reservation
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Reservations List</h3>
+    </div>
+    <!-- /.card-header -->
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Vehicle's reg num</th>
+                    <th>User's Login</th>
+                    <th>Mission's Date</th>
+                    <th>Mission's Address</th>
+                    <th>Status</th>
+                    @*mch kemlin ki tezel details yatl3oulk details lkol*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var reservation in Model.Requests)
+                {
+                    <tr>
+                        <td>@reservation.Vehicule.Imm</td>
+                        <td>@reservation.User.Login</td>
+                        <td>@reservation.MissionDate</td>
+                        <td>@reservation.MissionAddress</td>
+                        <td>@reservation.Status</td>
+
+                        <td>
+                            <!-- Edit Button -->
+                            <a href="@Url.Action("Edit", "Request", new { id = reservation.Id })" class="btn btn-primary" style="margin-left:100px;margin-right:20px">
+                                <i class="fas fa-user-edit"></i>
+                            </a>
+                            <!-- Delete Button -->
+                            <a href="@Url.Action("Delete", "Request", new { id = reservation.Id })" class="btn btn-danger" style="margin-right:20px">
+                                <i class="fas fa-user-times"></i>
+                            </a>
+
+                            <!-- Details Button -->
+                            <a href="@Url.Action("Details", "Request", new { id = reservation.Id })" class="btn btn-info">
+                                <i class="fas fa-user"></i>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* <style>
+    h1 {
+        margin-bottom: 50px;
+        margin-left: 90px;
+    }
+
+    .card {
+        width: 800px;
+        margin-left: 175px;
+    }
+
+    .table {
+        width: 750px;
+    }
+</style> *@

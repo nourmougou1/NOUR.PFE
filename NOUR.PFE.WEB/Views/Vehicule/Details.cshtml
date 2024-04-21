@@ -1,0 +1,133 @@
+﻿@model NOUR.PFE.WEB.Models.VehiculeViewModel
+
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+<section class="content-header">
+    <div class="container-fluid">
+
+        <div class="card  card-teal card-outline">
+            <div class="card-body box-profile">
+                <div style="width:150px;">
+                    <img class="profile-user-img img-fluid img-circle"
+                     @* src="@Model.VehiculeBrand.Logo" width="60" height="60">  *@
+                         alt="">
+
+                </div>
+                <br />
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-user-alt mr-1"></i>Vehicle's Brand </strong>
+                            <h3 class="profile-username "> @Html.DisplayFor(model => model.VehiculeBrand.Name)</h3>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-envelope mr-1"></i> Status:</strong>
+                            @{
+                                switch (@Model.Vehicule.Status.Status_id)
+                                {
+                                    case 1:
+                                        <span class="badge badge-info">@Model.Vehicule.Status.Status_name</span>
+                                        break;
+                                    case 2:
+                                        <span class="badge badge-success">@Model.Vehicule.Status.Status_name</span>
+                                        break;
+                                    case 3:
+                                        <span class="badge badge-danger">@Model.Vehicule.Status.Status_name</span>
+                                        break;
+                                    case 4:
+                                        <span class="badge badge-warning">@Model.Vehicule.Status.Status_name</span>
+                                        break;
+
+                                }
+                            }
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-phone-alt mr-1"></i>Vehicle's Type</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Vehicule.VehiculeType.TypeName)
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-phone-alt mr-1"></i>Registration Number</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Vehicule.Imm)
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <hr />
+
+                <div class="row">
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-user-alt mr-1"></i>  Mileage:</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Vehicule.Kilometrage)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-key mr-1"></i>  Parc:</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Vehicule.parc.Name)</p>
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-key mr-1"></i>  Purshase Date:</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Vehicule.PurshaseDate)</p>
+                        </div>
+                    </div>
+
+                </div>
+                <hr />
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <a class="btn btn-default bg-teal   float-right" href='@Url.Action("Edit", "Vehicule", new { id = @Model.Id })'>
+                            <i class="fas fa-user-edit"></i>
+                            Modifier
+                        </a>
+                        <a class="btn btn-warning  float-left" href='@Url.Action("Index", "Vehicule")'>
+                            <i class="fas fa-arrow-left"></i>
+                            Retour
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<style>
+    .card {
+        width: 600px;
+        margin-left: 250px;
+        margin-top: 50px;
+        padding: 20px;
+    }
+</style>

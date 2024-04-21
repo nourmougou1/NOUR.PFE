@@ -6,8 +6,8 @@ namespace NOUR.PFE.WEB.Models
     {
         public MaintenanceType MaintenanceType {  get; set; }
         public MaintenanceTypes MaintenanceTypes { get; set; }
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public int maintenanceTypeId { get; set; }
+        public string maintenanceTypeName { get; set; }
+        public string description { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace NOUR.PFE.Entities
         public Maintenance() 
         {
             MaintenanceType = new MaintenanceType();
-
+            Vehicule = new Vehicule();
 
         }
         #endregion

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
@@ -12,15 +13,16 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace NOUR.PFE.WEB.Controllers
+
 {
     public class UserController : Controller
     {
-        private IConfiguration _Config;
-        public UserController(IConfiguration iConfig)
+        private readonly IWebHostEnvironment hostEnvironment;
+        public UserController(IWebHostEnvironment hostEnvironment)
         {
-            _Config = iConfig;
-        }
 
+            this.hostEnvironment = hostEnvironment;
+        }
         [HttpGet]
         public IActionResult Index()
         {
@@ -67,14 +69,14 @@ namespace NOUR.PFE.WEB.Controllers
                 //ToDo Nawara
                 var UserRole = Repository.Config.GetUserRoleByID(_Model.UserRoleId);
 
-                //string fileName = "user3.png";
-                //if (_Model.File != null)
-                //{
-                //    string uploads = Path.Combine(hostEnvironment.WebRootPath, "uploads");
-                //    fileName = _Model.File.FileName;
-                //    string fullPath = Path.Combine(uploads, fileName);
-                //    _Model.File.CopyTo(new FileStream(fullPath, FileMode.Create));
-                //}
+                string fileName = "user3.png";
+                if (_Model.File != null)
+                {
+                    string img = Path.Combine(hostEnvironment.WebRootPath, "img");
+                    fileName = _Model.File.FileName;
+                    string fullPath = Path.Combine(img, fileName);
+                    _Model.File.CopyTo(new FileStream(fullPath, FileMode.Create));
+                }
 
                 var user = new Entities.User
                 {
@@ -136,8 +138,8 @@ namespace NOUR.PFE.WEB.Controllers
             return View(_Model);
         }
 
-       
-        public IActionResult Edit(int id) 
+
+        public IActionResult Edit(int id)
         {
             var user = Repository.User.GetOne(id);
             //string uniqueFileName = UploadedFile(user);
@@ -174,25 +176,25 @@ namespace NOUR.PFE.WEB.Controllers
             var user = Repository.User.GetOne(id);
             if (ModelState.IsValid)
             {
-                //string fileName = user.Image;
-                //if (_Model.Image != null) 
-                //{
-                //    //string uploads = Path.Combine(hostEnvironment.WebRootPath, "uploads");
-                //    fileName = _Model.Image;
-                //    string fullPath = Path.Combine(uploads, fileName);
-                //    //Delete the old file
-                //    string oldFileName = Repository.User.GetOne(_Model.Id).ImageUrl;
-                //    string fullOldPath = Path.Combine(uploads, oldFileName);
-                //    if (fullPath != fullOldPath)
-                //    {
-                //        if (fullPath != fullOldPath)
-                //        {
-                //            //System.IO.File.Delete(fullOldPath);
-                //        }
-                //        //Save the new File
-                //        _Model.File.CopyTo(new FileStream(fullPath, FileMode.Create));
-                //    }
-                //}
+                string fileName = user.Image;
+                if (_Model.Image != null)
+                {
+                    string img = Path.Combine(hostEnvironment.WebRootPath, "img");
+                    fileName = _Model.Image;
+                    string fullPath = Path.Combine(img, fileName);
+                    //Delete the old file
+                    string oldFileName = Repository.User.GetOne(_Model.Id).Image;
+                    string fullOldPath = Path.Combine(img, oldFileName);
+                    if (fullPath != fullOldPath)
+                    {
+                        if (fullPath != fullOldPath)
+                        {
+                            //System.IO.File.Delete(fullOldPath);
+                        }
+                        //Save the new File
+                        _Model.File.CopyTo(new FileStream(fullPath, FileMode.Create));
+                    }
+                }
                 var userRole = Repository.Config.GetUserRoleByID(_Model.UserRoleId);
                 //string uniqueFileName = UploadedFile(_Model);
 
@@ -207,7 +209,7 @@ namespace NOUR.PFE.WEB.Controllers
                     IsActive = _Model.IsActive,
                     Birthday = _Model.Birthday,
                     CreationDate = _Model.CreationDate,
-                   // ImageUrl = fileName,
+                    // ImageUrl = fileName,
                     UserRole = userRole
                 };
 

@@ -27,6 +27,8 @@ namespace NOUR.PFE.Entities
         public bool IsActive { get; set; }
         public string UserPhone { get; set; }
         public UserRole UserRole { get; set; }
+        public int RoleId { get; set; }
+        public int roleId {  get; set; }
         
         public DateTime Birthday { get; set; }
         public string Image { get; set; }
@@ -68,6 +70,31 @@ namespace NOUR.PFE.Entities
         }
 
         #endregion
+
+        public string GetBirthDate(string dateFormat)
+        {
+            try
+            {
+                return this.Birthday.ToString(dateFormat);
+            }
+            catch (Exception ex)
+            {
+                string _StrEX = ex.Message;
+                return string.Empty;
+            }
+        }
+        public string GetCreationDate(string dateFormat)
+        {
+            try
+            {
+                return this.CreationDate.ToString(dateFormat);
+            }
+            catch (Exception ex)
+            {
+                string _StrEX = ex.Message;
+                return string.Empty;
+            }
+        }
 
 
     }

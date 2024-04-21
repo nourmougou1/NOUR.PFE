@@ -13,12 +13,14 @@ namespace NOUR.PFE.DataLayer.Class
         bool Add(Entities.Vehicule vehicule);
         bool Update(Entities.Vehicule vehicule);
         bool Remove(Entities.Vehicule vehicule);
+        Entities.Vehicule GetOne(int vehiculeId);
 
         #region VehiculeBrand
         IEnumerable<Entities.VehiculeBrand> GetAllBrands();
         bool AddBrand(Entities.VehiculeBrand vehiculeBrand);
         bool UpdateBrand(Entities.VehiculeBrand vehiculeBrand);
         bool RemoveBrand(Entities.VehiculeBrand vehiculeBrand);
+        Entities.VehiculeBrand GetBrandById (int brandId);
         #endregion
 
         #region VehiculeType
@@ -26,6 +28,7 @@ namespace NOUR.PFE.DataLayer.Class
         bool AddType(Entities.VehiculeType vehiculeType);
         bool UpdateType(Entities.VehiculeType vehiculeType);
         bool DeleteType(Entities.VehiculeType vehiculeType);
+        Entities.VehiculeType GetTypeById (int typeId);
         #endregion
 
         #region VehiculePath

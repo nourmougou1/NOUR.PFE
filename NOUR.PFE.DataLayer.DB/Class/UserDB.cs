@@ -493,7 +493,7 @@ namespace NOUR.PFE.DataLayer.DB
                         command.Parameters["@birthDate"].Value = user.Birthday;
 
                         command.Parameters.Add("@img", SqlDbType.VarChar);
-                        command.Parameters["@img"].Value = user.Image;
+                        command.Parameters["@img"].Value = (string.IsNullOrEmpty(user.Image)) ? string.Empty : user.Image;
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -575,12 +575,11 @@ namespace NOUR.PFE.DataLayer.DB
                         command.Parameters.Add("@phone", SqlDbType.VarChar);
                         command.Parameters["@phone"].Value = user.UserPhone;
 
-                        command.Parameters.Add("@isActive", SqlDbType.Bit);
-                        command.Parameters["@isActive"].Value = user.IsActive;
-
                         command.Parameters.Add("@birthDate", SqlDbType.DateTime);
                         command.Parameters["@birthDate"].Value = user.Birthday;
 
+                        command.Parameters.Add("@img", SqlDbType.VarChar);
+                        command.Parameters["@img"].Value = (string.IsNullOrEmpty(user.Image)) ? string.Empty : user.Image;
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
                     }

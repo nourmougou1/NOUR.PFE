@@ -1,0 +1,51 @@
+﻿@model NOUR.PFE.WEB.Models.MaintenanceTypeViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+
+        <div class="card  card-teal card-outline">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Type Name</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.MaintenanceType.Name)
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong> Role Code</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.MaintenanceType.Description)</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-success  float-right" href='@Url.Action("Edit", "MaintenanceType", new { id = @Model.maintenanceTypeId })'>
+                            <i class=" fa fa-edit"></i>
+                            Edit
+                        </a>
+
+                        <a class="btn btn-warning  float-left" href='@Url.Action("Index", "MaintenanceType")'>
+                            <i class="fas fa-arrow-left"></i>
+                            Back
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

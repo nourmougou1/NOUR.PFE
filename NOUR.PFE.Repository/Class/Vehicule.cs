@@ -147,6 +147,7 @@ namespace NOUR.PFE.Repository
                    ? Vehicule_DL.DeleteType(vehiculeType)
                    : false;
         }
+
         #endregion
 
 
@@ -175,6 +176,27 @@ namespace NOUR.PFE.Repository
                    ? Vehicule_DL.DeleteStatus(vehiculeStatus)
                    : false;
         }
+        public static Entities.Vehicule GetOne(int vehiculeId)
+        {
+            return (Vehicule_DL != null)
+                   ? Vehicule_DL.GetOne(vehiculeId)
+                   : null;
+        } 
+        
+        public static Entities.VehiculeBrand GetBrandById(int brandId)
+        {
+            return (Vehicule_DL != null)
+                   ? Vehicule_DL.GetBrandById(brandId)
+                   : null;
+        }
+        public static Entities.VehiculeType GetTypeById(int typeId)
+        {
+            return (Vehicule_DL != null)
+                   ? Vehicule_DL.GetTypeById(typeId)
+                   : null;
+        }
+
+
 
     }
 }

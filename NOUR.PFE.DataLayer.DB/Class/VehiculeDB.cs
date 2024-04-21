@@ -179,8 +179,6 @@ namespace NOUR.PFE.DataLayer.DB
                         command.Parameters["@purschaseDate"].Value = vehicule.PurshaseDate;
 
 
-
-
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
                     }
@@ -910,12 +908,212 @@ namespace NOUR.PFE.DataLayer.DB
 
         }
 
+        public Vehicule GetOne(int vehiculeId)
+        {
+            Entities.Vehicule Ret = null;
+            SqlDataReader DR = null;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_vehicule_get_one_by_id", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@vehiculeId", SqlDbType.Int);
+                        command.Parameters["@vehiculeId"].Value = vehiculeId;
+
+                        conn.Open();
+                        DR = command.ExecuteReader();
+
+                        if (DR.Read())
+                        {
+                            Ret = new Entities.Vehicule()
+                            {
+                                Id = Convert.ToInt32(DR[(int)enumQryVehiculeFields.vehicule_id]),
+                                Imm = (!DR.IsDBNull((int)enumQryVehiculeFields.Imm))
+                                            ? DR[(int)enumQryVehiculeFields.Imm].ToString()
+                                            : string.Empty,
+                                VehiculeType = new VehiculeType() 
+                                {   
+                                    Id = (!DR.IsDBNull((int)enumQryVehiculeFields.typeId))
+                                         ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.typeId])
+                                         : 0,
+                                    TypeName = (!DR.IsDBNull((int)enumQryVehiculeFields.typeName))
+                                           ? DR[(int)enumQryVehiculeFields.typeName].ToString()
+                                           : string.Empty,
+                                },
+                                VehiculeBrand = new Entities.VehiculeBrand()
+                                {
+                                    Id = (!DR.IsDBNull((int)enumQryVehiculeFields.brandId))
+                                         ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.brandId])
+                                         : 0,
+                                    Name = (!DR.IsDBNull((int)enumQryVehiculeFields.brandName))
+                                           ? DR[(int)enumQryVehiculeFields.brandName].ToString()
+                                           : string.Empty,
+                                    Logo = (!DR.IsDBNull((int)enumQryVehiculeFields.brandLogo))
+                                           ? DR[(int)enumQryVehiculeFields.brandLogo].ToString()
+                                           : string.Empty,
+                                },
+                                Status = new VehiculeStatus()
+                                {
+                                        Status_id = (!DR.IsDBNull((int)enumQryVehiculeFields.StatusId))
+                                             ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.StatusId])
+                                             : 0,
+                                        Status_name = (!DR.IsDBNull((int)enumQryVehiculeFields.StatusName))
+                                               ? DR[(int)enumQryVehiculeFields.StatusName].ToString()
+                                               : string.Empty,
+                                    
+                                },
+                                Kilometrage = (!DR.IsDBNull((int)enumQryVehiculeFields.Kilometrage))
+                                               ? DR[(int)enumQryVehiculeFields.Kilometrage].ToString()
+                                               : string.Empty,
+                                parc = new Parc()
+                                {
+                                    Id = (!DR.IsDBNull((int)enumQryVehiculeFields.parcId))
+                                             ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.parcId])
+                                             : 0,
+                                    Name = (!DR.IsDBNull((int)enumQryVehiculeFields.parcName))
+                                               ? DR[(int)enumQryVehiculeFields.parcName].ToString()
+                                               : string.Empty,
+                                    Adress = (!DR.IsDBNull((int)enumQryVehiculeFields.parcAdress))
+                                               ? DR[(int)enumQryVehiculeFields.parcAdress].ToString()
+                                               : string.Empty,
+                                },
+                                //PurshaseDate = (!DR.IsDBNull((int)enumQryVehiculeFields.PurshaseDate))
+                                //               ? Convert.ToDateTime(DR[(int)enumQryVehiculeFields.PurshaseDate].ToString())
+                                //               : new DateTime(1970, 1, 1),
 
 
-        
 
-        
 
+                            };
+                        }
+                    }
+                }
+
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+            }
+        }
+
+        public Entities.VehiculeBrand GetBrandById(int brandId)
+        {
+            Entities.VehiculeBrand Ret = null;
+            SqlDataReader DR = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_vehicule_brand_get_one_by_id", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@brandId", SqlDbType.Int);
+                        command.Parameters["@brandId"].Value = brandId;
+
+                        conn.Open();
+                        DR = command.ExecuteReader();
+
+                        if (DR.Read())
+                        {
+                            Ret = new Entities.VehiculeBrand()
+                            {
+                                Id = (!DR.IsDBNull((int)EnumQryBrandFields.Id))
+                                         ? Convert.ToInt32(DR[(int)EnumQryBrandFields.Id])
+                                         : 0,
+                                Name = (!DR.IsDBNull((int)EnumQryBrandFields.brandName))
+                                           ? DR[(int)EnumQryBrandFields.brandName].ToString()
+                                           : string.Empty,
+                                Logo = (!DR.IsDBNull((int)EnumQryBrandFields.brandLogo))
+                                           ? DR[(int)EnumQryBrandFields.brandLogo].ToString()
+                                           : string.Empty,
+                            };
+                        }
+                    }
+                }
+
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+            }
+        }
+
+        public VehiculeType GetTypeById(int typeId)
+        {
+            Entities.VehiculeType Ret = null;
+            SqlDataReader DR = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_vehicule_type_get_one_by_id", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@typeId", SqlDbType.Int);
+                        command.Parameters["@typeId"].Value = typeId;
+
+                        conn.Open();
+                        DR = command.ExecuteReader();
+
+                        if (DR.Read())
+                        {
+                            Ret = new Entities.VehiculeType()
+                            {
+                                Id = (!DR.IsDBNull((int)EnumQryTypeFields.Id))
+                                         ? Convert.ToInt32(DR[(int)EnumQryTypeFields.Id])
+                                         : 0,
+                                TypeName = (!DR.IsDBNull((int)EnumQryTypeFields.typeName))
+                                           ? DR[(int)EnumQryTypeFields.typeName].ToString()
+                                           : string.Empty,
+                                
+                            };
+                        }
+                    }
+                }
+
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+            }
+        }
     }
 
 }

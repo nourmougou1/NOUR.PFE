@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using NOUR.PFE.Entities;
+using NOUR.PFE.Repository;
 using NOUR.PFE.WEB.Models;
 
 namespace NOUR.PFE.WEB.Controllers
@@ -19,9 +21,13 @@ namespace NOUR.PFE.WEB.Controllers
             _Model.Maintenances = Repository.Maintenance.GetAll();
             return View("Index", _Model);
         }
-        public IActionResult Create()
-        {
-            return View();
-        }
+
+        //public IActionResult Create()
+        //{
+        //MaintenanceViewModel Model = new MaintenanceViewModel();
+        //Model.MaintenanceTypes = Repository.Maintenance.GetAll();
+        //Model.Vehicule = Repository.Vehicule.GetAll();
+        //return View(Model);
+        //}
     }
 }
