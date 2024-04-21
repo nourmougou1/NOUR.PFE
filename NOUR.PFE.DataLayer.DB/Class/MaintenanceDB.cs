@@ -24,11 +24,12 @@ namespace NOUR.PFE.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
+
                         command.Parameters.Add("@vehiculeId", SqlDbType.Int);
-                        command.Parameters["@vehiculeId"].Value = maintenance.Vehicule.Id;
+                        command.Parameters["@vehiculeId"].Value = maintenance.VehiculeId;
 
                         command.Parameters.Add("@maintenanceTypeId", SqlDbType.Int);
-                        command.Parameters["@maintenanceTypeId"].Value = maintenance.MaintenanceType.Id;
+                        command.Parameters["@maintenanceTypeId"].Value = maintenance.MaintenanceTypeId;
 
                         command.Parameters.Add("@maintenanceDate", SqlDbType.DateTime);
                         command.Parameters["@maintenanceDate"].Value = maintenance.DateDebut;

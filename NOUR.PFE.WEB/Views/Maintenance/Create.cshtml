@@ -8,7 +8,7 @@
     <div class="col-md-6">
         <div class="text-danger" asp-validation-summary="ModelOnly"></div>
         <div class="card card-primary card-outline">
-            <form class="form-horizontal" asp-action="Create" enctype="multipart/form-data">
+            <form class="form-horizontal" asp-controller="" asp-action="Create" enctype="multipart/form-data">
                 <div class="card-header">
                     <h3 class="card-title">
                         Add Maintenance
@@ -17,34 +17,21 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label asp-for="VehiculeId">Vehicle </label>
-                        <div class="form-group select">
-                            <div class="input-group">
-                                @* <Select asp-for="VehiculeId"  class="form-control"
-                                asp-items="@(new SelectList(Model.Vehicules,"Id", "Imm"))"  style="width: 100%;">
-                                <span class="input-group-text"><i class="fa fa-car"></i></span>
-
-                                <option id="0" value="0">-- select --</option>
-
-                                </select> *@
-                                <span asp-validation-for="VehiculeId" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <label asp-for="MaintenanceType">Maintenance's Type</label>
-
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-tools"></i></span>
-                            </div>
-                            @* <Select asp-for="MaintenanceType.Id"  class="form-control"
-                            asp-items="@(new SelectList(Model.MaintenanceTypes,"Id", "Name"))"  style="width: 100%;">
-                            <span class="input-group-text"><i class="fa fa-car"></i></span>
-
-                            <option id="0" value="0">-- select --</option>
-
+                            <select asp-for="VehiculeId" asp-items="@(new SelectList(Model.Vehicules,"Id", "Imm"))" class="form-control select2bs4" style="width: 100%;">
+                                
+                                <option id="1" value="">-- Select --</option>
                             </select>
-                            <span asp-validation-for="MaintenanceType" class="text-danger"></span> *@
+                            <span asp-validation-for="VehiculeId" class="text-danger"></span>
+                        </div>
+                        <br />
 
+                        <label asp-for="MaintenanceType">Maintenance Type </label>
+                        <div class="input-group">
+                            <select asp-for="MaintenanceType" asp-items="@(new SelectList(Model.MaintenanceTypes,"Id", "Name"))" class="form-control select2bs4" style="width: 100%;">
+                                <option id="1" value="">-- Select --</option>
+                            </select>
+                            <span asp-validation-for="MaintenanceType" class="text-danger"></span>
                         </div>
                         <br />
                         <label asp-for="DateDebut">Maintenance's Date</label>
@@ -63,10 +50,21 @@
 
                         <div class="input-group">
                             <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-address-card"></i></span>
+                                <span class="input-group-text"><i class="fa fa-map"></i></span>
                             </div>
-                            <input asp-for="Address" type="text" class="form-control" placeholder="Maintenance's Description">
+                            <input asp-for="Address" type="text" class="form-control" placeholder="Maintenance's Address">
                             <span asp-validation-for="Address" class="text-danger"></span>
+
+                        </div>
+                        <br />
+                        <label asp-for="description">Description</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-pen"></i></span>
+                            </div>
+                            <input asp-for="description" type="text" class="form-control" placeholder="Maintenance's Address">
+                            <span asp-validation-for="description" class="text-danger"></span>
 
                         </div>
                         <br />
@@ -99,10 +97,7 @@
         width: 100px;
     }
 
-    .btn-warning {
-        margin-right: 200px;
-        margin-left: 30px;
-    }
+  
 
     .card-title {
         margin-left: 185px;

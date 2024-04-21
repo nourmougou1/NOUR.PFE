@@ -14,6 +14,7 @@ namespace NOUR.PFE.Entities
         public User()
         {
             
+            
         }
         #endregion
 

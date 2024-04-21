@@ -94,7 +94,7 @@
     <Build Include="dbo\procedures\sp_vehicule_delete.sql" />
     <Build Include="dbo\procedures\sp_vehicule_get_all.sql" />
     <Build Include="dbo\procedures\sp_vehicule_insert.sql" />
-    <Build Include="dbo\procedures\sp_vehicule_maintenace_insert.sql" />
+    <Build Include="dbo\procedures\sp_vehicule_maintenance_insert.sql" />
     <Build Include="dbo\procedures\sp_vehicule_maintenance_delete.sql" />
     <Build Include="dbo\procedures\sp_vehicule_maintenance_get_all.sql" />
     <Build Include="dbo\procedures\sp_vehicule_maintenance_get_one_by_vehicule_id.sql" />

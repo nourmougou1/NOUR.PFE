@@ -13,6 +13,7 @@ BEGIN
 		ISNULL(r.approval_date, '' )AS approval_date,
 		ISNULL(v.vehicule_type_id, '') AS vehicule_type_id
 		
+		
 
 	FROM 
 		dbo.[request] r

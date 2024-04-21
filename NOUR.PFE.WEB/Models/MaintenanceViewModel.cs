@@ -14,6 +14,7 @@ namespace NOUR.PFE.WEB.Models
         public DateTime DateDebut { get; set; }
         public string Address { get; set; }
         public Vehicule Vehicule { get; set; }
+        public string description { get; set; }
         public IEnumerable<Vehicule> Vehicules { get; set; }
         public IEnumerable<MaintenanceType> MaintenanceTypes { get; set; }
         public IEnumerable<Maintenance> Maintenances { get; set; }
