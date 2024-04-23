@@ -7,7 +7,7 @@ AS
 BEGIN
 	INSERT INTO
 	dbo.user_role ( role_id, role_code,  role_name )
-	VALUES (@roleId,@roleCode, @roleName)
+	VALUES ((SELECT MAX(role_id) FROM user_role)+1,@roleCode, @roleName)
 	
 
 

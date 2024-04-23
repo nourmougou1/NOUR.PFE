@@ -4,9 +4,9 @@ namespace NOUR.PFE.WEB.Models
 {
     public class DashboardViewModel
     {
-        public int voitures_count { get; set; }
-        public int users_count { get; set; }
-        public int reservations_count { get; set; }
+        public int Vehicule_count { get; set; }
+        public int Users_count { get; set; }
+        public int Reservations_count { get; set; }
         public DateTime CreationDate { get; set; }
 
     }

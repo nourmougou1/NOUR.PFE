@@ -141,15 +141,10 @@ namespace NOUR.PFE.DataLayer.DB
                 {
                     using (SqlCommand command = new SqlCommand("sp_user_role_insert", conn))
                     {
-                        command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@roleId", SqlDbType.Int);
-                        command.Parameters["@roleId"].Value = UserRole.Id;
-
+                        command.CommandType = CommandType.StoredProcedure;  
 
                         command.Parameters.Add("@roleName", SqlDbType.VarChar);
-                        command.Parameters["@roleName"].Value = UserRole.Name;
-
+                        command.Parameters["@roleName"].Value = UserRole.Name; 
 
                         command.Parameters.Add("@roleCode", SqlDbType.VarChar);
                         command.Parameters["@roleCode"].Value = UserRole.Code;

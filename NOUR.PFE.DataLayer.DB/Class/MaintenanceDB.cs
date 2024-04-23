@@ -37,6 +37,9 @@ namespace NOUR.PFE.DataLayer.DB
                         command.Parameters.Add("@maintenanceAddress", SqlDbType.VarChar);
                         command.Parameters["@maintenanceAddress"].Value = maintenance.Address;
 
+                        command.Parameters.Add("@description", SqlDbType.VarChar);
+                        command.Parameters["@description"].Value = maintenance.description;
+
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -333,9 +336,6 @@ namespace NOUR.PFE.DataLayer.DB
                     using (SqlCommand command = new SqlCommand("sp_maintenance_type_insert", conn))
                     {
                         command.CommandType = CommandType.StoredProcedure;
-
-                        command.Parameters.Add("@maintenanceTypeId", SqlDbType.Int);
-                        command.Parameters["@maintenanceTypeId"].Value = maintenanceType.Id;
 
                         command.Parameters.Add("@maintenanceTypeName", SqlDbType.VarChar);
                         command.Parameters["@maintenanceTypeName"].Value = maintenanceType.Description;

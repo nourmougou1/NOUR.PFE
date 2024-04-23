@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using NOUR.PFE.DataLayer.Class;
+using NOUR.PFE.Entities;
 using NOUR.PFE.WEB.Models;
 using System;
 using System.Collections.Generic;
@@ -29,24 +30,21 @@ namespace NOUR.PFE.WEB.Controllers
 
         public IActionResult Index()
         {
-            //if (HttpContext.Session.GetString("User") == null)
-            //{
-            //    return RedirectToAction("Login", "Account");
-            //}
-            //DashboardViewModel dashboard = new DashboardViewModel();
-            //{
-            //    var Users = Repository.User.GetAll();
-            //    var Vehicules = Repository.Vehicule.GetAll();
-            //    int PrckID;
-            //    //var Request = Repository.Request.GetAll(PrckID = -1);
-            //    dashboard.voitures_count = Vehicules.Count();
-            //    //dashboard.parcs_count = Parcs.Count();
-            //    dashboard.users_count = Users.Count();
-            //    //dashboard.reservations_count = Reservations.Count();
-            //}
+            if (HttpContext.Session.GetString("User") == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            DashboardViewModel dashboard = new DashboardViewModel();
+            {
+                var Users = Repository.User.GetAll();
+                var Vehicules = Repository.Vehicule.GetAll();
+                dashboard.Vehicule_count = Vehicules.Count();
+                dashboard.Users_count = Users.Count();
+                //dashboard.Reservations_count = Requests.Count();
+            }
 
-            //return View(dashboard);
-            return View();
+            return View(dashboard);
+          
         }
 
         //public IActionResult Dashbord()

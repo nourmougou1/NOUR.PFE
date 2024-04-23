@@ -7,9 +7,7 @@
 	@password VARCHAR(250),
 	@email VARCHAR(100),
 	@phone VARCHAR(30), 
-	@isActive BIT, 
-	@birthDate DATE,
-	@creationDate DATE,
+	@birthDate DATE, 
 	@img varchar(MAX)
 AS
 BEGIN
@@ -23,10 +21,8 @@ BEGIN
 		user_login = @login,
 		user_password = @password,
 		user_email = @email,
-		user_phone = @phone,
-		user_is_active = @isActive,
-		user_birth_date = @birthDate,
-		user_creation_date = @creationDate,
+		user_phone = @phone, 
+		user_birth_date = @birthDate, 
 		user_img = @img
 	WHERE
 		user_id = @userId

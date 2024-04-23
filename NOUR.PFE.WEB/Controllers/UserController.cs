@@ -157,6 +157,7 @@ namespace NOUR.PFE.WEB.Controllers
                     IsActive = user.IsActive,
                     Birthday = user.Birthday,
                     CreationDate = user.CreationDate,
+                    UserRoleId = user.UserRole.Id,
                     UserRoles = Repository.Config.GetUserRoles(),
                 };
 
@@ -202,6 +203,7 @@ namespace NOUR.PFE.WEB.Controllers
                 {
                     Id = _Model.Id,
                     FirstName = _Model.FirstName,
+                    LastName = _Model.LastName,
                     Login = _Model.Login,
                     Password = _Model.Password,
                     Email = _Model.Email,

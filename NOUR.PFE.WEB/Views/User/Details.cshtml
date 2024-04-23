@@ -71,8 +71,8 @@
                     <div class="col-12 col-sm-6">
                     <div class="form-group">
                     <strong><i class="fas fa-calendar-alt mr-1"></i> Birthday:</strong>
-                    @*  <p class="text-muted"> @Html.DisplayFor(model => model.GetBirthDate("dd/MM/yyyy"))</p> *@
-                   @*  <p class="text-muted"> @Model.Birthday("dd/MM/yyyy")</p>  *@
+                            @* <p class="text-muted"> @Html.DisplayFor(model => model.Birthday.ToString("dd/MM/yyyy"))</p> *@
+                    <p class="text-muted"> @Model.User.Birthday.ToString("dd/MM/yyyy")</p> 
                     </div>
                     </div>
                     <br />

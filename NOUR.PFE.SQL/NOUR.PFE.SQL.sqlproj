@@ -123,6 +123,7 @@
     <Build Include="dbo\procedures\sp_vehicule_brand_get_one_by_id.sql" />
     <Build Include="dbo\procedures\sp_vehicule_type_get_one_by_id.sql" />
     <Build Include="dbo\procedures\sp_maintenance_type_get_one_by_id.sql" />
+    <Build Include="dbo\procedures\sp_request_get_one_by_id.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="NOUR.PFE.SQL.refactorlog" />

@@ -41,11 +41,10 @@ namespace NOUR.PFE.WEB.Controllers
                 var maintenance = new Entities.Maintenance
                 {
                     Vehicule = _Model.Vehicule,
-                    MaintenanceType = _Model.MaintenanceType,
+                    MaintenanceType = new MaintenanceType() { Id = _Model.MaintenanceTypeId },
                     DateDebut = _Model.DateDebut,
                     Address = _Model.Address,
                     description = _Model.description
-
 
                 };
 

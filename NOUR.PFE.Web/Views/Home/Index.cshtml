@@ -1,4 +1,5 @@
-﻿@{
+﻿@model NOUR.PFE.WEB.Models.DashboardViewModel
+@{
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
 
@@ -12,9 +13,9 @@
                 <!-- small box -->
                 <div class="small-box bg-info">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>@Model.Users_count</h3>
 
-                        <p>User's registrations</p>
+                        <p>User registrations</p>
                     </div>
                     <div class="icon">
                         <i class="fas fa-users"></i>
@@ -27,9 +28,9 @@
                 <!-- small box -->
                 <div class="small-box bg-success">
                     <div class="inner">
-                        <h3>53</h3>
+                        <h3>0</h3>
 
-                        <p>Vehicles that need maintenance</p>
+                        <p>Vehicle under maintenance</p>
                     </div>
                     <div class="icon">
                         <i class="fa fa-tools"></i>
@@ -43,7 +44,7 @@
                 <!-- small box -->
                 <div class="small-box bg-warning">
                     <div class="inner">
-                        <h3>44</h3>
+                        <h3>@Model.Vehicule_count</h3>
 
                         <p>Vehicle's number</p>
                     </div>
@@ -58,7 +59,7 @@
                 <!-- small box -->
                 <div class="small-box bg-danger">
                     <div class="inner">
-                        <h3>65</h3>
+                        <h3>@Model.Reservations_count</h3>
 
                         <p>Reservation requests </p>
                     </div>

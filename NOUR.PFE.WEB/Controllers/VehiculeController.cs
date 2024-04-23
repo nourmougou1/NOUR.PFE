@@ -63,7 +63,6 @@ namespace NOUR.PFE.WEB.Controllers
                     };
                     Repository.Vehicule.Add(vehicule);
                     return RedirectToAction(nameof(Index));
-
                 }
                 catch (Exception ex)
                 {

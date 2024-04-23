@@ -26,12 +26,12 @@
                         </div>
                         <br />
 
-                        <label asp-for="MaintenanceType">Maintenance Type </label>
+                        <label asp-for="MaintenanceTypeId">Maintenance Type </label>
                         <div class="input-group">
-                            <select asp-for="MaintenanceType" asp-items="@(new SelectList(Model.MaintenanceTypes,"Id", "Name"))" class="form-control select2bs4" style="width: 100%;">
+                            <select asp-for="MaintenanceTypeId" asp-items="@(new SelectList(Model.MaintenanceTypes,"Id", "Name"))" class="form-control select2bs4" style="width: 100%;">
                                 <option id="1" value="">-- Select --</option>
                             </select>
-                            <span asp-validation-for="MaintenanceType" class="text-danger"></span>
+                            <span asp-validation-for="MaintenanceTypeId" class="text-danger"></span>
                         </div>
                         <br />
                         <label asp-for="DateDebut">Maintenance's Date</label>
@@ -63,7 +63,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-pen"></i></span>
                             </div>
-                            <input asp-for="description" type="text" class="form-control" placeholder="Maintenance's Address">
+                            <input asp-for="description" type="text" class="form-control" placeholder="Description">
                             <span asp-validation-for="description" class="text-danger"></span>
 
                         </div>

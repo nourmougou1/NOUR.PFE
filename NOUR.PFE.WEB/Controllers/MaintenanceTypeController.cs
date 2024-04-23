@@ -100,5 +100,26 @@ namespace NOUR.PFE.WEB.Controllers
             ModelState.AddModelError("", "Error");
             return View(_Model);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var maintenanceType = Repository.Maintenance.GetMaintenanceTypeById(id);
+            return View(maintenanceType);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Entities.MaintenanceType maintenanceType)
+        {
+            try
+            {
+                Repository.Maintenance.RemoveMaintenanceType(maintenanceType);
+                return RedirectToAction(nameof(Index));
+            }
+
+            catch
+            {
+                return View();
+            }
+        }
     }
 }

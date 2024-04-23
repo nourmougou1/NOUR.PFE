@@ -25,28 +25,29 @@
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             @* <div class="image">
-                <img src="~/uploads/@curUser.ImageUrl" class="img-circle elevation-4" alt="User Image">
+            <img src="~/uploads/@curUser.ImageUrl" class="img-circle elevation-4" alt="User Image">
             </div> *@
             <div class="info">
                 <a href="#" class="d-block">
                     @{
-                        if(@curUser != null) {
+                        if (@curUser != null)
+                        {
                             @curUser.Login
                         }
                     }
                 </a>
             </div>
         </div>
-         
+
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-               @if ((curUser != null)
+                @if ((curUser != null)
                 && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
                 ))
-                {  
+                {
                     <li class="nav-item">
-                        <a asp-controller="Dashboard" asp-action="Index" class="nav-link">
+                        <a asp-controller="Home" asp-action="Index" class="nav-link">
                             <i class="fas fa-tachometer-alt" style="margin-right:10px"></i>
                             <p>
                                 Dashboard
@@ -54,7 +55,7 @@
                         </a>
                     </li>
                     <li class="nav-item menu-open">
-                        <a  class="nav-link">
+                        <a class="nav-link">
                             <i class="fas fa-users" style="margin-right:10px"></i>
                             <p>
                                 Users
@@ -79,51 +80,55 @@
                                 </a>
                             </li>
 
-                    </ul>
+                        </ul>
                     </li>
-               }  
+                }
 
-                
-               
-                <li class="nav-item menu-open">
-                    <a  class="nav-link">
-                        <i class="fa fa-car" style="margin-right:10px"></i>
-                        <p>
-                            Vehicles
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a asp-controller="Vehicule" asp-action="Index" class="nav-link">
-                                <i class="fas fa-list" style="margin-right:10px"></i>
-                                <p>
-                                    vehicles list
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-controller="VehiculeBrand" asp-action="Index" class="nav-link">
-                                <i class="fas fa-list" style="margin-right:10px"></i>
-                                <p>
-                                    vehicles brands list
-                                </p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-controller="VehiculeType" asp-action="Index" class="nav-link">
-                                <i class="fas fa-list" style="margin-right:10px"></i>
-                                <p>
-                                    vehicles types list
-                                </p>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </li>
                 @if ((curUser != null)
-           && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-           ))
+                && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+                ))
+                {
+
+                    <li class="nav-item menu-open">
+                        <a class="nav-link">
+                            <i class="fa fa-car" style="margin-right:10px"></i>
+                            <p>
+                                Vehicles
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a asp-controller="Vehicule" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        vehicles list
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="VehiculeBrand" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        vehicles brands list
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="VehiculeType" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        vehicles types list
+                                    </p>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </li>
+                }
+                @if ((curUser != null)
+                && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+                ))
                 {
                     <li class="nav-item menu-open">
                         <a class="nav-link">
@@ -164,8 +169,8 @@
                     </a>
                     <ul class="nav nav-treeview">
                         @if ((curUser != null)
-                           && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-                           ))
+                        && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+                        ))
                         {
                             <li class="nav-item">
                                 <a asp-controller="MaintenanceType" asp-action="Index" class="nav-link">
@@ -185,8 +190,8 @@
                             </li>
                         }
                         @if ((curUser != null)
-                            && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-                            ))
+                        && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+                        ))
                         {
                             <li class="nav-item">
                                 <a asp-controller="Request" asp-action="Index" class="nav-link">
@@ -196,7 +201,31 @@
                                     </p>
                                 </a>
                             </li>
-                           
+
+                        }
+                        @if ((curUser != null)
+                        && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.USER)
+                        ))
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="Request" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        Make a reservation
+                                    </p>
+                                </a>
+                            </li>
+
+
+                            <li class="nav-item">
+                                <a asp-controller="Request" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        My reservations
+                                    </p>
+                                </a>
+                            </li>
+
                         }
 
                     </ul>

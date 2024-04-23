@@ -59,10 +59,8 @@ namespace NOUR.PFE.Web.Controllers
                         }
                         else
                         {
-                            return RedirectToAction("Index", "Home");
+                            return RedirectToAction("Create", "Request");
                         }
-
-                       
                     }
                     else
                     {

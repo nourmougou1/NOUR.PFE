@@ -7,6 +7,6 @@ BEGIN
 	INSERT INTO
 		dbo.[maintenance_type] (maintenance_type_id, type_name, description)
 	VALUES
-		(@maintenanceTypeId, @maintenanceTypeName, @maintenanceTypeDescription)
+		((SELECT MAX(role_id) FROM user_role)+1, @maintenanceTypeName, @maintenanceTypeDescription)
 END
 

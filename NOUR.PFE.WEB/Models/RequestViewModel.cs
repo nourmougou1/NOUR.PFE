@@ -15,7 +15,12 @@ namespace NOUR.PFE.WEB.Models
         public DateTime RequestDate { get; set; }
         public string MissionAddress { get; set; }
         public Entities.User User { get; set; }
+        public Vehicules Vehicules { get; set; }
         public Entities.Vehicule Vehicule { get; set; }
+        public int VehiculeTypeId { get; set; }
+        public VehiculeType VehiculeType { get; set; }
+        public VehiculeTypes VehiculeTypes { get; set; }
+
         public bool Status { get; set; }
     }
 }

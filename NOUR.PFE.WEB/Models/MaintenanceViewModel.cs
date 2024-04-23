@@ -10,7 +10,6 @@ namespace NOUR.PFE.WEB.Models
         public int Id { get; set; }
         public int VehiculeId {  get; set; } 
         public int MaintenanceTypeId { get; set; }
-        public MaintenanceType MaintenanceType { get; set; }
         public DateTime DateDebut { get; set; }
         public string Address { get; set; }
         public Vehicule Vehicule { get; set; }
@@ -18,7 +17,6 @@ namespace NOUR.PFE.WEB.Models
         public IEnumerable<Vehicule> Vehicules { get; set; }
         public IEnumerable<MaintenanceType> MaintenanceTypes { get; set; }
         public IEnumerable<Maintenance> Maintenances { get; set; }
-
 
     }
 }

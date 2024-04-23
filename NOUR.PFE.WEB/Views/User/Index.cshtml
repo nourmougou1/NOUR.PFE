@@ -43,6 +43,8 @@
                 <tbody>
                     @foreach (var User in Model.Users)
                     {
+                     @*    @if (@User.UserRole != "ADMIN")
+                        { *@
                         <tr>
                             <td>@User.Id</td>
                             <td>@User.FirstName</td>
@@ -72,6 +74,7 @@
                             </td>
 
                         </tr>
+                        
                     }
                 </tbody>
              </table>
