@@ -16,13 +16,13 @@
                 </div>
                 <div class="card-body">
                     <div class="form-group">
-                       @*  <label asp-for="VehiculeId">Vehicle </label>
+                       @*  <label asp-for="VehiculeTypeId">Vehicle </label>
                         <div class="input-group">
-                            <select asp-for="VehiculeId" asp-items="@(new SelectList(Model.Vehicules,"Id", "Vehicule"))" class="form-control select2bs4" style="width: 100%;">
+                            <select asp-for="VehiculeTypeId" asp-items="@(new SelectList(Model.Vehicules,"Id", "Name"))" class="form-control select2bs4" style="width: 100%;">
 
                                 <option id="1" value="">-- Select --</option>
                             </select>
-                            <span asp-validation-for="VehiculeId" class="text-danger"></span>
+                            <span asp-validation-for="VehiculeTypeId" class="text-danger"></span>
                         </div>
                         <br /> *@
 
@@ -33,9 +33,9 @@
                             </select>
                             <span asp-validation-for="VehiculeTypeId" class="text-danger"></span>
                         </div>
-                        <br /> 
-                         <label asp-for="MissionDate">Date</label>
+                        <br/>
 
+                        <label asp-for="MissionDate">Mission Date</label>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fa fa-calendar"></i></span>
@@ -43,7 +43,7 @@
                             <input asp-for="MissionDate" type="date" class="form-control" placeholder="Mission's Date">
                             <span asp-validation-for="MissionDate" class="text-danger"></span>
                         </div>
-                        <br />
+                        <br/>
 
                         
                         <label asp-for="MissionAddress">Mission's Address</label>

@@ -14,6 +14,7 @@ namespace NOUR.PFE.DataLayer.DB
     {
         public bool Add(Maintenance maintenance)
         {
+
             int Ret = -1;
 
             try
@@ -24,22 +25,20 @@ namespace NOUR.PFE.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-
                         command.Parameters.Add("@vehiculeId", SqlDbType.Int);
-                        command.Parameters["@vehiculeId"].Value = maintenance.VehiculeId;
-
-                        command.Parameters.Add("@maintenanceTypeId", SqlDbType.Int);
-                        command.Parameters["@maintenanceTypeId"].Value = maintenance.MaintenanceTypeId;
+                        command.Parameters["@vehiculeId"].Value = maintenance.Vehicule.Id;
 
                         command.Parameters.Add("@maintenanceDate", SqlDbType.DateTime);
                         command.Parameters["@maintenanceDate"].Value = maintenance.DateDebut;
 
-                        command.Parameters.Add("@maintenanceAddress", SqlDbType.VarChar);
-                        command.Parameters["@maintenanceAddress"].Value = maintenance.Address;
+                        command.Parameters.Add("@maintenanceTypeId", SqlDbType.Int);
+                        command.Parameters["@maintenanceTypeId"].Value = maintenance.MaintenanceType.Id;
 
                         command.Parameters.Add("@description", SqlDbType.VarChar);
                         command.Parameters["@description"].Value = maintenance.description;
 
+                        command.Parameters.Add("@maintenanceAddress", SqlDbType.VarChar);
+                        command.Parameters["@maintenanceAddress"].Value = maintenance.Address;
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -55,11 +54,12 @@ namespace NOUR.PFE.DataLayer.DB
             }
         }
 
+        
 
         #region enumsMaintenance
         private enum enumQryMaintenanceFields
         {
-            id = 0,
+            id ,
             vehiculeId,
             dateDebut,
             typeId,
@@ -337,11 +337,15 @@ namespace NOUR.PFE.DataLayer.DB
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
+                        command.Parameters.Add("@maintenanceTypeId", SqlDbType.Int);
+                        command.Parameters["@maintenanceTypeId"].Value = maintenanceType.Id;
+
                         command.Parameters.Add("@maintenanceTypeName", SqlDbType.VarChar);
                         command.Parameters["@maintenanceTypeName"].Value = maintenanceType.Description;
 
                         command.Parameters.Add("@maintenanceTypeDescription", SqlDbType.VarChar);
                         command.Parameters["@maintenanceTypeDescription"].Value = maintenanceType.Description;
+
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -413,12 +417,63 @@ namespace NOUR.PFE.DataLayer.DB
 
         public bool Update(Maintenance maintenance)
         {
-            throw new NotImplementedException();
+            int Ret = -1;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_vehicule_maintenance_update", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@maintenanceId", SqlDbType.Int);
+                        command.Parameters["@maintenanceId"].Value = maintenance.Id;
+
+                        command.Parameters.Add("@vehiculeId", SqlDbType.Int);
+                        command.Parameters["@vehiculeId"].Value = maintenance.VehiculeId;
+
+                        command.Parameters.Add("@maintenanceTypeId", SqlDbType.Int);
+                        command.Parameters["@maintenanceTypeId"].Value = maintenance.MaintenanceTypeId;
+
+                        command.Parameters.Add("@maintenanceDate", SqlDbType.DateTime);
+                        command.Parameters["@maintenanceDate"].Value = maintenance.DateDebut;
+
+                        command.Parameters.Add("@maintenanceAddress", SqlDbType.VarChar);
+                        command.Parameters["@maintenanceAddress"].Value = maintenance.Address;
+
+                        command.Parameters.Add("@description", SqlDbType.VarChar);
+                        command.Parameters["@description"].Value = maintenance.description;
+
+                       
+                        conn.Open();
+                        Ret = command.ExecuteNonQuery();
+                    }
+                }
+
+                return Ret > -1;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
         }
 
         public bool Remove(Maintenance maintenance)
         {
             throw new NotImplementedException();
+        }
+        private enum enumQryMaintenanceGetAll
+        {
+            id,
+            vehiculeId,
+            vehiculeImm,
+            dateDebut,
+            typeId,
+            typeName,
+            description,
+            address
         }
 
         IEnumerable<Maintenance> IMaintenance.GetAll()
@@ -440,34 +495,38 @@ namespace NOUR.PFE.DataLayer.DB
                         {
                             Ret.Add(new Entities.Maintenance()
                             {
-                                Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.id))
-                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.id])
+                                Id = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.id))
+                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceGetAll.id])
                                          : 0,
                                 Vehicule = new Vehicule()
                                 {
-                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.vehiculeId))
-                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.vehiculeId])
+                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.vehiculeId))
+                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceGetAll.vehiculeId])
                                          : 0,
+                                    Imm = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.vehiculeImm))
+                                           ? DR[(int)enumQryMaintenanceGetAll.vehiculeImm].ToString()
+                                           : string.Empty,
 
                                 },
 
-                                DateDebut = (!DR.IsDBNull((int)enumQryMaintenanceFields.dateDebut))
-                                               ? Convert.ToDateTime(DR[(int)enumQryMaintenanceFields.dateDebut].ToString())
+                                DateDebut = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.dateDebut))
+                                               ? Convert.ToDateTime(DR[(int)enumQryMaintenanceGetAll.dateDebut].ToString())
                                                : new DateTime(1970, 1, 1),
                                 MaintenanceType = new MaintenanceType()
                                 {
-                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeId))
-                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceFields.typeId])
+                                    Id = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.typeId))
+                                         ? Convert.ToInt32(DR[(int)enumQryMaintenanceGetAll.typeId])
                                          : 0,
-                                    Name = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeName))
-                                           ? DR[(int)enumQryMaintenanceFields.typeName].ToString()
+                                    Name = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.typeName))
+                                           ? DR[(int)enumQryMaintenanceGetAll.typeName].ToString()
                                            : string.Empty,
-                                    Description = (!DR.IsDBNull((int)enumQryMaintenanceFields.typeDescription))
-                                           ? DR[(int)enumQryMaintenanceFields.typeDescription].ToString()
-                                           : string.Empty,
+                                    
                                 },
-                                Address = (!DR.IsDBNull((int)enumQryMaintenanceFields.address))
-                                           ? DR[(int)enumQryMaintenanceFields.address].ToString()
+                                description = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.description))
+                                           ? DR[(int)enumQryMaintenanceGetAll.description].ToString()
+                                           : string.Empty,
+                                Address = (!DR.IsDBNull((int)enumQryMaintenanceGetAll.address))
+                                           ? DR[(int)enumQryMaintenanceGetAll.address].ToString()
                                            : string.Empty,
 
                             });
@@ -619,6 +678,76 @@ namespace NOUR.PFE.DataLayer.DB
                     DR = null;
                 }
             }
+        }
+
+
+        private enum enumQryMaintenanceGOBI
+        {
+            maintenanceId,
+            vehiculeId,
+            maintenanceDate,
+            maintenanceTypeId,
+            maintenanceAddress,
+            description
+        }
+        public Maintenance GetMaintenanceById(int id)
+        {
+            Entities.Maintenance Ret = null;
+            SqlDataReader DR = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_maintenance_get_one_by_id", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@maintenanceId", SqlDbType.Int);
+                        command.Parameters["@maintenanceId"].Value = id;
+
+                        conn.Open();
+                        DR = command.ExecuteReader();
+
+                        if (DR.Read())
+                        {
+                            Ret = new Entities.Maintenance()
+                            {
+                                Id = Convert.ToInt32(DR[(int)enumQryMaintenanceGOBI.maintenanceId]),
+                                VehiculeId = Convert.ToInt32(DR[(int)enumQryMaintenanceGOBI.vehiculeId]),
+
+                                DateDebut = (!DR.IsDBNull((int)enumQryMaintenanceGOBI.maintenanceDate))
+                                           ? Convert.ToDateTime(DR[(int)enumQryMaintenanceGOBI.maintenanceDate].ToString())
+                                               : new DateTime(1970, 1, 1),
+                                MaintenanceTypeId = Convert.ToInt32(DR[(int)enumQryMaintenanceGOBI.maintenanceTypeId]),
+
+                                Address = (!DR.IsDBNull((int)enumQryMaintenanceGOBI.maintenanceAddress))
+                                           ? DR[(int)enumQryMaintenanceGOBI.maintenanceAddress].ToString()
+                                           : string.Empty,
+                                description = (!DR.IsDBNull((int)enumQryMaintenanceGOBI.description))
+                                           ? DR[(int)enumQryMaintenanceGOBI.description].ToString()
+                                           : string.Empty,
+                            };
+                        }
+                    }
+                }
+
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+            }
+          
         }
     }
 }

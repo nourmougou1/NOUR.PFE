@@ -1,4 +1,4 @@
-﻿
+﻿@model NOUR.PFE.WEB.Models.MaintenanceViewModel
 @{
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
@@ -11,69 +11,65 @@
     <title>Index</title>
 </head>
 <body>
-        <div class="container p-2">
-            <div class="row pt-5">
-                <div class="col-6">
+    <div class="container p-2">
+        <div class="row pt-5">
+            <div class="col-6">
                 <h1 style="margin-left:100px">Maintenances List</h1>
-                </div>
-                <div class="col-6">
-                    <a style="margin-left:200px" asp-controller="Maintenance" asp-action="Create" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> &nbsp; Add Maintenance
-                    </a>
-                </div>
             </div>
-
+            <div class="col-6">
+                <a style="margin-left:200px" asp-controller="Maintenance" asp-action="Create" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> &nbsp; Add Maintenance
+                </a>
+            </div>
         </div>
 
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-bordered">
-                    <thead>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Maintenance Type</th>
+                        <th>DateDebut</th>
+                        <th>Address</th>
+                        <th>Vehicule</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var maintenance in Model.Maintenances)
+                    {
                         <tr>
-                            <th>ID</th>
-                            <th>Maintenance Type</th>
-                            <th>DateDebut</th>
-                            <th>Address</th>
-                            <th>Vehicule</th>
+                            <td>@maintenance.MaintenanceType.Name</td>
+                            <td>@maintenance.DateDebut</td>
+                            <td>@maintenance.Address</td>
+                            <td>@maintenance.Vehicule.Imm</td>
+
+                            <td>
+                                <!-- Edit Button -->
+                                <a href="@Url.Action("Edit", "Maintenance", new { id = maintenance.Id })" class="btn btn-primary" style="margin-right:20px">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+
+                                <!-- Delete Button -->
+                                <a href="@Url.Action("Delete", "Maintenance", new { id = maintenance.Id })" class="btn btn-danger" style="margin-right:20px">
+                                    <i class="fa fa-trash"></i>
+                                </a>
+
+                                <!-- Details Button -->
+                                <a href="@Url.Action("Details", "Maintenance", new { id = maintenance.Id })" class="btn btn-info">
+                                    <i class="fa fa-info-circle"></i>
+                                </a>
+                            </td>
                         </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var maintenance in Model.Maintenances)
-                        {
-                            <tr>
-                                <td>@maintenance.Id</td>
-                                <td>@maintenance.MaintenanceType.name</td>
-                                <td>@maintenance.DateDebut</td>
-                                <td>@maintenance.Address</td>
-                                <td>@maintenance.Vehicule</td>
-                               
-                                <td>
-                                    <!-- Edit Button -->
-                                    <a href="@Url.Action("Edit", "User", new { id = maintenance.Id })" class="btn btn-primary" style="margin-right:20px">
-                                        <i class="fas fa-user-edit"></i>
-                                    </a>
-
-                                    <!-- Delete Button -->
-                                    <a href="@Url.Action("Delete", "User", new { id = maintenance.Id })" class="btn btn-danger" style="margin-right:20px">
-                                        <i class="fas fa-user-times"></i>
-
-                                    </a>
-
-                                    <!-- Details Button -->
-                                    <a href="@Url.Action("Details", "User", new { id = maintenance.Id })" class="btn btn-info">
-                                        <i class="fas fa-user" style="margin-right:10px"> &nbsp; Details</i>
-
-                                    </a>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
+                    }
+                </tbody>
+            </table>
         </div>
+    </div>
 
 
-    </body>
+</body>
 </html>
 <style>
     h1 {

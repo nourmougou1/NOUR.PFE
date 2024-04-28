@@ -19,5 +19,6 @@ namespace NOUR.PFE.DataLayer
         bool UpdateMaintenanceType(Entities.MaintenanceType maintenanceType);
         bool RemoveMaintenanceType(Entities.MaintenanceType maintenanceType);
         Entities.MaintenanceType GetMaintenanceTypeById(int id);
+        Entities.Maintenance GetMaintenanceById (int id);
     }
 }

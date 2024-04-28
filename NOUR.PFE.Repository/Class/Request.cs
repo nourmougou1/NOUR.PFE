@@ -1,5 +1,6 @@
 ﻿using NOUR.PFE.DataLayer;
 using NOUR.PFE.DataLayer.Class;
+using NOUR.PFE.DataLayer.DB;
 using NOUR.PFE.DataLayer.DB.Class;
 using System;
 using System.Collections.Generic;
@@ -45,6 +46,12 @@ namespace NOUR.PFE.Repository
             return (Request_DL != null)
                    ? Request_DL.Remove(request)
                    : false;
+        }
+        public static Entities.Request GetOneById(int ID)
+        {
+            return (Request_DL != null)
+                   ? Request_DL.GetOneById(ID)
+                   : null;
         }
 
     }

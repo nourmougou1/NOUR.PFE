@@ -1,0 +1,107 @@
+﻿@model NOUR.PFE.WEB.Models.MaintenanceViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        <div class="card card-primary card-outline">
+            <form class="form-horizontal" asp-controller="" asp-action="Create" enctype="multipart/form-data">
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Edit Maintenance
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="VehiculeId">Vehicle</label>
+                        <div class="input-group">
+                            <select asp-for="VehiculeId" asp-items="@(new SelectList(Model.Vehicules,"Id", "Imm"))"
+                            class="form-control select2bs4" style="width: 100%;">
+                                <option id="0"  value="0">-- Select --</option>
+                            </select>
+                            <span asp-validation-for="VehiculeId" class="text-danger"></span>
+                        </div>
+                        <br />
+
+                        <label asp-for="MaintenanceTypeId">Maintenance Type </label>
+                        <div class="input-group">
+                            <select asp-for="MaintenanceTypeId" asp-items="@(new SelectList(Model.MaintenanceTypes,"Id", "Name"))"
+                            class="form-control select2bs4" style="width: 100%;">
+                                <option id="0" value="0">-- Select --</option>
+                            </select>
+                            <span asp-validation-for="MaintenanceTypeId" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <label asp-for="DateDebut">Maintenance's Date</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-calendar"></i></span>
+                            </div>
+                            <input asp-for="DateDebut" type="date" class="form-control" placeholder="Maintenance's Date">
+                            <span asp-validation-for="DateDebut" class="text-danger"></span>
+                        </div>
+                        <br />
+
+                        <label asp-for="Address">Maintenance's Address</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-map"></i></span>
+                            </div>
+                            <input asp-for="Address" type="text" class="form-control" placeholder="Maintenance's Address">
+                            <span asp-validation-for="Address" class="text-danger"></span>
+
+                        </div>
+                        <br />
+                        <label asp-for="description">Description</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-pen"></i></span>
+                            </div>
+                            <input asp-for="description" type="text" class="form-control" placeholder="Description">
+                            <span asp-validation-for="description" class="text-danger"></span>
+                        </div>
+                        <br />
+
+                        <div class="card-footer">
+                            <button asp-controller="Maintenance" asp-action="Edit" class="btn  btn-success  float-right"> <i class="fa fa-check"></i> Add</button>
+
+                            <button asp-controller="Maintenance" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Retour</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<style>
+    .card {
+        margin-left: 300px;
+        width: 500px;
+        margin-top: 50px;
+    }
+
+    h2 {
+        padding-left: 185px;
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+
+
+    .card-title {
+        margin-left: 185px;
+    }
+</style>
+
+
+</html>

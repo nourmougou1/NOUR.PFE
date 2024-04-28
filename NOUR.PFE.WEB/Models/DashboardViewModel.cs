@@ -8,6 +8,7 @@ namespace NOUR.PFE.WEB.Models
         public int Users_count { get; set; }
         public int Reservations_count { get; set; }
         public DateTime CreationDate { get; set; }
+        public int Maintenance_count { get; set; }
 
     }
 }

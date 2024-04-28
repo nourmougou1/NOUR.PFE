@@ -1,4 +1,4 @@
-﻿@model NOUR.PFE.WEB.Models.UserViewModel
+﻿@model NOUR.PFE.Entities.User
 @{
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
@@ -8,23 +8,15 @@
         <div class="card  card-teal card-outline">
             <div class="card-body box-profile">
                 <div style="width:150px;">
-                    @{
-                        var user = Model.User;
-                      
-                            <img src="~/img/@user.Image" class="profile-user-img img-fluid img-circle">
-                       
-                    }
-                    
-
-                </div> 
-              <br />
-                    <div class="form-group">
+                    <img src="~/img/@Model.Image" class="profile-user-img img-fluid img-circle">
+                </div>
+                <br />
+                <div class="form-group">
                     <strong><i class="fas fa-user-alt mr-1"></i>Full Name:</strong>
-                        <h3 class="profile-username "> @Html.DisplayFor(model => model.User.FirstName)</h3>
-                        <h3 class="profile-username "> @Html.DisplayFor(model => model.User.LastName)</h3>
-                    </div>
-                <p class="text-muted ">  @Html.DisplayFor(model => model.User.UserRole.Name)</p>
-
+                    <h3 class="profile-username "> @Html.DisplayFor(model => model.FirstName)</h3>
+                    <h3 class="profile-username "> @Html.DisplayFor(model => model.LastName)</h3>
+                </div>
+                <p class="text-muted ">  @Html.DisplayFor(model => model.UserRole.Name)</p>
             </div>
             <div class="card-body">
                 <div class="row">
@@ -32,15 +24,14 @@
                         <div class="form-group">
                             <strong><i class="fas fa-phone-alt mr-1"></i>Phone Number</strong>
                             <p class="text-muted">
-                                @Html.DisplayFor(model => model.User.UserPhone)
+                                @Html.DisplayFor(model => model.UserPhone)
                             </p>
                         </div>
-
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <strong><i class="fas fa-envelope mr-1"></i> Email:</strong>
-                            <p class="text-muted"> @Html.DisplayFor(model => model.User.Email)</p>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Email)</p>
                         </div>
                     </div>
                 </div>
@@ -52,7 +43,7 @@
                             <strong><i class="fas fa-user-alt mr-1"></i>  Login:</strong>
                             <p class="text-muted">
 
-                                @Html.DisplayFor(model => model.User.Login)
+                                @Html.DisplayFor(model => model.Login)
                             </p>
                         </div>
                     </div>
@@ -61,26 +52,25 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <strong><i class="fas fa-key mr-1"></i>  Password:</strong>
-                            <p class="text-muted"> @Html.DisplayFor(model => model.User.Password)</p>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Password)</p>
                         </div>
                     </div>
                 </div>
                 <hr>
-
                 <div class="row">
                     <div class="col-12 col-sm-6">
-                    <div class="form-group">
-                    <strong><i class="fas fa-calendar-alt mr-1"></i> Birthday:</strong>
+                        <div class="form-group">
+                            <strong><i class="fas fa-calendar-alt mr-1"></i> Birthday:</strong>
                             @* <p class="text-muted"> @Html.DisplayFor(model => model.Birthday.ToString("dd/MM/yyyy"))</p> *@
-                    <p class="text-muted"> @Model.User.Birthday.ToString("dd/MM/yyyy")</p> 
-                    </div>
+                            <p class="text-muted"> @Model.Birthday.ToString("dd/MM/yyyy")</p>
+                        </div>
                     </div>
                     <br />
                     <div class="col-12 col-sm-6">
                         <div class="form-group">
                             <strong><i class="fas fa-calendar-alt mr-1"></i> Creation Date:</strong>
                             @*<p class="text-muted"> @Html.DisplayFor(model => model.GetCreationDate("dd/MM/yyyy"))</p>*@
-                            <p class="text-muted"> @Model.User.CreationDate.ToString("dd/MM/yyyy")</p>
+                            <p class="text-muted"> @Model.CreationDate.ToString("dd/MM/yyyy")</p>
                         </div>
                     </div>
                 </div>
@@ -108,10 +98,10 @@
 </section>
 
 <style>
-    .card{
+    .card {
         width: 600px;
-        margin-left:250px;
-        margin-top:50px;
-        padding:20px;
+        margin-left: 250px;
+        margin-top: 50px;
+        padding: 20px;
     }
 </style>

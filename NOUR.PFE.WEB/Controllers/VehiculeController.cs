@@ -10,9 +10,9 @@ using Newtonsoft.Json;
 using NOUR.PFE.Entities;
 using NOUR.PFE.Repository;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 {
-    public class VehiculeController : Controller
+    public class VehiculeController : Microsoft.AspNetCore.Mvc.Controller
     {
         private IConfiguration _Config;
         private readonly IWebHostEnvironment hostEnvironment;
@@ -47,21 +47,8 @@ namespace NOUR.PFE.WEB.Controllers
 
             if (ModelState.IsValid)
                 try
-                {
-                    Entities.User _User = JsonConvert.DeserializeObject<Entities.User>(HttpContext.Session.GetString("User"));
-
-                    var vehicule = new Entities.Vehicule
-                    {
-                        Imm = _Model.RegNumber,
-                        VehiculeType = new VehiculeType() { Id = _Model.Id },
-                        VehiculeBrand = new VehiculeBrand() { Id = _Model.Id },
-                        Status = new VehiculeStatus() { Status_id = _Model.Id },
-                        Kilometrage = _Model.Kilometrage,
-                        document = _Model.document,
-                        parc = _Model.parc,
-                        PurshaseDate = _Model.PurshaseDate,
-                    };
-                    Repository.Vehicule.Add(vehicule);
+                { 
+                    Repository.Vehicule.Add(_Model.Vehicule);
                     return RedirectToAction(nameof(Index));
                 }
                 catch (Exception ex)
@@ -109,15 +96,16 @@ namespace NOUR.PFE.WEB.Controllers
             try
             {
                 Models.VehiculeViewModel _Model = new Models.VehiculeViewModel
-                {
-                    RegNumber = vehicule.Imm,
-                    vehiculeType = vehicule.VehiculeType,
-                    VehiculeBrand = vehicule.VehiculeBrand,
-                    Status = vehicule.Status,
-                    PurshaseDate =vehicule.PurshaseDate,
-                    parc = vehicule.parc,
-                    Kilometrage = vehicule.Kilometrage                
+                {  
+                    Vehicule = vehicule,
+                    VehiculeBrands = Repository.Vehicule.GetAllBrands(),
+                    VehiculeTypes = Repository.Vehicule.GetAllTypes(),
+                    Statuss = Repository.Vehicule.GetAllStatus(),
+
+                    Vehicules = Repository.Vehicule.GetAll(),
+
                 };
+
 
                 return View(_Model);
             }
@@ -134,22 +122,10 @@ namespace NOUR.PFE.WEB.Controllers
         {
             {
                 if (ModelState.IsValid)
-                {
-                    var vehicule = new Entities.Vehicule
-                    {
-
-                        Imm = _Model.RegNumber,
-                        VehiculeType = _Model.vehiculeType,
-                        VehiculeBrand = _Model.VehiculeBrand,
-                        Status = _Model.Status,
-                        PurshaseDate = _Model.PurshaseDate,
-                        parc = _Model.parc,
-                        Kilometrage = _Model.Kilometrage
-                    };
-                    Repository.Vehicule.Update(vehicule);
+                {  
+                    Repository.Vehicule.Update(_Model.Vehicule);
                     return RedirectToAction(nameof(Index));
                 }
-
             }
             ModelState.AddModelError("", "Error");
             return View(_Model);

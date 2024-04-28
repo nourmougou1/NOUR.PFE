@@ -10,7 +10,6 @@ BEGIN
 	UPDATE 
 		dbo.[vehicule_maintenance]
 	SET
-		maintenance_id = @maintenanceId,
 		maintenance_date_debut = @maintenanceDate,
 		vehicule_id = @vehiculeId,
 		maintenance_type_id = @maintenanceTypeId,

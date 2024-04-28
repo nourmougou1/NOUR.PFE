@@ -27,8 +27,12 @@ namespace NOUR.PFE.Entities
         public VehiculeType VehiculeType { get; set; }
         public VehiculeBrand VehiculeBrand { get; set; }
         public VehiculeStatus Status { get; set; }
+        public int VehiculeTypeId { get; set; }
+        public int VehiculeBrandId { get; set; }
+        public int StatusId { get; set; }
         public string Kilometrage { get; set; }
         public VehiculeDocument document { get; set; }
+        public int ParcId { get; set; }
         public Parc parc { get; set; }
         public DateTime PurshaseDate { get; set; }
 

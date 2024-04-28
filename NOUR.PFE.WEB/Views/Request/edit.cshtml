@@ -1,0 +1,131 @@
+﻿@model NOUR.PFE.WEB.Models.RequestViewModel
+
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<div asp-action="Create" class="row">
+    <div class="col-md-6">
+        <div class="card card-primary card-outline">
+            <form class="form-horizontal" asp-controller="Request" asp-action="Edit" enctype="multipart/form-data">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Edit Request
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+                        <label asp-for="Request.User.Login">User</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input asp-for="Request.User.Login" type="text" class="form-control">
+                            <span asp-validation-for="Request.User.Login" class="text-danger"></span>
+                        </div>
+                        <br />
+
+                        <label asp-for="Request.VehiculeType.Id">Vehicule Type</label>
+
+                        <div class="input-group">
+                            <select asp-for="Request.VehiculeType.Id" asp-items="@(new SelectList(Model.VehiculeTypes,"Id", "TypeName"))" class="form-control select2bs4" style="width: 100%;">
+                                <option id="1" value="">-- Select --</option>
+                            </select>
+                            <span asp-validation-for="Request.VehiculeType.Id" class="text-danger"></span>
+                        </div>
+                        <br />
+                        <label asp-for="Request.MissionDate">Mission Date</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input asp-for="Request.MissionDate" type="date" class="form-control">
+                            <span asp-validation-for="Request.MissionDate" class="text-danger"></span>
+
+                        </div>
+                        <br />
+
+                        <label asp-for="Request.MissionAddress">Mission Address</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa map"></i></span>
+                            </div>
+                            <input asp-for="Request.MissionAddress" type="datetime" class="form-control">
+                            <span asp-validation-for="Request.MissionAddress" class="text-danger"></span>
+
+                        </div>
+                        <br/>
+                        <label asp-for="Request.Description">Description</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-pen"></i></span>
+                            </div>
+                            <input asp-for="Request.Description" type="datetime" class="form-control">
+                            <span asp-validation-for="Request.Description" class="text-danger"></span>
+
+                        </div>
+                        <br/>
+
+                        <label asp-for="Request.status.Name">Status</label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-pen"></i></span>
+                            </div>
+                            <input asp-for="Request.status.Name" type="string" class="form-control">
+                            <span asp-validation-for="Request.status.Name" class="text-danger"></span>
+                        </div>
+                        <br/>
+
+                        <div class="card-footer" style="">
+                            <tr>
+                                <td>
+                                    <button asp-controller="Request" asp-action="Edit" class="btn btn-success  float-right"> <i class="fa fa-check"></i>  Save</button>
+
+                                </td>
+                                <td>
+                                    <button asp-controller="Request" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Retour</button>
+
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .card {
+        margin-left: 300px;
+        width: 500px;
+        margin-top: 50px;
+    }
+
+    h2 {
+        padding-left: 185px;
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+
+
+    .card-title {
+        margin-left: 185px;
+    }
+</style>
+
+
+

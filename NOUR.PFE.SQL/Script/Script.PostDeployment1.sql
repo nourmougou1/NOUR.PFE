@@ -8,6 +8,16 @@ BEGIN
 		(2, N'USER', N'Utilisateur'),
 		(3, N'RESP', N'Parc_Responsible')
 END 
+--------------------request_status----------------------------
+ GO
+IF NOT EXISTS (SELECT 1 FROM dbo.[request_status])
+BEGIN
+	INSERT INTO dbo.[request_status]([id], [Name]) 
+	VALUES 
+		(1, N'Confirmed'),
+		(2, N'Pending'),
+		(3, N'Refused')
+END 
  GO
 
 IF NOT EXISTS (SELECT 1 FROM dbo.[app_user])

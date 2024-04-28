@@ -173,27 +173,6 @@
                         ))
                         {
                             <li class="nav-item">
-                                <a asp-controller="MaintenanceType" asp-action="Index" class="nav-link">
-                                    <i class="fas fa-list" style="margin-right:10px"></i>
-                                    <p>
-                                        approved reservations
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="MaintenanceType" asp-action="Index" class="nav-link">
-                                    <i class="fas fa-list" style="margin-right:10px"></i>
-                                    <p>
-                                        pending reservations
-                                    </p>
-                                </a>
-                            </li>
-                        }
-                        @if ((curUser != null)
-                        && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-                        ))
-                        {
-                            <li class="nav-item">
                                 <a asp-controller="Request" asp-action="Index" class="nav-link">
                                     <i class="fas fa-list" style="margin-right:10px"></i>
                                     <p>
@@ -203,6 +182,28 @@
                             </li>
 
                         }
+                        @if ((curUser != null)
+                        && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+                        ))
+                        {
+                            <li class="nav-item">
+                                <a asp-controller="ApprovedReservation" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        Affected reservations
+                                    </p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-controller="PendingReservation" asp-action="Index" class="nav-link">
+                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                    <p>
+                                        pending reservations
+                                    </p>
+                                </a>
+                            </li>
+                        }
+                       
                         @if ((curUser != null)
                         && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.USER)
                         ))

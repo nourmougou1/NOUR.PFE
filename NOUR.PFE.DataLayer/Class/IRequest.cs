@@ -12,7 +12,7 @@ namespace NOUR.PFE.DataLayer
         bool Add(Entities.Request request);
         bool Update(Entities.Request request);
         bool Remove(Entities.Request request);
-        Entities.Request GetOneyId(int Id);
+        Entities.Request GetOneById(int Id);
 
     }
 }

@@ -11,7 +11,7 @@
             <div class="card-body box-profile">
                 <div style="width:150px;">
                     <img class="profile-user-img img-fluid img-circle"
-                     @* src="@Model.VehiculeBrand.Logo" width="60" height="60">  *@
+                    @* src="@Model.VehiculeBrand.Logo" width="60" height="60"> *@
                          alt="">
 
                 </div>
@@ -21,14 +21,16 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-user-alt mr-1"></i>Vehicle's Brand </strong>
-                            <h3 class="profile-username "> @Html.DisplayFor(model => model.VehiculeBrand.Name)</h3>
+                            <strong><i class="fa fa-car"></i> Vehicle's Brand </strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Vehicule.VehiculeBrand.Name)
+                            </p>
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-envelope mr-1"></i> Status:</strong>
+                            <strong> Status:</strong>
                             @{
                                 switch (@Model.Vehicule.Status.Status_id)
                                 {
@@ -56,7 +58,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-phone-alt mr-1"></i>Vehicle's Type</strong>
+                            <strong><i class="fa fa-truck"></i> Vehicle's Type</strong>
                             <p class="text-muted">
                                 @Html.DisplayFor(model => model.Vehicule.VehiculeType.TypeName)
                             </p>
@@ -65,7 +67,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-phone-alt mr-1"></i>Registration Number</strong>
+                            <strong>Registration Number</strong>
                             <p class="text-muted">
                                 @Html.DisplayFor(model => model.Vehicule.Imm)
                             </p>
@@ -80,7 +82,7 @@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-user-alt mr-1"></i>  Mileage:</strong>
+                            <strong><i class="fas fa-tachometer-alt"></i>  Mileage:</strong>
                             <p class="text-muted">
                                 @Html.DisplayFor(model => model.Vehicule.Kilometrage)
                             </p>
@@ -88,7 +90,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-key mr-1"></i>  Parc:</strong>
+                            <strong><i class="fa fa-parking"></i>  Parc:</strong>
                             <p class="text-muted"> @Html.DisplayFor(model => model.Vehicule.parc.Name)</p>
                         </div>
                     </div>
@@ -99,7 +101,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-key mr-1"></i>  Purshase Date:</strong>
+                            <strong><i class="fa fa-calendar"></i>  Purshase Date:</strong>
                             <p class="text-muted"> @Html.DisplayFor(model => model.Vehicule.PurshaseDate)</p>
                         </div>
                     </div>
@@ -121,6 +123,7 @@
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 <style>

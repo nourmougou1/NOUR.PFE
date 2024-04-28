@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using NOUR.PFE.Entities;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 {
-    public class UserRoleController : Controller
+    public class UserRoleController : Microsoft.AspNetCore.Mvc.Controller
     {
         private IConfiguration _Config;
         public UserRoleController(IConfiguration iConfig)
@@ -56,15 +56,12 @@ namespace NOUR.PFE.WEB.Controllers
                 {
                     var Role = new UserRole
                     {
-
                         Name = _Model.Name,
                         Code = _Model.Code
-
                     };
                     Repository.Config.UpdateUserRole(Role);
                     return RedirectToAction(nameof(Index));
                 }
-
             }
             ModelState.AddModelError("", "Error");
             return View(_Model);

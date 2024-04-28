@@ -5,10 +5,12 @@ BEGIN
 	SELECT 
 	vm.maintenance_id,
 	v.vehicule_id,
-	ISNULL(mt.maintenance_type_id, '') AS maintenance_type_id,
+	ISNULL(v.vehicule_imm, '' ) AS vehicule_imm,
 	ISNULL(vm.maintenance_date_debut, '' ) AS maintenance_date_debut,
-	ISNULL(vm.maintenance_address, '' ) AS maintenance_address,
-	ISNULL(vm.description,'') AS desription
+	ISNULL(mt.maintenance_type_id, '') AS maintenance_type_id,
+	ISNULL(mt.type_name, '') AS type_name,
+	ISNULL(vm.description, '') AS description,
+	ISNULL(vm.maintenance_address, '' ) AS maintenance_address
 	FROM
 	dbo.[vehicule_maintenance] vm
 	INNER JOIN dbo.[vehicule] v ON v.vehicule_id = vm.vehicule_id

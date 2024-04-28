@@ -3,9 +3,9 @@ using NOUR.PFE.Entities;
 using NOUR.PFE.WEB.Models;
 using System;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 {
-    public class MaintenanceTypeController : Controller
+    public class MaintenanceTypeController : Microsoft.AspNetCore.Mvc.Controller
     {
         public IActionResult Index()
         {
@@ -42,6 +42,7 @@ namespace NOUR.PFE.WEB.Controllers
 
                 var maintenanceType = new Entities.MaintenanceType
                 {
+                    Id = _Model.maintenanceTypeId,
                     Name = _Model.maintenanceTypeName,
                     Description = _Model.description
 

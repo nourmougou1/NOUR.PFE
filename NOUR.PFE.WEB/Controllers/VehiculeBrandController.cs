@@ -5,9 +5,9 @@ using NOUR.PFE.WEB.Models;
 using System;
 using System.Linq;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 {
-    public class VehiculeBrandController : Controller
+    public class VehiculeBrandController : Microsoft.AspNetCore.Mvc.Controller
     {
         private IConfiguration _Config;
         public VehiculeBrandController(IConfiguration iConfig)
@@ -26,13 +26,13 @@ namespace NOUR.PFE.WEB.Controllers
         [HttpPost]
         public ActionResult Create()
         {
-            //Models.BrandViewModel _Model = new Models.BrandViewModel
-            //{
-            //    VehiculeBrands = Repository.Vehicule.GetAllBrands() 
-            //};
+            Models.BrandViewModel _Model = new Models.BrandViewModel
+            {
+                VehiculeBrands = Repository.Vehicule.GetAllBrands()
+            };
 
-            //return View(_Model);
-            return View("Create");
+            return View(_Model);
+
         }
         [HttpPost]
 

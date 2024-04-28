@@ -1,0 +1,100 @@
+﻿@model NOUR.PFE.Entities.Request
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+<section class="content-header">
+    <div class="container-fluid">
+
+        <div class="card  card-teal card-outline">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fa fa-user"></i> User</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.User.Login)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fa fa-calendar"></i> Mission's Date</strong>
+                            <p class="text-muted"> @Model.MissionDate.ToString("dd/MM/yyyy")</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-map"></i> Mission's Address</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.MissionAddress)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fa fa-check"></i> Status</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.status.Id)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <!-- /.form-group -->
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fa fa-pen"></i> Description</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Description)</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fa fa-truck"></i> Vehicle's Type</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.VehiculeType.TypeName)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-success float-right" href='@Url.Action("Edit", "Request", new { id = @Model.Id })'>
+                            <i class="fa fa-check"></i>
+                            Affect
+                        </a>
+                        <a class="btn btn-danger float-right" href='@Url.Action("Edit", "Request", new { id = @Model.Id })' style="margin-right:20px">
+                            <i class="fa fa-trash"></i>
+                            Refuse
+                        </a>
+                        <a class="btn btn-warning  float-left" href='@Url.Action("Index", "Request")'>
+                            <i class="fas fa-arrow-left"></i>
+                            Back
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .card {
+        width: 600px;
+        margin-left: 250px;
+        margin-top: 50px;
+        padding: 20px;
+    }
+</style>

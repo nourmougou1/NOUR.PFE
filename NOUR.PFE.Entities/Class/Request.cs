@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NOUR.PFE.Entities.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,10 +22,12 @@ namespace NOUR.PFE.Entities
         public string MissionAddress { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
-        public Vehicule Vehicule { get; set; }
-        public bool Status { get; set; }
-        public int VehiculeTypeId { get; set; }
+        public int StatusId { get; set; }
+        public RequestStatus status { get; set; }
+        public RequestStatuses statuss { get; set; }
         public VehiculeType VehiculeType { get; set; }
+        public int VehiculeTypeId { get; set; }
+        public string VehiculeTypeName { get; set; }
         public VehiculeTypes VehiculeTypes { get; set; }
 
         #endregion

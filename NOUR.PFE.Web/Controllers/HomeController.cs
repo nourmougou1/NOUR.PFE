@@ -13,9 +13,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 {
-    public class HomeController : Controller
+    public class HomeController : Microsoft.AspNetCore.Mvc.Controller
     {
       
         private readonly ILogger<HomeController> _logger;
@@ -38,9 +38,13 @@ namespace NOUR.PFE.WEB.Controllers
             {
                 var Users = Repository.User.GetAll();
                 var Vehicules = Repository.Vehicule.GetAll();
+                var Requests = Repository.Request.GetAll();
+                var Maintenances = Repository.Maintenance.GetAll();
                 dashboard.Vehicule_count = Vehicules.Count();
                 dashboard.Users_count = Users.Count();
-                //dashboard.Reservations_count = Requests.Count();
+                dashboard.Reservations_count = Requests.Count();
+                dashboard.Maintenance_count = Maintenances.Count();
+                
             }
 
             return View(dashboard);

@@ -4,12 +4,12 @@
 	@maintenanceTypeId INT,
 	@maintenanceDate DATETIME,
 	@maintenanceAddress VARCHAR(100),
-	@desription VARCHAR(100)
+	@description VARCHAR(100)
 AS
 BEGIN
 	INSERT INTO 
 		dbo.[vehicule_maintenance] (vehicule_id, maintenance_date_debut, maintenance_type_id, maintenance_address, description)
 	VALUES
-		(@vehiculeId, @maintenanceDate, @maintenanceTypeId, @maintenanceAddress, @desription)
+		(@vehiculeId, @maintenanceDate, @maintenanceTypeId, @maintenanceAddress, @description)
 END
 

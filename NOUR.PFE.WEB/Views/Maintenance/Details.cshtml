@@ -1,0 +1,82 @@
+﻿@model NOUR.PFE.WEB.Models.MaintenanceViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+
+<section class="content-header">
+    <div class="container-fluid">
+
+        <div class="card  card-teal card-outline">
+
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Vehicule</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Vehicule.Imm)
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Maintenance Type  </strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.MaintenanceType.Name)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-envelope mr-1"></i> Maintenance Address</strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.Address)</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong>Maintenance date</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.DateDebut)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fas fa-envelope mr-1"></i>Description </strong>
+                            <p class="text-muted"> @Html.DisplayFor(model => model.description)</p>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                
+                <hr>
+                <div class="row">
+                    <div class="col-12">
+                    </div>
+                    <div class="col-12">
+                        <a class="btn btn-success  float-right" href='@Url.Action("Edit", "Maintenance", new { id = @Model.Id })'>
+                            <i class=" fa fa-edit"></i>
+                            Edit
+                        </a>
+
+                        <a class="btn btn-warning  float-left" href='@Url.Action("Index", "Maintenance")'>
+                            <i class="fas fa-arrow-left"></i>
+                            back
+                        </a>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

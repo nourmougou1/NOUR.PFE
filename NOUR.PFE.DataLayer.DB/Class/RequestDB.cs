@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices.ComTypes;
 using static NOUR.PFE.Entities.Enumeration.Enumeration;
+using NOUR.PFE.Entities.Class;
 
 namespace NOUR.PFE.DataLayer.DB.Class
 {
@@ -26,6 +27,8 @@ namespace NOUR.PFE.DataLayer.DB.Class
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
+                        command.Parameters.Add("@userId", SqlDbType.Int);
+                        command.Parameters["@userId"].Value = request.User.Id;
 
                         command.Parameters.Add("@VehiculeTypeId", SqlDbType.Int);
                         command.Parameters["@VehiculeTypeId"].Value = request.VehiculeType.Id;
@@ -36,9 +39,12 @@ namespace NOUR.PFE.DataLayer.DB.Class
                         command.Parameters.Add("@missionDate", SqlDbType.DateTime);
                         command.Parameters["@missionDate"].Value = request.MissionDate;
 
-
                         command.Parameters.Add("@missionLocation", SqlDbType.VarChar);
                         command.Parameters["@missionLocation"].Value = request.MissionAddress;
+
+
+                       
+
 
 
 
@@ -63,11 +69,47 @@ namespace NOUR.PFE.DataLayer.DB.Class
             vehiculeId,
             missionDescription,
             UserId,
+            UserLogin,
             missionDate,
-            missionAsdress,
+            missionAddress,
             status,
             aparovalDate,
-            vehiculeTypeId
+            vehiculeTypeId,
+            vehiculeTypeName,
+            requestDate
+
+        }
+        private enum EnumQryRequestGetOneById
+        {
+            id = 0,
+            vehiculeTypeId,
+            vehiculeTypeName,
+            UserId,
+            UserLogin,
+            missionDate,
+            missionAddress,
+            aparovalDate,
+            missionDescription,
+            statusId,
+            statusName,
+            requestDate
+
+        }
+        private enum EnumQryRequestGetAll
+        {
+            id = 0,
+            missionDescription,
+            UserId,
+            UserLogin,
+            missionDate,
+            missionAddress,
+            RequeststatusId,
+            RequestStatusName,
+            aparovalDate,
+            vehiculeTypeId,
+            vehiculeTypeName,
+            requestDate
+           
 
         }
         #endregion
@@ -117,8 +159,8 @@ namespace NOUR.PFE.DataLayer.DB.Class
                         command.Parameters.Add("@requestId", SqlDbType.Int);
                         command.Parameters["@requestId"].Value = request.Id;
 
-                        command.Parameters.Add("@vehiculeId", SqlDbType.Int);
-                        command.Parameters["@vehiculeId"].Value = request.Vehicule.Id;
+                        command.Parameters.Add("@vehiculeTypeId", SqlDbType.Int);
+                        command.Parameters["@vehiculeTypeId"].Value = request.VehiculeType.Id;
 
                         command.Parameters.Add("@missionDescription", SqlDbType.VarChar);
                         command.Parameters["@missionDescription"].Value = request.Description;
@@ -132,14 +174,9 @@ namespace NOUR.PFE.DataLayer.DB.Class
                         command.Parameters.Add("@missionAddress", SqlDbType.VarChar);
                         command.Parameters["@missionAddress"].Value = request.MissionAddress;
 
-                        command.Parameters.Add("@status", SqlDbType.Bit);
-                        command.Parameters["@status"].Value = request.Status;
+                        command.Parameters.Add("@statusId", SqlDbType.Int);
+                        command.Parameters["@statusId"].Value = request.status.Id;
 
-                        command.Parameters.Add("@approvalDate", SqlDbType.DateTime);
-                        command.Parameters["@approvalDate"].Value = request.ApprovalDate;
-
-                        command.Parameters.Add("@approvalDate", SqlDbType.DateTime);
-                        command.Parameters["@approvalDate"].Value = request.ApprovalDate;
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -175,48 +212,53 @@ namespace NOUR.PFE.DataLayer.DB.Class
                             Ret.Add(new Entities.Request()
                             {
 
-                                Id = (!DR.IsDBNull((int)EnumQryRequestFields.id))
-                                         ? Convert.ToInt32(DR[(int)EnumQryRequestFields.id])
+                                Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.id))
+                                         ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.id])
                                          : 0,
 
-                                Vehicule = new Vehicule()
-                                {
-                                    Id = (!DR.IsDBNull((int)EnumQryRequestFields.vehiculeId))
-                                            ? Convert.ToInt32(DR[(int)EnumQryRequestFields.vehiculeId])
-                                            : 0,
-
-                                    VehiculeType = new VehiculeType()
-                                    {
-                                        Id = (!DR.IsDBNull((int)EnumQryRequestFields.vehiculeTypeId))
-                                            ? Convert.ToInt32(DR[(int)EnumQryRequestFields.vehiculeTypeId])
-                                            : 0,
-                                    },
-                                },
-
-                                Description = (!DR.IsDBNull((int)EnumQryRequestFields.missionDescription))
-                                           ? DR[(int)EnumQryRequestFields.missionDescription].ToString()
+                                Description = (!DR.IsDBNull((int)EnumQryRequestGetAll.missionDescription))
+                                           ? DR[(int)EnumQryRequestGetAll.missionDescription].ToString()
                                            : string.Empty,
 
                                 User = new User()
                                 {
-                                    Id = (!DR.IsDBNull((int)EnumQryRequestFields.UserId))
-                                            ? Convert.ToInt32(DR[(int)EnumQryRequestFields.UserId])
+                                    Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.UserId))
+                                            ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.UserId])
                                             : 0,
+                                    Login = (!DR.IsDBNull((int)EnumQryRequestGetAll.UserLogin))
+                                           ? DR[(int)EnumQryRequestGetAll.UserLogin].ToString()
+                                           : string.Empty,
                                 },
 
-                                MissionDate = (!DR.IsDBNull((int)EnumQryRequestFields.missionDate))
-                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestFields.missionDate].ToString())
+                                MissionDate = (!DR.IsDBNull((int)EnumQryRequestGetAll.missionDate))
+                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestGetAll.missionDate].ToString())
                                                : new DateTime(1970, 1, 1),
 
-                                MissionAddress = (!DR.IsDBNull((int)EnumQryRequestFields.missionAsdress))
-                                           ? DR[(int)EnumQryRequestFields.missionAsdress].ToString()
+                                MissionAddress = (!DR.IsDBNull((int)EnumQryRequestGetAll.missionAddress))
+                                           ? DR[(int)EnumQryRequestGetAll.missionAddress].ToString()
                                            : string.Empty,
-                                Status = (!DR.IsDBNull((int)EnumQryRequestFields.status))
-                                              ? Convert.ToBoolean(DR[(int)EnumQryRequestFields.status].ToString())
-                                              : false,
-                                ApprovalDate = (!DR.IsDBNull((int)EnumQryRequestFields.aparovalDate))
-                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestFields.aparovalDate].ToString())
+                                status = new RequestStatus()
+                                {
+                                    Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequeststatusId))
+                                            ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.vehiculeTypeId])
+                                            : 0,
+                                    Name  = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequestStatusName))
+                                           ? DR[(int)EnumQryRequestGetAll.vehiculeTypeName].ToString()
+                                           : string.Empty,
+
+                                },
+                                ApprovalDate = (!DR.IsDBNull((int)EnumQryRequestGetAll.aparovalDate))
+                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestGetAll.aparovalDate].ToString())
                                                : new DateTime(1970, 1, 1),
+                                VehiculeType = new VehiculeType()
+                                {
+                                    Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.vehiculeTypeId))
+                                            ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.vehiculeTypeId])
+                                            : 0,
+                                    TypeName = (!DR.IsDBNull((int)EnumQryRequestGetAll.vehiculeTypeName))
+                                           ? DR[(int)EnumQryRequestGetAll.vehiculeTypeName].ToString()
+                                           : string.Empty,
+                                },
 
                             });
                         }
@@ -240,89 +282,99 @@ namespace NOUR.PFE.DataLayer.DB.Class
             }
         }
 
-        public Request GetOneyId(int Id)
+        public Request GetOneById(int Id)
         {
-            //Entities.Request Ret = null;
-            //SqlDataReader DR = null;
+            Entities.Request Ret = null;
+            SqlDataReader DR = null;
 
-            //try
-            //{
-            //    using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
-            //    {
-            //        using (SqlCommand command = new SqlCommand("sp_request_get_one_by_id", conn))
-            //        {
-            //            command.CommandType = CommandType.StoredProcedure;
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_request_get_one_by_id", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
 
-            //            command.Parameters.Add("@userId", SqlDbType.Int);
-            //            command.Parameters["@userId"].Value = userId;
+                        command.Parameters.Add("@requestId", SqlDbType.Int);
+                        command.Parameters["@requestId"].Value = Id;
 
-            //            conn.Open();
-            //            DR = command.ExecuteReader();
+                        conn.Open();
+                        DR = command.ExecuteReader();
 
-            //            if (DR.Read())
-            //            {
-            //                Ret = new Entities.User()
-            //                {
-            //                    Id = Convert.ToInt32(DR[(int)enumQryUserFields.id]),
-            //                    FirstName = (!DR.IsDBNull((int)enumQryUserFields.firstName))
-            //                                ? DR[(int)enumQryUserFields.firstName].ToString()
-            //                                : string.Empty,
-            //                    LastName = (!DR.IsDBNull((int)enumQryUserFields.lastName))
-            //                               ? DR[(int)enumQryUserFields.lastName].ToString()
-            //                               : string.Empty,
-            //                    Login = (!DR.IsDBNull((int)enumQryUserFields.login))
-            //                            ? DR[(int)enumQryUserFields.login].ToString()
-            //                            : string.Empty,
-            //                    Password = (!DR.IsDBNull((int)enumQryUserFields.password))
-            //                               ? DR[(int)enumQryUserFields.password].ToString()
-            //                               : string.Empty,
-            //                    Email = (!DR.IsDBNull((int)enumQryUserFields.email))
-            //                            ? DR[(int)enumQryUserFields.email].ToString()
-            //                            : string.Empty,
-            //                    UserPhone = (!DR.IsDBNull((int)enumQryUserFields.phone))
-            //                            ? DR[(int)enumQryUserFields.phone].ToString()
-            //                            : string.Empty,
-            //                    IsActive = (!DR.IsDBNull((int)enumQryUserFields.isActive))
-            //                               ? Convert.ToBoolean(DR[(int)enumQryUserFields.isActive].ToString())
-            //                               : false,
-            //                    Birthday = (!DR.IsDBNull((int)enumQryUserFields.birthdate))
-            //                                ? Convert.ToDateTime(DR[(int)enumQryUserFields.birthdate].ToString())
-            //                                : new DateTime(1970, 1, 1),
-            //                    CreationDate = (!DR.IsDBNull((int)enumQryUserFields.creationDate))
-            //                                   ? Convert.ToDateTime(DR[(int)enumQryUserFields.creationDate].ToString())
-            //                                   : new DateTime(1970, 1, 1),
-            //                    UserRole = new UserRole()
-            //                    {
-            //                        Id = (!DR.IsDBNull((int)enumQryUserFields.roleId))
-            //                             ? Convert.ToInt32(DR[(int)enumQryUserFields.roleId])
-            //                             : 0,
-            //                        Code = (!DR.IsDBNull((int)enumQryUserFields.roleCode))
-            //                               ? DR[(int)enumQryUserFields.roleCode].ToString()
-            //                               : string.Empty,
-            //                        Name = (!DR.IsDBNull((int)enumQryUserFields.roleName))
-            //                               ? DR[(int)enumQryUserFields.roleName].ToString()
-            //                               : string.Empty,
-            //                    },
-            //                };
-            //            }
-            //        }
-            //    }
+                        if (DR.Read())
+                        {
+                            Ret = new Entities.Request()
+                            {
+                                Id = Convert.ToInt32(DR[(int)EnumQryRequestGetOneById.id]),
 
-            //    return Ret;
-            //}
-            //catch (Exception ex)
-            //{
-            //    string strEx = ex.Message;
-            //    throw;
-            //}
-            //finally
-            //{
-            //    if (DR != null)
-            //    {
-            //        DR.Close();
-            //        DR = null;
-            //    }
-            //}
+                                VehiculeType = new VehiculeType()
+                                {
+                                    Id = (!DR.IsDBNull((int)EnumQryRequestGetOneById.vehiculeTypeId))
+                                         ? Convert.ToInt32(DR[(int)EnumQryRequestGetOneById.vehiculeTypeId])
+                                         : 0,
+                                    TypeName = (!DR.IsDBNull((int)EnumQryRequestGetOneById.vehiculeTypeName))
+                                           ? DR[(int)EnumQryRequestGetOneById.vehiculeTypeName].ToString()
+                                           : string.Empty,
+
+                                },
+                                User = new User()
+                                {
+                                    Id = (!DR.IsDBNull((int)EnumQryRequestGetOneById.UserId))
+                                         ? Convert.ToInt32(DR[(int)EnumQryRequestGetOneById.UserId])
+                                         : 0,
+
+                                    Login = (!DR.IsDBNull((int)EnumQryRequestGetOneById.UserLogin))
+                                           ? DR[(int)EnumQryRequestGetOneById.UserLogin].ToString()
+                                           : string.Empty,
+                                },
+                                MissionDate = (!DR.IsDBNull((int)EnumQryRequestGetOneById.missionDate))
+                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestGetOneById.missionDate].ToString())
+                                               : new DateTime(1970, 1, 1),
+
+                                MissionAddress = (!DR.IsDBNull((int)EnumQryRequestGetOneById.missionAddress))
+                                        ? DR[(int)EnumQryRequestGetOneById.missionAddress].ToString()
+                                        : string.Empty,
+
+                                ApprovalDate = (!DR.IsDBNull((int)EnumQryRequestGetOneById.aparovalDate))
+                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestGetOneById.aparovalDate].ToString())
+                                               : new DateTime(1970, 1, 1),
+
+                                Description = (!DR.IsDBNull((int)EnumQryRequestGetOneById.missionDescription))
+                                                ? DR[(int)EnumQryRequestGetOneById.missionDescription].ToString()
+                                                : string.Empty,
+
+                                status = new RequestStatus()
+                                {
+                                    Id = (!DR.IsDBNull((int)EnumQryRequestGetOneById.statusId))
+                                            ? Convert.ToInt32(DR[(int)EnumQryRequestGetOneById.statusId])
+                                            : 0,
+                                    Name = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequestStatusName))
+                                           ? DR[(int)EnumQryRequestGetAll.RequestStatusName].ToString()
+                                           : string.Empty,
+                                },
+                                RequestDate = (!DR.IsDBNull((int)EnumQryRequestGetOneById.requestDate))
+                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestGetOneById.requestDate].ToString())
+                                               : new DateTime(1970, 1, 1),
+                            };
+                        }
+                    }
+                }
+
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+            }
             throw new NotImplementedException();
         }
     }

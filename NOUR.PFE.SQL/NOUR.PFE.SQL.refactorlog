@@ -427,4 +427,11 @@
     <Property Name="ParentElementType" Value="SqlTable" />
     <Property Name="NewName" Value="request_status" />
   </Operation>
+  <Operation Name="Rename Refactor" Key="9f9f4c3e-ed0f-481e-9094-772bad81d552" ChangeDateTime="04/28/2024 18:25:47">
+    <Property Name="ElementName" Value="[dbo].[request].[request_status]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[request]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="status_id" />
+  </Operation>
 </Operations>

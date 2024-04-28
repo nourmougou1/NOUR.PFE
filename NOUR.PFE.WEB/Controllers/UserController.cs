@@ -12,10 +12,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 
 {
-    public class UserController : Controller
+    public class UserController : Microsoft.AspNetCore.Mvc.Controller
     {
         private readonly IWebHostEnvironment hostEnvironment;
         public UserController(IWebHostEnvironment hostEnvironment)
@@ -91,7 +91,8 @@ namespace NOUR.PFE.WEB.Controllers
                     //Birthday = _Model.Birthday,
                     Birthday = DateTime.Now,
                     CreationDate = DateTime.Now,
-                    UserRole = userRole
+                    UserRole = userRole,
+                    Image = fileName
 
                 };
 
@@ -133,9 +134,9 @@ namespace NOUR.PFE.WEB.Controllers
 
         public IActionResult Details(int id)
         {
-            NOUR.PFE.WEB.Models.UserViewModel _Model = new NOUR.PFE.WEB.Models.UserViewModel();
-            _Model.User = Repository.User.GetOne(id);
-            return View(_Model);
+          
+            var User = Repository.User.GetOne(id);
+            return View(User);
         }
 
 

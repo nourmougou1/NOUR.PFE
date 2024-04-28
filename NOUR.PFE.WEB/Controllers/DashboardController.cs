@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using NOUR.PFE.Entities;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 {
     //private readonly ApplicationDbContext _context;
     //public DashboardController(ApplicationDbContext context)

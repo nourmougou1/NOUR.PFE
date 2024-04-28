@@ -4,7 +4,8 @@
 AS
 	
 BEGIN
-INSERT INTO vehicule_type (vehicule_type_id, type_name) VALUES (@typeId, @typeName)
+INSERT INTO vehicule_type (vehicule_type_id, type_name) VALUES 
+		((SELECT MAX(vehicule_type_id) FROM vehicule_type)+1, @typeName)
 
 
 END

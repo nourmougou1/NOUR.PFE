@@ -19,42 +19,12 @@ BEGIN
 		ISNULL(v.purchase_date,'') AS purchase_date
 	FROM
 		dbo.[vehicule] v
-		INNER JOIN dbo.vehicule_brand vb ON vb.vehicule_brand_id = vb.vehicule_brand_id
-		INNER JOIN dbo.vehicule_type vt ON vt.vehicule_type_id = vt.vehicule_type_id
-		INNER JOIN dbo.Vehicule_status vs ON vs.status_id = vs.status_id
-		INNER JOIN dbo.parc vp ON vp.parc_id  = vp.parc_id
-
-
-
-END
-
-/*
-CREATE PROCEDURE [dbo].[sp_user_get_one_by_id]
-	@userId int 
-
-AS
-BEGIN
-SELECT
-	    u.user_id,
-		u.role_id,
-		ISNULL(dr.role_code, '') AS role_code,
-		ISNULL(dr.role_name, '') AS role_name,
-		ISNULL(u.user_first_name, '') AS user_first_name,
-		ISNULL(u.user_last_name, '') AS user_last_name,
-		u.user_login,
-		u.user_password,
-		ISNULL(u.user_email, '') AS user_email,
-		ISNULL(u.user_phone, '') AS user_phone,
-		ISNULL(u.user_is_active, 0) AS user_is_active,
-		ISNULL(u.user_img,'')AS user_img,
-		u.user_birth_date,
-		u.user_creation_date
-	FROM
-		dbo.[app_user] u
-		INNER JOIN dbo.[user_role] dr ON dr.role_id = u.role_id
+		INNER JOIN dbo.vehicule_brand vb ON vb.vehicule_brand_id = v.vehicule_brand_id
+		INNER JOIN dbo.vehicule_type vt ON vt.vehicule_type_id = v.vehicule_type_id
+		INNER JOIN dbo.Vehicule_status vs ON vs.status_id = v.vehicule_status_id
+		INNER JOIN dbo.parc vp ON vp.parc_id  = v.parc_id
 	WHERE
-		u.user_id = @userId
-
+		v.vehicule_id = @vehiculeId
 END
 
-*/
+

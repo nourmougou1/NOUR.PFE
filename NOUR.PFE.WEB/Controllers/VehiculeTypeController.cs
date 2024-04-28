@@ -5,9 +5,9 @@ using System.Linq;
 using System;
 using NOUR.PFE.Entities;
 
-namespace NOUR.PFE.WEB.Controllers
+namespace NOUR.PFE.WEB.Controller
 {
-    public class VehiculeTypeController : Controller
+    public class VehiculeTypeController : Microsoft.AspNetCore.Mvc.Controller
     {
         private IConfiguration _Config;
         public VehiculeTypeController(IConfiguration iConfig)

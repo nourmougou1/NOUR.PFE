@@ -41,6 +41,13 @@ namespace NOUR.PFE.Repository
                    ? Maintenance_DL.GetOneByVehiculeId(VehiculeId)
                    : null;
         }
+        public static Entities.Maintenance GetMaintenanceById(int MaintenanceId)
+        {
+            return (Maintenance_DL != null)
+                   ? Maintenance_DL.GetMaintenanceById(MaintenanceId)
+                   : null;
+
+        }
         public static Entities.MaintenanceType GetMaintenanceTypeById(int MaintenanceTypeId)
         {
             return (Maintenance_DL != null)
@@ -68,6 +75,8 @@ namespace NOUR.PFE.Repository
                    ? Maintenance_DL.Remove(maintenance)
                    : false;
         }
+
+        
         #endregion
 
         #region MaintenanceType
