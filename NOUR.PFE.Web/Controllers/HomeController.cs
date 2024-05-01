@@ -23,7 +23,6 @@ namespace NOUR.PFE.WEB.Controller
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
-
         }
 
       
@@ -40,11 +39,16 @@ namespace NOUR.PFE.WEB.Controller
                 var Vehicules = Repository.Vehicule.GetAll();
                 var Requests = Repository.Request.GetAll();
                 var Maintenances = Repository.Maintenance.GetAll();
+               
+
                 dashboard.Vehicule_count = Vehicules.Count();
                 dashboard.Users_count = Users.Count();
                 dashboard.Reservations_count = Requests.Count();
                 dashboard.Maintenance_count = Maintenances.Count();
-                
+                dashboard.VehiculeAvailable = Vehicules.Count(Vehicule => Vehicule.Status.Status_id == 2 );
+                dashboard.VehiculeReserved = Vehicules.Count(Vehicule=>Vehicule.Status.Status_id ==1 );
+                dashboard.VehiculeUnderMaintenance = Vehicules.Count(Vehicule => Vehicule.Status.Status_id == 4 );
+                dashboard.VehiculeUnavailable = Vehicules.Count(Vehicule => Vehicule.Status.Status_id == 3 );
             }
 
             return View(dashboard);

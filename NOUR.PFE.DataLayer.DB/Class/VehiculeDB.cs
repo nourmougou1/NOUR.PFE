@@ -26,10 +26,7 @@ namespace NOUR.PFE.DataLayer.DB
             brandLogo,
             StatusId,
             StatusName,
-            Kilometrage,  
-            parcId,
-            parcName,
-            parcAdress,
+            Kilometrage, 
             PurshaseDate 
         }
         #endregion
@@ -104,19 +101,7 @@ namespace NOUR.PFE.DataLayer.DB
                                            ? DR[(int)enumQryVehiculeFields.Kilometrage].ToString()
                                            : string.Empty,
 
-                                parc = new Parc()
-                                {
-                                    Id = (!DR.IsDBNull((int)enumQryVehiculeFields.parcId))
-                                            ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.parcId])
-                                            : 0,
-                                    Name = (!DR.IsDBNull((int)enumQryVehiculeFields.parcName))
-                                              ? DR[(int)enumQryVehiculeFields.parcName].ToString()
-                                              : string.Empty,
-                                    Adress = (!DR.IsDBNull((int)enumQryVehiculeFields.parcAdress))
-                                              ? DR[(int)enumQryVehiculeFields.parcAdress].ToString()
-                                              : string.Empty,
-
-                                },
+                           
 
                                 PurshaseDate = (!DR.IsDBNull((int)enumQryVehiculeFields.PurshaseDate))
                                                ? Convert.ToDateTime(DR[(int)enumQryVehiculeFields.PurshaseDate].ToString())
@@ -174,7 +159,6 @@ namespace NOUR.PFE.DataLayer.DB
 
                         command.Parameters.Add("@purschaseDate", SqlDbType.DateTime);
                         command.Parameters["@purschaseDate"].Value = vehicule.PurshaseDate;
-
 
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
@@ -283,7 +267,6 @@ namespace NOUR.PFE.DataLayer.DB
             brandLogo
         }
         #endregion
-
 
         #region Vehicule Brand
         public IEnumerable<Entities.VehiculeBrand> GetAllBrands()
@@ -966,24 +949,10 @@ namespace NOUR.PFE.DataLayer.DB
                                 Kilometrage = (!DR.IsDBNull((int)enumQryVehiculeFields.Kilometrage))
                                                ? DR[(int)enumQryVehiculeFields.Kilometrage].ToString()
                                                : string.Empty,
-                                parc = new Parc()
-                                {
-                                    Id = (!DR.IsDBNull((int)enumQryVehiculeFields.parcId))
-                                             ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.parcId])
-                                             : 0,
-                                    Name = (!DR.IsDBNull((int)enumQryVehiculeFields.parcName))
-                                               ? DR[(int)enumQryVehiculeFields.parcName].ToString()
-                                               : string.Empty,
-                                    Adress = (!DR.IsDBNull((int)enumQryVehiculeFields.parcAdress))
-                                               ? DR[(int)enumQryVehiculeFields.parcAdress].ToString()
-                                               : string.Empty,
-                                },
+                                
                                 PurshaseDate = (!DR.IsDBNull((int)enumQryVehiculeFields.PurshaseDate))
                                                ? Convert.ToDateTime(DR[(int)enumQryVehiculeFields.PurshaseDate].ToString())
                                                : new DateTime(1970, 1, 1),
-
-
-
 
                             };
                         }

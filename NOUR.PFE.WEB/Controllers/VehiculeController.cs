@@ -76,14 +76,11 @@ namespace NOUR.PFE.WEB.Controller
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Entities.Vehicule vehicule)
         {
-
             try
             {
-
                 Repository.Vehicule.Remove(vehicule);
                 return RedirectToAction(nameof(Index));
             }
-
             catch
             {
                 return View();

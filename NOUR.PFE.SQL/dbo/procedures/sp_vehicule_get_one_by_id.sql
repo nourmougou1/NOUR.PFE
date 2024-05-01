@@ -13,18 +13,17 @@ BEGIN
 		vs.status_id,
 		ISNULL(vs.status_name,'')AS status_name,
 		ISNULL(v.vehicule_kilometrage ,'') AS vehicule_kilometrage,
-		vp.parc_id,
-		ISNULL(vp.parc_name,'')AS parc_name,
-		ISNULL(vp.parc_address,'') AS parc_address,
 		ISNULL(v.purchase_date,'') AS purchase_date
 	FROM
 		dbo.[vehicule] v
 		INNER JOIN dbo.vehicule_brand vb ON vb.vehicule_brand_id = v.vehicule_brand_id
 		INNER JOIN dbo.vehicule_type vt ON vt.vehicule_type_id = v.vehicule_type_id
 		INNER JOIN dbo.Vehicule_status vs ON vs.status_id = v.vehicule_status_id
-		INNER JOIN dbo.parc vp ON vp.parc_id  = v.parc_id
 	WHERE
 		v.vehicule_id = @vehiculeId
-END
 
+
+
+END
+ 
 

@@ -25,31 +25,31 @@
             </div>
             <br/>
 
-            <label asp-for="Vehicule.VehiculeType">Vehicle's Type</label>
+            <label asp-for="Vehicule.VehiculeType.Id">Vehicle's Type</label>
             <div class="input-group"> 
-                <select asp-for="Vehicule.VehiculeType" asp-items="@(new SelectList(Model.VehiculeTypes,"Id", "TypeName"))" class="form-control select2bs4" style="width: 100%;">
+                <select asp-for="Vehicule.VehiculeType.Id" asp-items="@(new SelectList(Model.VehiculeTypes,"Id", "TypeName"))" class="form-control select2bs4" style="width: 100%;">
                     <option id="1" value="Van">-- Select --</option>
                 </select>
-                <span asp-validation-for="Vehicule.VehiculeType" class="text-danger"></span>
+                <span asp-validation-for="Vehicule.VehiculeType.Id" class="text-danger"></span>
             </div>
             <br/>
 
-            <label asp-for="Vehicule.VehiculeBrand">Vehicle's brand </label>
+            <label asp-for="Vehicule.VehiculeBrand.Id">Vehicle's brand </label>
             <div class="input-group">
-                <select asp-for="Vehicule.VehiculeBrand" class="form-control" asp-items="@(new SelectList(Model.VehiculeBrands,"Id", "Name"))">
+                <select asp-for="Vehicule.VehiculeBrand.Id" class="form-control" asp-items="@(new SelectList(Model.VehiculeBrands,"Id", "Name"))">
                     <option id="0" value="0">-- select --</option>
                 </select>
-                <span asp-validation-for="Vehicule.VehiculeBrand" class="text-danger"></span>
+                <span asp-validation-for="Vehicule.VehiculeBrand.Id" class="text-danger"></span>
             </div>
             <br />
 
-            <label asp-for="Vehicule.Status">Vehicle's status</label>
+            <label asp-for="Vehicule.Status.Status_id">Vehicle's status</label>
             <div class="input-group">
-                <select asp-for="Vehicule.Status" class="form-control" asp-items="@(new SelectList(Model.Statuss,"Status_id", "Status_name"))">
+                <select asp-for="Vehicule.Status.Status_id" class="form-control" asp-items="@(new SelectList(Model.Statuss,"Status_id", "Status_name"))">
                     <option id="0" value="0">-- select --</option>
 
                 </select>
-                <span asp-validation-for="Vehicule.Status" class="text-danger"></span>
+                <span asp-validation-for="Vehicule.Status.Status_id" class="text-danger"></span>
             </div>
             <br />  
 

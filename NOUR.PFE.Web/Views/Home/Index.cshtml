@@ -39,7 +39,6 @@
                 </div>
             </div>
 
-            <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-warning">
@@ -72,6 +71,93 @@
 
             <!-- /.card-body -->
         </div>
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Vehicles Statistics</h3>
+
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <!-- /.card-header -->
+           
+            <!-- /.card-body -->
+            <div class="card-footer p-0">
+                <ul class="nav nav-pills flex-column">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Available Vehicles
+                            <span class="float-right text-danger">
+                                @if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) < 50)
+                                {
+                                    <i class="fas fa-arrow-down text-sm"></i>
+                                }
+                                else if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) > 50)
+                                {
+                                    <i class="fas fa-arrow-up text-sm"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-arrow-left text-sm"></i>
+                                }
+                                @(((decimal)Model.VehiculeAvailable / (Model.Vehicule_count))*100)
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Reserved Vehicles
+                            <span class="float-right text-danger">
+                                @if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) < 50)
+                                {
+                                    <i class="fas fa-arrow-down text-sm"></i>
+                                }
+                                else if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) > 50)
+                                {
+                                    <i class="fas fa-arrow-up text-sm"></i>
+                                }
+                                else
+                                {
+                                    <i class="fas fa-arrow-left text-sm"></i>
+                                }
+
+                                @(((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100)
+
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            Unavailable Vehicles
+                            <span class="float-right text-warning">
+                                @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100)<50)
+                                {
+                                    <i class="fas fa-arrow-down text-sm"></i>
+                                }
+                                else if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) > 50)
+                                {
+                                    <i class="fas fa-arrow-up text-sm"></i>
+                                }else
+                                {
+                                    <i class="fas fa-arrow-left text-sm"></i>
+                                }
+
+                                @(((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100)
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.footer -->
+        </div>
+        <!-- /.card -->
+
        
     </div>
 

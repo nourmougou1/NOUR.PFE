@@ -4,15 +4,14 @@
 	@vehiculeTypeId int,
 	@brandId int,
 	@vehiculeKilometrage VARCHAR(100), 
-	@parcId int,
 	@purschaseDate DATETIME,
 	@statusId int
 AS
 BEGIN
 	INSERT INTO 
-		dbo.[vehicule] (vehicule_imm, vehicule_type_id, vehicule_brand_id, vehicule_kilometrage, parc_id,vehicule_status_id, purchase_date)
+		dbo.[vehicule] (vehicule_imm, vehicule_type_id, vehicule_brand_id, vehicule_kilometrage, purchase_date, vehicule_status_id)
 	VALUES 
-		(@vehiculeImm,  @vehiculeTypeId, @brandId, @vehiculeKilometrage, @parcId,@statusId, GETDATE())
+		(@vehiculeImm,  @vehiculeTypeId, @brandId, @vehiculeKilometrage, @purschaseDate, @statusId)
 END
 
 

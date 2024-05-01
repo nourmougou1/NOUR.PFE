@@ -72,7 +72,6 @@
     <Build Include="dbo\Tables\maintenance_type.sql" />
     <Build Include="dbo\Tables\vehicule_documents.sql" />
     <Build Include="dbo\Tables\request.sql" />
-    <Build Include="dbo\Tables\parc.sql" />
     <Build Include="dbo\procedures\sp_request_delete.sql" />
     <Build Include="dbo\procedures\sp_request_get_all.sql" />
     <Build Include="dbo\procedures\sp_request_insert.sql" />
