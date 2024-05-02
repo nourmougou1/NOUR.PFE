@@ -3,12 +3,12 @@
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
 
-<h1 style="margin-left:100px; padding-top:50px">Dashboard</h1>
+<h1 style="margin-left:100px; padding-top:20px">Dashboard</h1>
 <!-- Main content -->
 <section class="content">
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
-        <div class="row" style="margin-top:80px">
+        <div class="row" style="margin-top:40px; margin-bottom:20px">
             <div class="col-lg-3 col-6">
                 <!-- small box -->
                 <div class="small-box bg-info">
@@ -63,7 +63,7 @@
                         <p>Reservation requests</p>
                     </div>
                     <div class="icon">
-                        <i class="ion ion-pie-graph"></i>
+                        <i class="fa fa-calendar-plus"></i>
                     </div>
                     <a href="#" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
@@ -71,95 +71,292 @@
 
             <!-- /.card-body -->
         </div>
+        <div class="row">
+            <div class="card card-outline card-success " style="margin-right:50px;margin-left:20px;width:500px">
 
-        <div class="card">
-            <div class="card-header">
-                <h3 class="card-title">Vehicles Statistics</h3>
+                <div class="card-header success">
+                    <h3 class="card-title">Vehicles Statistics</h3>
 
-                <div class="card-tools">
-                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                        <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                        <i class="fas fa-times"></i>
-                    </button>
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <!-- /.card-header -->
-           
-            <!-- /.card-body -->
-            <div class="card-footer p-0">
-                <ul class="nav nav-pills flex-column">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            Available Vehicles
-                            <span class="float-right text-danger">
+                <!-- /.card-header -->
+                <!-- /.card-body -->
+                <div class="card-footer p-0">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Available Vehicles
                                 @if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) < 50)
                                 {
-                                    <i class="fas fa-arrow-down text-sm"></i>
-                                }
-                                else if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) > 50)
-                                {
-                                    <i class="fas fa-arrow-up text-sm"></i>
+                                    <span class="float-right text-danger">
+                                        @if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+                                        @((int)Math.Round((decimal)Model.VehiculeAvailable / (Model.Vehicule_count) * 100))
+                                    </span>
                                 }
                                 else
                                 {
-                                    <i class="fas fa-arrow-left text-sm"></i>
+                                    <span class="float-right text-success">
+                                        @if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+                                        @((int)Math.Round((decimal)Model.VehiculeAvailable / (Model.Vehicule_count) * 100))
+                                    </span>
+
                                 }
-                                @(((decimal)Model.VehiculeAvailable / (Model.Vehicule_count))*100)
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            Reserved Vehicles
-                            <span class="float-right text-danger">
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Reserved Vehicles
                                 @if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) < 50)
                                 {
-                                    <i class="fas fa-arrow-down text-sm"></i>
-                                }
-                                else if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) > 50)
-                                {
-                                    <i class="fas fa-arrow-up text-sm"></i>
+                                    <span class="float-right text-danger">
+                                        @if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+
+                                        @((int)Math.Round((decimal)Model.VehiculeReserved / (Model.Vehicule_count) * 100))
+                                    </span>
                                 }
                                 else
                                 {
-                                    <i class="fas fa-arrow-left text-sm"></i>
-                                }
+                                    <span class="float-right text-success">
+                                        @if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
 
-                                @(((decimal)Model.VehiculeReserved / (Model.Vehicule_count)) * 100)
-
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            Unavailable Vehicles
-                            <span class="float-right text-warning">
-                                @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100)<50)
-                                {
-                                    <i class="fas fa-arrow-down text-sm"></i>
+                                        @((int)Math.Round((decimal)Model.VehiculeReserved / (Model.Vehicule_count) * 100))
+                                    </span>
                                 }
-                                else if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) > 50)
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Unavailable Vehicles
+                                @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) < 50)
                                 {
-                                    <i class="fas fa-arrow-up text-sm"></i>
-                                }else
-                                {
-                                    <i class="fas fa-arrow-left text-sm"></i>
-                                }
+                                    <span class="float-right text-danger">
+                                        @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
 
-                                @(((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100)
-                            </span>
-                        </a>
-                    </li>
-                </ul>
+                                        @((int)Math.Round((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count) * 100))
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span class="float-right text-success">
+                                        @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+
+                                        @((int)Math.Round((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count) * 100))
+                                    </span>
+
+                                }
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.footer -->
             </div>
-            <!-- /.footer -->
-        </div>
-        <!-- /.card -->
 
-       
+            @* Requests statistics *@
+            <div class="card card-outline card-danger " style="width:500px">
+                <div class="card-header">
+                    <h3 class="card-title">Requests Statistics</h3>
+
+                    <div class="card-tools">
+                        <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <button type="button" class="btn btn-tool" data-card-widget="remove">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card-footer p-0">
+                    <ul class="nav nav-pills flex-column">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Accepted Requests
+                                <span class="float-right text-danger">
+                                    @if ((((decimal)Model.RequestAccepted / (Model.Reservations_count)) * 100) < 50)
+                                    {
+                                        <i class="fas fa-arrow-down text-sm text-danger"></i>
+                                    }
+                                    else if ((((decimal)Model.RequestAccepted / (Model.Reservations_count)) * 100) > 50)
+                                    {
+                                        <i class="fas fa-arrow-up text-sm"></i>
+                                    }
+                                    else
+                                    {
+                                        <i class="fas fa-arrow-left text-sm"></i>
+                                    }
+                                    @(((decimal)Model.RequestAccepted / (Model.Reservations_count)) * 100)
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Pending Requests
+                                @if ((((decimal)Model.RequestPending / (Model.Reservations_count)) * 100) < 50)
+                                {
+                                    <span class="float-right text-danger">
+                                        @if ((((decimal)Model.RequestPending / (Model.Reservations_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.RequestPending / (Model.Reservations_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+
+                                        @(((decimal)Model.RequestPending / (Model.Reservations_count)) * 100)
+                                    </span>
+                                }
+                                else if ((((decimal)Model.RequestPending / (Model.Reservations_count)) * 100) > 50)
+                                {
+                                    <span class="float-right text-success">
+                                        @if ((((decimal)Model.RequestPending / (Model.Reservations_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.RequestPending / (Model.Reservations_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+
+                                        @(((decimal)Model.RequestPending / (Model.Reservations_count)) * 100)
+                                    </span>
+                                }
+
+
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                Requests Rejected
+                                @if ((((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100) < 50)
+                                {
+                                    <span class="float-right text-danger">
+                                        @if ((((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+                                        @(((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100)
+                                    </span>
+                                }
+                                else if ((((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100) > 50)
+                                {
+                                    <span class="float-right text-success">
+                                        @if ((((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100) < 50)
+                                        {
+                                            <i class="fas fa-arrow-down text-sm"></i>
+                                        }
+                                        else if ((((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100) > 50)
+                                        {
+                                            <i class="fas fa-arrow-up text-sm"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fas fa-arrow-left text-sm"></i>
+                                        }
+                                        @(((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100)
+                                    </span>
+
+                                }
+
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- /.card -->
+
 
 </section>
 

@@ -16,7 +16,7 @@ BEGIN
 	VALUES 
 		(1, N'Confirmed'),
 		(2, N'Pending'),
-		(3, N'Refused')
+		(3, N'Rejected')
 END 
  GO
 

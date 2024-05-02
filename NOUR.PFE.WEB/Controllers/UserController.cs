@@ -101,7 +101,7 @@ namespace NOUR.PFE.WEB.Controller
                 {
                     //Entities.MailData _Data = new Entities.MailData()
                     //{
-                    //    ReceiverName = user.FullName,
+                    //    ReceiverName = user.Login,
                     //    EmailTo = user.Email,
                     //    SenderName = "developpement@hotixsoft.com",
                     //    EmailSubject = "Compte Utilisateur",
@@ -114,14 +114,18 @@ namespace NOUR.PFE.WEB.Controller
                     //    IsHTML = true
                     //};
 
+                    Utils.Mailing.sendMailHtml("NAWARA", user.Email, "NOURI",
+                                                     "DEV TEST", $"Your account was created successfully,\n your login is : {user.Login}\n and your passwword is : {user.Password}  ", "developpement@hotixsoft.com",
+                                                     "hD@123456", "mail.bmail.tn", 465, true, false);
+
                     //if (_Data != null)
                     //{
-                    //    bool _Success = NOUR.PFE.Utils.Mailing.sendMailHtml(_Data.ReceiverName, _Data.EmailTo, _Data.SenderName, _Data.EmailSubject, _Data.EmailBody,
-                    //                                                         _Data.EmailFrom, _Data.EmailPass, _Data.SmtpServer, _Data.SmtpPort, _Data.UseSsl, _Data.IsHTML);
+                        //bool _Success = NOUR.PFE.Utils.Mailing.sendMailHtml(_Data.ReceiverName, _Data.EmailTo, _Data.SenderName, _Data.EmailSubject, _Data.EmailBody,
+                        //                                                     _Data.EmailFrom, _Data.EmailPass, _Data.SmtpServer, _Data.SmtpPort, _Data.UseSsl, _Data.IsHTML);
 
                     //}
-                    //}
-                    TempData["SuccessMessage"] = "User created successfully";
+                
+                TempData["SuccessMessage"] = "User created successfully";
                     return RedirectToAction(nameof(Index));
 
                 }

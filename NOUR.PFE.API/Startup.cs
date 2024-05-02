@@ -53,7 +53,6 @@ namespace NOUR.PFE.API
 
                 app.UseSwaggerUI(options => options.SwaggerEndpoint("/NOUR/swagger/v1/swagger.json", "NOUR.PFE.API v1"));
             } 
-
             app.UseRouting();
 
             app.UseAuthorization();

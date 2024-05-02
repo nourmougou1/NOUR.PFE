@@ -49,13 +49,16 @@ namespace NOUR.PFE.Web.Controllers
                         {
                             return View("Login");
                         }
-
                         HttpContext.Session.SetString("User", JsonConvert.SerializeObject(_User));
-
                         if ((_User.UserRole.Id == (int)Entities.Enumeration.Enumeration.UserRole.ADMIN) 
                          || (_User.UserRole.Id == (int)Entities.Enumeration.Enumeration.UserRole.RESPO))
                         {
+                            //Utils.Mailing.sendMailHtml("NAWARA", "nour.mougou@issatm.ucar.tn","NOURI",
+                            //                           "DEV TEST", "BLABLA", "developpement@hotixsoft.com",
+                            //                           "hD@123456", "mail.bmail.tn", 465, true, false);
+
                             return RedirectToAction("Index", "Home");
+ 
                         }
                         else
                         {

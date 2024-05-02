@@ -132,6 +132,7 @@
   <ItemGroup>
     <None Include="NOUR.PFE.SQL.publish.xml" />
     <None Include="Script\Script.sql" />
+    <None Include="NOUR.PFE.SQL.publish_10.xml" />
   </ItemGroup>
   <ItemGroup>
     <PostDeploy Include="Script\Script.PostDeployment1.sql" />

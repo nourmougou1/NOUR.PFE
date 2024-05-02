@@ -34,7 +34,6 @@
                         <th>Type</th>
                         <th>Brand</th>
                         <th>kilometrage</th>
-                        <th>Parc</th>
                         <th>Status</th>
                         <th>Purchase Date</th>
                     </tr>
@@ -46,9 +45,7 @@
                             <td>@Vehicule.Imm</td>
                             <td>@Vehicule.VehiculeType.TypeName</td>
                             <td>@Vehicule.VehiculeBrand.Name</td>
-                           
                             <td>@Vehicule.Kilometrage</td>
-                            <td>@Vehicule.parc.Name</td>
                             <td>
                                 @{
                                     switch (Vehicule.Status.Status_id)
@@ -65,7 +62,6 @@
                                         case 4:
                                             <span class="badge badge-warning">@Vehicule.Status.Status_name</span>
                                             break;
-
                                     }
                                 }
                             </td>

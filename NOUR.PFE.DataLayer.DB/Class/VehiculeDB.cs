@@ -34,10 +34,8 @@ namespace NOUR.PFE.DataLayer.DB
         #region Vehicule
         public IEnumerable<Vehicule> GetAllVehicule()
         {
-
             Entities.Vehicules Ret = new Entities.Vehicules();
             SqlDataReader DR = null;
-
             try
             {
                 using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
@@ -56,11 +54,9 @@ namespace NOUR.PFE.DataLayer.DB
                                          ? Convert.ToInt32(DR[(int)enumQryVehiculeFields.vehicule_id])
                                          : 0,
 
-
                                 Imm = (!DR.IsDBNull((int)enumQryVehiculeFields.Imm))
                                            ? DR[(int)enumQryVehiculeFields.Imm].ToString()
                                            : string.Empty,
-
                                 VehiculeType = new VehiculeType()
                                 {
                                     Id = (!DR.IsDBNull((int)enumQryVehiculeFields.typeId))
@@ -106,8 +102,6 @@ namespace NOUR.PFE.DataLayer.DB
                                 PurshaseDate = (!DR.IsDBNull((int)enumQryVehiculeFields.PurshaseDate))
                                                ? Convert.ToDateTime(DR[(int)enumQryVehiculeFields.PurshaseDate].ToString())
                                                : new DateTime(1970, 1, 1),
-
-
                             });
                         }
                     }
