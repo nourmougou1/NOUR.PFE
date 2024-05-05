@@ -21,6 +21,7 @@ namespace NOUR.PFE.Entities.Enumeration
             USER,
             RESPO
         }
+
         #region VehiculeBrand
         public enum VehiculeBrand
         {
@@ -85,6 +86,26 @@ namespace NOUR.PFE.Entities.Enumeration
             Limousine,
             Minivan,
             Motorcycle
+
+        }
+        #endregion
+
+        #region VehiculeStatus
+        public enum VehiculeStat
+        {
+            Reserved = 1,
+            Available,
+            Maintenance
+
+        }
+        #endregion
+
+        #region VehiculeStatus
+        public enum enumReqStat
+        {
+            Confirmed = 1,
+            Pending,
+            Refused
 
         }
         #endregion

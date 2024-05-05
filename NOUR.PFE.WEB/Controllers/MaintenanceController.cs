@@ -36,6 +36,7 @@ namespace NOUR.PFE.WEB.Controller
         [HttpPost]
         public IActionResult Create(Models.MaintenanceViewModel _Model)
         {
+            Entities.Vehicule veh = _Model.Vehicule;
             if (ModelState.IsValid)
             {
                 Entities.Maintenances _maintenance = Repository.Maintenance.GetAll();
@@ -49,11 +50,34 @@ namespace NOUR.PFE.WEB.Controller
                 };
                 if (Repository.Maintenance.Add(maintenance))
                 {
+                    //_Model.Vehicule.Status = new NOUR.PFE.Entities.Maintenance;
+                    
                     return RedirectToAction(nameof(Index));
                 }
             }
             _Model.Maintenances = Repository.Maintenance.GetAll();
             return View(_Model);
+        }
+
+        public IActionResult Delete(int maintenanceId)
+        {
+            var maintenance = Repository.Maintenance.GetMaintenanceById(maintenanceId);
+            return View(maintenance);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(Entities.Maintenance maintenance)
+        {
+            try
+            {
+                Repository.Maintenance.Remove(maintenance);
+                return RedirectToAction(nameof(Index));
+            }
+            catch
+            {
+                return View();
+            }
         }
 
         public IActionResult Details(int id)

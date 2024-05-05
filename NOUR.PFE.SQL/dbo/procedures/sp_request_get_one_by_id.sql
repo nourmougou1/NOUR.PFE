@@ -16,9 +16,10 @@ SELECT
 		rs.Id,
 		rs.Name,
 		ISNULL(r.request_date, '') AS request_date
+
 		
 	FROM
-
+		
 		dbo.[request] r
 		INNER JOIN dbo.[vehicule_type] vt ON vt.vehicule_type_id = r.VehiculeTypeId
 		INNER JOIN dbo.[app_user] u ON u.user_id = r.user_id

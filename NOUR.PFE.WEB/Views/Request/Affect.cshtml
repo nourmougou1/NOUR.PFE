@@ -1,0 +1,80 @@
+﻿@model NOUR.PFE.WEB.Models.RequestViewModel
+
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+}
+
+<div asp-action="Create" class="row">
+    <div class="col-md-6">
+        <div class="card card-primary card-outline">
+            <form class="form-horizontal" asp-controller="Request" asp-action="Affect" enctype="multipart/form-data">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+
+                <div class="card-header">
+                    <h3 class="card-title">
+                        Edit Request
+                    </h3>
+                </div>
+
+                <div class="card-body">
+                    <div class="form-group">
+
+                        <label asp-for="VehiculeId">Vehicule</label>
+                        <div class="form-group select">
+                            <div class="input-group">
+                                <Select asp-for="VehiculeId"  class="form-control"
+                                asp-items="@(new SelectList(Model.vehicules,"Id", "Imm"))"  style="width: 100%;">
+                                <span class="input-group-text"><i class="fa fa-users"></i></span>
+
+                                <option id="0" value="0">-- select --</option>
+
+                                </select>
+                                <span asp-validation-for="VehiculeId" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="card-footer" style="">
+                            <tr>
+                                <td>
+                                    <button asp-controller="Request" asp-action="Affect" class="btn btn-success  float-right"> <i class="fa fa-check"></i>  Save</button>
+
+                                </td>
+                                <td>
+                                    <button asp-controller="Request" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Retour</button>
+
+                                </td>
+                            </tr>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<style>
+    .card {
+        margin-left: 300px;
+        width: 500px;
+        margin-top: 50px;
+    }
+
+    h2 {
+        padding-left: 185px;
+    }
+
+    .btn {
+        width: 100px;
+    }
+
+
+
+    .card-title {
+        margin-left: 185px;
+    }
+</style>
+
+
+

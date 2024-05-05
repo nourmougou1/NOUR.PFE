@@ -58,8 +58,7 @@ namespace NOUR.PFE.Web.Controllers
                             //                           "hD@123456", "mail.bmail.tn", 465, true, false);
 
                             return RedirectToAction("Index", "Home");
- 
-                        }
+                         }
                         else
                         {
                             return RedirectToAction("Create", "Request");

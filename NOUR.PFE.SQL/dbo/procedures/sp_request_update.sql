@@ -5,7 +5,8 @@
 	@userId int,
 	@missionDate DATETIME,
 	@missionAddress VARCHAR(100),
-	@statusId int
+	@statusId int,
+	@vehiculeId int
 AS
 BEGIN
 	UPDATE 
@@ -17,7 +18,9 @@ BEGIN
 		user_id = @userId,
 		mission_date = @missionDate,
 		mission_address = @missionAddress,
-		status_id = @statusId
+		status_id = @statusId,
+		VehiculeId = @vehiculeId
+		
 	WHERE 
 		request_id = @requestId
 END

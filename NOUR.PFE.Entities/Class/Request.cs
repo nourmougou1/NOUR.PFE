@@ -29,6 +29,8 @@ namespace NOUR.PFE.Entities
         public int VehiculeTypeId { get; set; }
         public string VehiculeTypeName { get; set; }
         public VehiculeTypes VehiculeTypes { get; set; }
+        public Vehicule Vehicule { get; set; }
+        public int vehiculeId { get; set; }
 
         #endregion
 

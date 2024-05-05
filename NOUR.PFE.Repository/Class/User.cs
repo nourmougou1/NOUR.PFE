@@ -37,6 +37,13 @@ namespace NOUR.PFE.Repository
                    : null;
         }
 
+        public static Entities.ApiUser GetOneByLogin2(string userLogin)
+        {
+            return (User_DL != null)
+                   ? User_DL.GetOneByLogin2(userLogin)
+                   : null;
+        }
+
         public static bool Add(Entities.User user)
         {
             return (User_DL != null)

@@ -106,7 +106,9 @@ namespace NOUR.PFE.API.Controllers
         {
             try
             {
-                Entities.User _Data = Repository.User.GetOneByLogin(Login);
+                //Entities.User _Data = Repository.User.GetOneByLogin(Login);
+
+                Entities.ApiUser _Data = Repository.User.GetOneByLogin2(Login);
                 if (_Data != null)
                 {
                     return new ApiResponse

@@ -11,6 +11,7 @@ namespace NOUR.PFE.DataLayer.Class
         IEnumerable<Entities.User> GetAllUser();
         Entities.User GetOne(int userId);
         Entities.User GetOneByLogin(string userLogin);
+        Entities.ApiUser GetOneByLogin2(string userLogin);
 
         bool Add(Entities.User user);
         bool Update(Entities.User user);

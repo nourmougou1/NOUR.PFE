@@ -3,9 +3,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json;
+using NOUR.PFE.DataLayer.Class;
 using NOUR.PFE.Entities;
+using NOUR.PFE.Repository;
 using NOUR.PFE.WEB.Models;
+using Org.BouncyCastle.Ocsp;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
@@ -18,6 +22,7 @@ namespace NOUR.PFE.WEB.Controllers
         {
             _Config = iConfig;
         }
+
         [HttpGet]
         public IActionResult Index()
         {
@@ -26,19 +31,65 @@ namespace NOUR.PFE.WEB.Controllers
             return View("Index", _Model);
         }
 
+        [HttpGet]
         public IActionResult Affect(int id)
         {
-            Request request = Repository.Request.GetOneById(id);
-            if (request != null)
+            RequestViewModel _Model = new RequestViewModel();
+            _Model.Request = Repository.Request.GetOneById(id);
+            Entities.User user = _Model.Request.User;
+
+            if (_Model.Request != null)
             {
-                request.status.Id = 1;
+                Entities.Vehicules _SortedVehicules = new Entities.Vehicules();
+                Entities.Vehicules _AllVehicules = Repository.Vehicule.GetAll();
+                if ((_AllVehicules != null) && (_AllVehicules.Count > 0))
+                {
+                    foreach (Entities.Vehicule veh in _AllVehicules)
+                    {
+                        if ((veh.VehiculeType.Id == _Model.Request.VehiculeType.Id) &&
+                            (veh.Status.Status_id == (int)Entities.Enumeration.Enumeration.VehiculeStat.Available))
+                        {
+                            _SortedVehicules.Add(veh);
+                        }
+                    }
+                }
+                _Model.vehicules = _SortedVehicules;
+
+                return View("Affect", _Model);
             }
             return RedirectToAction("Index", "Request");
 
         }
-        public IActionResult Refuse (int id)
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Affect(int id, Models.RequestViewModel _Model)
         {
-            Request request = Repository.Request.GetOneById(id);
+            {
+                if (ModelState.IsValid)
+                {
+
+                    Entities.Request Req = Repository.Request.GetOneById(id);
+                    Req.status = new NOUR.PFE.Entities.Class.RequestStatus() { Id = (int)Entities.Enumeration.Enumeration.enumReqStat.Confirmed };
+                    Req.Vehicule = Repository.Vehicule.GetOne(_Model.VehiculeId);
+                    Repository.Request.Update(Req);
+
+                    Req.Vehicule.Status = new NOUR.PFE.Entities.VehiculeStatus() { Status_id = (int)Entities.Enumeration.Enumeration.VehiculeStat.Reserved };
+                    // Utils.Mailing.sendMailHtml("NAWARA", _Model.User.Email, "HOTIX",
+                    // "RESERVATION", $"Your Reservation has been confirmed, \n Check you account for more details", "developpement@hotixsoft.com",
+                    //"hD@123456", "mail.bmail.tn", 465, true, false);
+
+                    return RedirectToAction(nameof(Index));
+                }
+            }
+            ModelState.AddModelError("", "Error");
+            return View(_Model);
+
+        }
+
+        public IActionResult Refuse(int id)
+        {
+            Entities.Request request = Repository.Request.GetOneById(id);
             if (request != null)
             {
                 request.status.Id = 3;

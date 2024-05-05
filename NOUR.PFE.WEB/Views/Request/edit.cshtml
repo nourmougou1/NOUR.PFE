@@ -84,6 +84,20 @@
                         </div>
                         <br/>
 
+                        <label asp-for="VehiculeId">Vehicule</label>
+                    <div class="form-group select">
+                        <div class="input-group">
+                            <Select asp-for="VehiculeId"  class="form-control"
+                            asp-items="@(new SelectList(Model.vehicules,"Id", "Imm"))"  style="width: 100%;">
+                            <span class="input-group-text"><i class="fa fa-users"></i></span>
+
+                            <option id="0" value="0">-- select --</option>
+
+                            </select>
+                            <span asp-validation-for="VehiculeId" class="text-danger"></span>
+                        </div>
+                    </div>
+
                         <div class="card-footer" style="">
                             <tr>
                                 <td>

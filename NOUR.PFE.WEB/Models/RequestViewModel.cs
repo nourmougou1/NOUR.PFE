@@ -21,7 +21,8 @@ namespace NOUR.PFE.WEB.Models
         public string MissionAddress { get; set; }
         public int VehiculeTypeId { get; set; }
         public int VehiculeTypeName { get; set; }
-
+        public int VehiculeId { get; set; }
+        public Vehicules vehicules { get; set; }
         public VehiculeTypes VehiculeTypes { get; set; }
         public VehiculeType VehiculeType { get; set; }
 

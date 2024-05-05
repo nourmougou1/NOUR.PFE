@@ -92,7 +92,8 @@ namespace NOUR.PFE.DataLayer.DB.Class
             missionDescription,
             statusId,
             statusName,
-            requestDate
+            requestDate,
+            vehichuleId
 
         }
         private enum EnumQryRequestGetAll
@@ -108,7 +109,8 @@ namespace NOUR.PFE.DataLayer.DB.Class
             aparovalDate,
             vehiculeTypeId,
             vehiculeTypeName,
-            requestDate
+            requestDate,
+            vehiculeId
            
 
         }
@@ -156,8 +158,7 @@ namespace NOUR.PFE.DataLayer.DB.Class
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        command.Parameters.Add("@requestId", SqlDbType.Int);
-                        command.Parameters["@requestId"].Value = request.Id;
+                        
 
                         command.Parameters.Add("@vehiculeTypeId", SqlDbType.Int);
                         command.Parameters["@vehiculeTypeId"].Value = request.VehiculeType.Id;
@@ -176,6 +177,12 @@ namespace NOUR.PFE.DataLayer.DB.Class
 
                         command.Parameters.Add("@statusId", SqlDbType.Int);
                         command.Parameters["@statusId"].Value = request.status.Id;
+
+                        command.Parameters.Add("@vehiculeId", SqlDbType.Int);
+                        command.Parameters["@vehiculeId"].Value = request.vehiculeId;
+
+                        command.Parameters.Add("@requestId", SqlDbType.Int);
+                        command.Parameters["@requestId"].Value = request.Id;
 
 
                         conn.Open();
@@ -240,16 +247,14 @@ namespace NOUR.PFE.DataLayer.DB.Class
                                 status = new RequestStatus()
                                 {
                                     Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequeststatusId))
-                                            ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.vehiculeTypeId])
+                                            ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.RequeststatusId])
                                             : 0,
                                     Name  = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequestStatusName))
-                                           ? DR[(int)EnumQryRequestGetAll.vehiculeTypeName].ToString()
+                                           ? DR[(int)EnumQryRequestGetAll.RequestStatusName].ToString()
                                            : string.Empty,
 
                                 },
-                                ApprovalDate = (!DR.IsDBNull((int)EnumQryRequestGetAll.aparovalDate))
-                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestGetAll.aparovalDate].ToString())
-                                               : new DateTime(1970, 1, 1),
+                               
                                 VehiculeType = new VehiculeType()
                                 {
                                     Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.vehiculeTypeId))
@@ -259,7 +264,16 @@ namespace NOUR.PFE.DataLayer.DB.Class
                                            ? DR[(int)EnumQryRequestGetAll.vehiculeTypeName].ToString()
                                            : string.Empty,
                                 },
+                                ApprovalDate = (!DR.IsDBNull((int)EnumQryRequestGetAll.aparovalDate))
+                                               ? Convert.ToDateTime(DR[(int)EnumQryRequestGetAll.aparovalDate].ToString())
+                                               : new DateTime(1970, 1, 1),
 
+                                //Vehicule = new Vehicule()
+                                //{
+                                //    Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.vehiculeId))
+                                //            ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.vehiculeId])
+                                //            : 0,
+                                //}
                             });
                         }
                     }

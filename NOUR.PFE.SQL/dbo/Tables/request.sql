@@ -14,6 +14,7 @@
 
   
    CONSTRAINT [Request_To_VehiculeType] FOREIGN KEY ([VehiculeTypeId]) REFERENCES [vehicule_type] ([vehicule_type_id])
-   CONSTRAINT [Request_To_User] FOREIGN KEY ([user_id]) REFERENCES [app_user] ([user_id])
+   CONSTRAINT [Request_To_User] FOREIGN KEY ([user_id]) REFERENCES [app_user] ([user_id]), 
+    [VehiculeId] INT NULL
     
   )

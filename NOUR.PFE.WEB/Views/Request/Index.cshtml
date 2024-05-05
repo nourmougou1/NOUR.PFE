@@ -31,6 +31,7 @@
                     <th>Mission's Date</th>
                     <th>Mission's Address</th>
                     <th>Status</th>
+
                     @*mch kemlin ki tezel details yatl3oulk details lkol*@
                 </tr>
             </thead>
@@ -42,17 +43,31 @@
                         <td>@request.VehiculeType.TypeName</td>
                         <td>@request.MissionDate</td>
                         <td>@request.MissionAddress</td>
-                        <td>@request.status.Id</td>
+                        <td>
+                            @{
+                                switch (request.status.Id)
+                                {
+                                    case 1:
+                                        <span class="badge badge-success">@request.status.Name</span>
+                                        break;
+                                    case 2:
+                                        <span class="badge badge-warning">@request.status.Name</span>
+                                        break;
+                                   
+                                }
+                            }
+                        </td>
 
                         <td>
                             @{
                                 switch (request.status.Id)
                                 {
                                     case 1:
-                                        <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info">
+                                        <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info" style="margin-left:165px">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                         break;
+
                                     case 2:
                                         <a href="@Url.Action("Affect", "Request", new { id = request.Id })" class="btn btn-success" style="margin-left:100px;margin-right:20px">
                                             <i class="fa fa-check"></i>
@@ -61,33 +76,13 @@
                                         <a href="@Url.Action("Refuse", "Request", new { id = request.Id })" class="btn btn-danger" style="margin-right:20px">
                                             <i class="fa fa-trash"></i>
                                         </a>
-                                        <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info">
-                                            <i class="fa fa-info-circle"></i>
-                                        </a>
 
-                                        break;
-                                    case 3:
                                         <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                         break;
-
-
                                 }
                             }
-                            @* <a href="@Url.Action("Affect", "Request", new { id = reservation.Id })" class="btn btn-success" style="margin-left:100px;margin-right:20px">
-                        <i class="fa fa-check"></i>
-                        </a>
-
-                        <!-- Refuse Button -->
-                        <a href="@Url.Action("Refuse", "Request", new { id = reservation.Id })" class="btn btn-danger" style="margin-right:20px">
-                        <i class="fa fa-trash"></i>
-                        </a>
-
-                        <!-- Details Button -->
-                        <a href="@Url.Action("Details", "Request", new { id = reservation.Id })" class="btn btn-info">
-                        <i class="fa fa-info-circle"></i>
-                        </a> *@
                         </td>
                     </tr>
                 }

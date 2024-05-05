@@ -455,6 +455,91 @@ namespace NOUR.PFE.DataLayer.DB
             }
         }
 
+        public ApiUser GetOneByLogin2(string userLogin)
+        {
+            Entities.ApiUser Ret = null;
+            SqlDataReader DR = null;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_user_get_one_by_login", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@userLogin", SqlDbType.VarChar);
+                        command.Parameters["@userLogin"].Value = userLogin;
+
+                        conn.Open();
+                        DR = command.ExecuteReader();
+
+                        while (DR.Read())
+                        {
+                            Ret = new Entities.ApiUser()
+                            {
+                                Id = Convert.ToInt32(DR[(int)enumQryUserFields.id]),
+                                FullName = (!DR.IsDBNull((int)enumQryUserFields.firstName))
+                                            ? DR[(int)enumQryUserFields.firstName].ToString()
+                                            : string.Empty, 
+                                Login = (!DR.IsDBNull((int)enumQryUserFields.login))
+                                        ? DR[(int)enumQryUserFields.login].ToString()
+                                        : string.Empty,
+                                Password = (!DR.IsDBNull((int)enumQryUserFields.password))
+                                           ? DR[(int)enumQryUserFields.password].ToString()
+                                           : string.Empty,
+                                Email = (!DR.IsDBNull((int)enumQryUserFields.email))
+                                        ? DR[(int)enumQryUserFields.email].ToString()
+                                        : string.Empty,
+                                Phone = (!DR.IsDBNull((int)enumQryUserFields.phone))
+                                        ? DR[(int)enumQryUserFields.phone].ToString()
+                                        : string.Empty,
+                                IsActive = (!DR.IsDBNull((int)enumQryUserFields.isActive))
+                                           ? Convert.ToBoolean(DR[(int)enumQryUserFields.isActive].ToString())
+                                           : false, 
+                                ImageUrl = (!DR.IsDBNull((int)enumQryUserFields.image))
+                                           ? DR[(int)enumQryUserFields.image].ToString()
+                                           : string.Empty,
+                                BirthDate = (!DR.IsDBNull((int)enumQryUserFields.birthdate))
+                                            ? Convert.ToDateTime(DR[(int)enumQryUserFields.birthdate].ToString())
+                                            : new DateTime(1970, 1, 1),
+                                CreationDate = (!DR.IsDBNull((int)enumQryUserFields.creationDate))
+                                               ? Convert.ToDateTime(DR[(int)enumQryUserFields.creationDate].ToString())
+                                               : new DateTime(1970, 1, 1),
+                                UserRole = new UserRole()
+                                {
+                                    Id = (!DR.IsDBNull((int)enumQryUserFields.roleId))
+                                         ? Convert.ToInt32(DR[(int)enumQryUserFields.roleId])
+                                         : 0,
+                                    Code = (!DR.IsDBNull((int)enumQryUserFields.roleCode))
+                                           ? DR[(int)enumQryUserFields.roleCode].ToString()
+                                           : string.Empty,
+                                    Name = (!DR.IsDBNull((int)enumQryUserFields.roleName))
+                                           ? DR[(int)enumQryUserFields.roleName].ToString()
+                                           : string.Empty,
+                                },
+                            };
+                        }
+                    }
+                }
+
+                return Ret;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
+            finally
+            {
+                if (DR != null)
+                {
+                    DR.Close();
+                    DR = null;
+                }
+            }
+        }
+
 
         public bool Add(User user)
         {
