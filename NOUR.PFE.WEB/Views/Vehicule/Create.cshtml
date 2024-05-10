@@ -15,10 +15,10 @@
     <div class="card-body">
         <form asp-action="Create">
             <div class="text-danger" asp-validation-summary="ModelOnly"></div>
-            <label asp-for="Vehicule.Imm">RegNumber</label>
+            <label asp-for="Vehicule.Imm">Registration Number</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
+                    <span class="input-group-text"><i class="fa fa-car"></i></span>
                 </div>
                 <input asp-for="Vehicule.Imm" type="text" class="form-control" placeholder="RegNumber">
                 <span asp-validation-for="Vehicule.Imm"></span>
@@ -56,7 +56,7 @@
             <label asp-for="Vehicule.Kilometrage">Vehicle's Mileage</label>
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
+                    <span class="input-group-text"><i class="fas fa-tachometer-alt"></i></span>
                 </div>
                 <input asp-for="Vehicule.Kilometrage" type="text" class="form-control" placeholder="Vehicle's Mileage">
                 <span asp-validation-for="Vehicule.Kilometrage"></span>
@@ -90,13 +90,12 @@
 
 <style>
     .card {
-        margin-left: 300px;
-        width: 500px;
-        margin-top: 50px;
+        margin-left: 200px;
+        width: 700px;
     }
 
     h2 {
-        padding-left: 185px;
+        padding-left: 10px;
     }
 
     .btn {
@@ -108,7 +107,11 @@
         margin-left: 30px;
     }
 
+    .btn-success {
+        margin-left: 200px;
+    }
+
     .card-title {
-        margin-left: 185px;
+        margin-left: 10px;
     }
 </style>

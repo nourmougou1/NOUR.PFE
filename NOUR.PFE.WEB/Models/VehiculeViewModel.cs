@@ -12,7 +12,6 @@ namespace NOUR.PFE.WEB.Models
         public VehiculeTypes VehiculeTypes { get; set; }
         public VehiculeBrands VehiculeBrands { get; set; }
         public VehiculeBrand VehiculeBrand { get; set; }
-
         public VehiculeStatus Status { get; set; }
         public VehiculeStatuss Statuss { get; set; }
         public VehiculeDocument document { get; set; }

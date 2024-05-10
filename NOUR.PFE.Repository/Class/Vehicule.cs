@@ -42,6 +42,12 @@ namespace NOUR.PFE.Repository
                 ? Vehicule_DL.Update(vehicule)
                 : false;
         }
+        public static bool UpdateVehiculeStatus(Entities.Vehicule vehicule)
+        {
+            return (Vehicule_DL != null)
+                ? Vehicule_DL.UpdateVehiculeStatus(vehicule)
+                : false;
+        }
         public static bool Remove(Entities.Vehicule vehicule)
         {
             return (Vehicule_DL != null)

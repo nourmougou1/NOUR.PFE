@@ -1,7 +1,21 @@
 ﻿@model NOUR.PFE.WEB.Models.DashboardViewModel
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    NOUR.PFE.Entities.User curUser = null;
+    string strUser = HttpContextAccessor.HttpContext.Session.GetString("User");
+
+    if (!string.IsNullOrEmpty(strUser))
+    {
+        curUser = Newtonsoft.Json.JsonConvert.DeserializeObject<NOUR.PFE.Entities.User>(strUser);
+    }
+}
 @{
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
+
+
 
 <h1 style="margin-left:20px; padding-top:20px">Dashboard</h1>
 <!-- Main content -->
@@ -9,20 +23,26 @@
     <div class="container-fluid">
         <!-- Small boxes (Stat box) -->
         <div class="row" style="margin-top:40px; margin-bottom:20px">
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
-                <div class="small-box bg-info">
-                    <div class="inner">
-                        <h3>@Model.Users_count</h3>
 
-                        <p>User registrations</p>
+            @if ((curUser != null)
+            && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
+            ))
+            {
+                <div class="col-lg-3 col-6">
+                    <!-- small box -->
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>@Model.Users_count</h3>
+
+                            <p>User registrations</p>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <a asp-controller="User" asp-action="Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                    <div class="icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <a asp-controller="User" asp-action="Index" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+            }
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->
@@ -131,7 +151,8 @@
                                         <span>%</span>
                                     </span>
 
-                                } else
+                                }
+                                else
                                 {
                                     <span class="float-right text-warning">
                                         @if ((((decimal)Model.VehiculeAvailable / (Model.Vehicule_count)) * 100) < 50)
@@ -149,7 +170,7 @@
                                         @((int)Math.Round((decimal)Model.VehiculeAvailable / (Model.Vehicule_count) * 100))
                                         <span>%</span>
                                     </span>
-                                    
+
                                 }
                             </a>
                         </li>
@@ -215,21 +236,20 @@
                                         @((int)Math.Round((decimal)Model.VehiculeReserved / (Model.Vehicule_count) * 100))
                                         <span>%</span>
                                     </span>
-                                    
                                 }
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
-                                Unavailable Vehicles
-                                @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) < 50)
+                                Vehicles Under Maintenance
+                                @if ((((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count)) * 100) < 50)
                                 {
                                     <span class="float-right text-danger">
-                                        @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) < 50)
+                                        @if ((((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count)) * 100) < 50)
                                         {
                                             <i class="fas fa-arrow-down text-sm"></i>
                                         }
-                                        else if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) > 50)
+                                        else if ((((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count)) * 100) > 50)
                                         {
                                             <i class="fas fa-arrow-up text-sm"></i>
                                         }
@@ -237,18 +257,18 @@
                                         {
                                             <i class="fas fa-arrow-left text-sm"></i>
                                         }
-                                        @((int)Math.Round((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count) * 100))
+                                        @((int)Math.Round((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count) * 100))
                                         <span>%</span>
                                     </span>
                                 }
-                                else if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) < 50)
+                                else if ((((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count)) * 100) < 50)
                                 {
                                     <span class="float-right text-success">
-                                        @if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) < 50)
+                                        @if ((((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count)) * 100) < 50)
                                         {
                                             <i class="fas fa-arrow-down text-sm"></i>
                                         }
-                                        else if ((((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count)) * 100) > 50)
+                                        else if ((((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count)) * 100) > 50)
                                         {
                                             <i class="fas fa-arrow-up text-sm"></i>
                                         }
@@ -257,10 +277,9 @@
                                             <i class="fas fa-arrow-left text-sm"></i>
                                         }
 
-                                        @((int)Math.Round((decimal)Model.VehiculeUnavailable / (Model.Vehicule_count) * 100))
+                                        @((int)Math.Round((decimal)Model.VehiculeUnderMaintenance / (Model.Vehicule_count) * 100))
                                         <span>%</span>
                                     </span>
-
                                 }
                             </a>
                         </li>
@@ -347,9 +366,9 @@
                                         @((int)Math.Round((decimal)Model.RequestAccepted / (Model.Reservations_count) * 100))
                                         <span>%</span>
                                     </span>
-                                    
+
                                 }
-                               
+
                             </a>
                         </li>
                         <li class="nav-item">
@@ -414,7 +433,7 @@
                                         @((int)Math.Round((decimal)Model.RequestPending / (Model.Reservations_count) * 100))
                                         <span>%</span>
                                     </span>
-                                    
+
                                 }
 
 
@@ -438,7 +457,7 @@
                                         {
                                             <i class="fas fa-arrow-left text-sm"></i>
                                         }
-                                        @(((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100)
+                                        @((int)Math.Round((decimal)Model.RequestRejected / (Model.Reservations_count) * 100))
                                         <span>%</span>
                                     </span>
                                 }
@@ -457,7 +476,7 @@
                                         {
                                             <i class="fas fa-arrow-left text-sm"></i>
                                         }
-                                        @(((decimal)Model.RequestRejected / (Model.Reservations_count)) * 100)
+                                        @((int)Math.Round((decimal)Model.RequestRejected / (Model.Reservations_count) * 100))
                                         <span>%</span>
                                     </span>
 

@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using NOUR.PFE.Entities;
 using NOUR.PFE.Repository;
 using NOUR.PFE.WEB.Models;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.IO;
 
@@ -36,24 +37,25 @@ namespace NOUR.PFE.WEB.Controller
         [HttpPost]
         public IActionResult Create(Models.MaintenanceViewModel _Model)
         {
-            Entities.Vehicule veh = _Model.Vehicule;
+            Entities.Vehicule veh = new Entities.Vehicule() { Id = _Model.VehiculeId };
             if (ModelState.IsValid)
             {
                 Entities.Maintenances _maintenance = Repository.Maintenance.GetAll();
                 var maintenance = new Entities.Maintenance
                 {
-                    Vehicule = new Entities.Vehicule() { Id = _Model.VehiculeId },
+                    Vehicule = veh,
                     MaintenanceType = new MaintenanceType() { Id = _Model.MaintenanceTypeId },
                     DateDebut = _Model.DateDebut,
                     Address = _Model.Address,
                     description = _Model.description
                 };
+
                 if (Repository.Maintenance.Add(maintenance))
                 {
-                    //_Model.Vehicule.Status = new NOUR.PFE.Entities.Maintenance;
-                    
+                    veh.Status = new NOUR.PFE.Entities.VehiculeStatus() { Status_id = (int)Entities.Enumeration.Enumeration.VehiculeStat.Maintenance };
+                    Repository.Vehicule.UpdateVehiculeStatus(veh);
                     return RedirectToAction(nameof(Index));
-                }
+                } 
             }
             _Model.Maintenances = Repository.Maintenance.GetAll();
             return View(_Model);

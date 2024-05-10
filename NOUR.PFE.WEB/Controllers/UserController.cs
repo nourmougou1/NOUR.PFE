@@ -34,6 +34,7 @@ namespace NOUR.PFE.WEB.Controller
 
         public ActionResult Create()
         {
+
             Models.UserViewModel _Model = new Models.UserViewModel
             {
                 UserRoles = Repository.Config.GetUserRoles()
@@ -90,8 +91,8 @@ namespace NOUR.PFE.WEB.Controller
                     UserPhone = _Model.UserPhone,
                     //IsActive = _Model.IsActive,
                     IsActive = true,
-                    //Birthday = _Model.Birthday,
-                    Birthday = DateTime.Now,
+                    Birthday = _Model.Birthday,
+                    //Birthday = DateTime.Now,
                     CreationDate = DateTime.Now,
                     UserRole = userRole,
                     Image = fileName
@@ -116,7 +117,7 @@ namespace NOUR.PFE.WEB.Controller
                     //};
 
                     Utils.Mailing.sendMailHtml("NAWARA", user.Email, "HOTIX",
-                                                     "DEV TEST", $"Your account was created successfully,\n your login is : {user.Login}\n Your passwword is : {user.Password}  ", "developpement@hotixsoft.com",
+                                                     "Your Account has been created successfully", $"Your account was created successfully,\n your login is : {user.Login}\n Your password is : {user.Password}  ", "developpement@hotixsoft.com",
                                                      "hD@123456", "mail.bmail.tn", 465, true, false);
 
                     TempData["SuccessMessage"] = "User created successfully";
@@ -131,7 +132,6 @@ namespace NOUR.PFE.WEB.Controller
 
         public IActionResult Details(int id)
         {
-
             var User = Repository.User.GetOne(id);
             return View(User);
         }

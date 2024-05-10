@@ -28,6 +28,12 @@ namespace NOUR.PFE.WEB.Controller
             _Model.Vehicules = Repository.Vehicule.GetAll();
             return View("Index", _Model);
         }
+        public IActionResult AffectedVehicule()
+        { 
+            VehiculeViewModel _Model = new VehiculeViewModel();
+            _Model.Vehicules = Repository.Vehicule.GetAll();
+            return View("AffectedVehicule", _Model);
+        }
 
 
         [HttpGet]
@@ -112,14 +118,14 @@ namespace NOUR.PFE.WEB.Controller
                 return RedirectToAction("Error", "Errors", _EModel);
             }
         }
-
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Models.VehiculeViewModel _Model)
         {
             {
                 if (ModelState.IsValid)
-                {  
+                {
+                    _Model.Vehicule.Id = id;
                     Repository.Vehicule.Update(_Model.Vehicule);
                     return RedirectToAction(nameof(Index));
                 }

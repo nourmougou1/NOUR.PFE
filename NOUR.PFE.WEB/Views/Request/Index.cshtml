@@ -7,10 +7,10 @@
 <div class="container p-2">
     <div class="row pt-5">
         <div class="col-6">
-            <h1 style="margin-left:100px">Reservations List</h1>
+            <h1 style="margin-left:10px">Reservations List</h1>
         </div>
         <div class="col-6">
-            <a asp-controller="Request" asp-action="Create" class="btn btn-primary" style="margin-left:200px">
+            <a asp-controller="Request" asp-action="Create" class="btn btn-primary" style="margin-left:340px">
                 <i class="fas fa-plus"></i> &nbsp; Make a reservation
             </a>
         </div>
@@ -18,9 +18,7 @@
 </div>
 
 <div class="card">
-    <div class="card-header">
-        <h3 class="card-title">Reservations List</h3>
-    </div>
+
     <!-- /.card-header -->
     <div class="card-body">
         <table class="table table-bordered">
@@ -53,7 +51,9 @@
                                     case 2:
                                         <span class="badge badge-warning">@request.status.Name</span>
                                         break;
-                                   
+                                    case 3:
+                                        <span class="badge badge-danger">@request.status.Name</span>
+                                        break;
                                 }
                             }
                         </td>
@@ -63,24 +63,30 @@
                                 switch (request.status.Id)
                                 {
                                     case 1:
-                                        <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info" style="margin-left:165px">
+                                        <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info" style="margin-left:90px">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                         break;
 
                                     case 2:
-                                        <a href="@Url.Action("Affect", "Request", new { id = request.Id })" class="btn btn-success" style="margin-left:100px;margin-right:20px">
-                                            <i class="fa fa-check"></i>
+                                        <a href="@Url.Action("Affect", "Request", new { id = request.Id })" class="btn btn-success" style="">
+                                            <i class="fa fa-check"></i>  Affect
                                         </a>
 
-                                        <a href="@Url.Action("Refuse", "Request", new { id = request.Id })" class="btn btn-danger" style="margin-right:20px">
-                                            <i class="fa fa-trash"></i>
+                                        <a href="@Url.Action("Refuse", "Request", new { id = request.Id })" class="btn btn-danger" style="">
+                                            <i class="fa fa-trash"></i>  Reject
                                         </a>
 
                                         <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info">
                                             <i class="fa fa-info-circle"></i>
                                         </a>
                                         break;
+                                    case 3:
+                                        <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info" style="margin-left:90px">
+                                            <i class="fa fa-info-circle"></i>
+                                        </a>
+                                        break;
+
                                 }
                             }
                         </td>

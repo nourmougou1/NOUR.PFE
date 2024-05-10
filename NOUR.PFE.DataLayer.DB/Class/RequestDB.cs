@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Runtime.InteropServices.ComTypes;
 using static NOUR.PFE.Entities.Enumeration.Enumeration;
 using NOUR.PFE.Entities.Class;
+using System.Xml.Linq;
 
 namespace NOUR.PFE.DataLayer.DB.Class
 {
@@ -41,11 +42,6 @@ namespace NOUR.PFE.DataLayer.DB.Class
 
                         command.Parameters.Add("@missionLocation", SqlDbType.VarChar);
                         command.Parameters["@missionLocation"].Value = request.MissionAddress;
-
-
-                       
-
-
 
 
                         conn.Open();
@@ -93,7 +89,8 @@ namespace NOUR.PFE.DataLayer.DB.Class
             statusId,
             statusName,
             requestDate,
-            vehichuleId
+            vehichuleId,
+            vehiculeImm
 
         }
         private enum EnumQryRequestGetAll
@@ -110,8 +107,9 @@ namespace NOUR.PFE.DataLayer.DB.Class
             vehiculeTypeId,
             vehiculeTypeName,
             requestDate,
-            vehiculeId
-           
+            vehiculeId,
+            vehiculeImm
+
 
         }
         #endregion
@@ -158,7 +156,6 @@ namespace NOUR.PFE.DataLayer.DB.Class
                     {
                         command.CommandType = CommandType.StoredProcedure;
 
-                        
 
                         command.Parameters.Add("@vehiculeTypeId", SqlDbType.Int);
                         command.Parameters["@vehiculeTypeId"].Value = request.VehiculeType.Id;
@@ -179,7 +176,7 @@ namespace NOUR.PFE.DataLayer.DB.Class
                         command.Parameters["@statusId"].Value = request.status.Id;
 
                         command.Parameters.Add("@vehiculeId", SqlDbType.Int);
-                        command.Parameters["@vehiculeId"].Value = request.vehiculeId;
+                        command.Parameters["@vehiculeId"].Value = request.Vehicule.Id;
 
                         command.Parameters.Add("@requestId", SqlDbType.Int);
                         command.Parameters["@requestId"].Value = request.Id;
@@ -199,7 +196,7 @@ namespace NOUR.PFE.DataLayer.DB.Class
             }
         }
 
-        IEnumerable<Request> IRequest.GetAll()
+        IEnumerable<Request> IRequest.GetAll(int UserID)
         {
             Entities.Requests Ret = new Entities.Requests();
             SqlDataReader DR = null;
@@ -211,6 +208,10 @@ namespace NOUR.PFE.DataLayer.DB.Class
                     using (SqlCommand command = new SqlCommand("sp_request_get_all", conn))
                     {
                         command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@userId", SqlDbType.Int);
+                        command.Parameters["@userId"].Value = UserID;
+
                         conn.Open();
                         DR = command.ExecuteReader();
 
@@ -249,12 +250,12 @@ namespace NOUR.PFE.DataLayer.DB.Class
                                     Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequeststatusId))
                                             ? Convert.ToInt32(DR[(int)EnumQryRequestGetAll.RequeststatusId])
                                             : 0,
-                                    Name  = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequestStatusName))
+                                    Name = (!DR.IsDBNull((int)EnumQryRequestGetAll.RequestStatusName))
                                            ? DR[(int)EnumQryRequestGetAll.RequestStatusName].ToString()
                                            : string.Empty,
 
                                 },
-                               
+
                                 VehiculeType = new VehiculeType()
                                 {
                                     Id = (!DR.IsDBNull((int)EnumQryRequestGetAll.vehiculeTypeId))
@@ -369,6 +370,16 @@ namespace NOUR.PFE.DataLayer.DB.Class
                                 RequestDate = (!DR.IsDBNull((int)EnumQryRequestGetOneById.requestDate))
                                                ? Convert.ToDateTime(DR[(int)EnumQryRequestGetOneById.requestDate].ToString())
                                                : new DateTime(1970, 1, 1),
+
+                                Vehicule = new Vehicule()
+                                {
+                                    Id = (!DR.IsDBNull((int)EnumQryRequestGetOneById.vehichuleId))
+                                            ? Convert.ToInt32(DR[(int)EnumQryRequestGetOneById.vehichuleId])
+                                            : 0,
+                                    Imm = (!DR.IsDBNull((int)EnumQryRequestGetOneById.vehiculeImm))
+                                           ? DR[(int)EnumQryRequestGetOneById.vehiculeImm].ToString()
+                                           : string.Empty,
+                                },
                             };
                         }
                     }

@@ -47,10 +47,11 @@ namespace NOUR.PFE.WEB.Controller
 
                 dashboard.Maintenance_count = Maintenances.Count();
 
+
                 dashboard.VehiculeAvailable = Vehicules.Count(Vehicule => Vehicule.Status.Status_id == 2 );
                 dashboard.VehiculeReserved = Vehicules.Count(Vehicule=>Vehicule.Status.Status_id ==1 );
-                dashboard.VehiculeUnderMaintenance = Vehicules.Count(Vehicule => Vehicule.Status.Status_id == 4 );
-                dashboard.VehiculeUnavailable = Vehicules.Count(Vehicule => Vehicule.Status.Status_id == 3 );
+                dashboard.VehiculeUnderMaintenance = Vehicules.Count(Vehicule => Vehicule.Status.Status_id == 3 );
+               
 
                 dashboard.RequestAccepted = Requests.Count(Request => Request.status.Id == 1);
                 dashboard.RequestRejected = Requests.Count(Request => Request.status.Id == 3);

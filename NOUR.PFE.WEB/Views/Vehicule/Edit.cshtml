@@ -12,7 +12,7 @@
 
                 <div class="card-header">
                     <h3 class="card-title">
-                        Edit Vehicule
+                        <i class="fa fa-car"></i>  Edit Vehicule
                     </h3>
                 </div>
 
@@ -20,9 +20,7 @@
                     <div class="form-group">
                         <label asp-for="Vehicule.Imm">RegNumber</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
-                            </div>
+                            
                             <input asp-for="Vehicule.Imm" type="text" class="form-control" placeholder="RegNumber">
                             <span asp-validation-for="Vehicule.Imm"></span>
                         </div>
@@ -57,9 +55,7 @@
 
                         <label asp-for="Vehicule.Kilometrage">Vehicle's Mileage</label>
                         <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fa fa-tachometer"></i></span>
-                            </div>
+                            
                             <input asp-for="Vehicule.Kilometrage" type="text" class="form-control" placeholder="Vehicle's Mileage">
                             <span asp-validation-for="Vehicule.Kilometrage"></span>
                         </div>
@@ -77,15 +73,15 @@
                             </div>
                         </div>
 
-
                         <div class="card-footer" style="">
                             <tr>
                                 <td>
                                     <button asp-controller="Vehicule" asp-action="Edit" class="btn btn-success  float-right"> <i class="fa fa-check"></i>  Save</button>
 
                                 </td>
+
                                 <td>
-                                    <button asp-controller="Vehicule" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Retour</button>
+                                    <button asp-controller="Vehicule" asp-action="Index" class="btn btn-warning"><i class="fas fa-arrow-left"></i>Back</button>
                                 </td>
                             </tr>
                         </div>
@@ -101,9 +97,8 @@
 
 <style>
     .card {
-        margin-left: 300px;
-        width: 500px;
-        margin-top: 50px;
+        margin-left: 200px;
+        width: 700px;
     }
 
     h2 {
@@ -117,7 +112,7 @@
 
 
     .card-title {
-        margin-left: 185px;
+        margin-left: 10px;
     }
 </style>
 

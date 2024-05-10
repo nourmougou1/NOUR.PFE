@@ -3,7 +3,7 @@
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 
 }
-
+<body>
 <section class="content-header">
     <div class="container-fluid">
 
@@ -13,18 +13,18 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong>Vehicule</strong>
+                            <strong><i class="fa fa-car"></i> Vehicule</strong>
                             <p class="text-muted">
                                 @Html.DisplayFor(model => model.Vehicule.Imm)
                             </p>
                         </div>
                     </div>
-
                 </div>
+                <hr />
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong>Maintenance Type  </strong>
+                                <strong><i class="fas fa-tools"></i>Maintenance Type  </strong>
                             <p class="text-muted">
                                 @Html.DisplayFor(model => model.MaintenanceType.Name)
                             </p>
@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-envelope mr-1"></i> Maintenance Address</strong>
+                            <strong><i class="fa fa-map"></i> Maintenance Address</strong>
                             <p class="text-muted"> @Html.DisplayFor(model => model.Address)</p>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong>Maintenance date</strong>
+                            <strong><i class="fa fa-calendar"></i>  Maintenance date</strong>
                             <p class="text-muted">
                                 @Html.DisplayFor(model => model.DateDebut)
                             </p>
@@ -50,12 +50,12 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
-                            <strong><i class="fas fa-envelope mr-1"></i>Description </strong>
+                            <strong><i class="fa fa-pen"></i>Description </strong>
                             <p class="text-muted"> @Html.DisplayFor(model => model.description)</p>
                         </div>
                     </div>
                 </div>
-                <hr>
+             
                 
                 <hr>
                 <div class="row">
@@ -71,12 +71,21 @@
                             <i class="fas fa-arrow-left"></i>
                             back
                         </a>
-
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+</body>
+<style>
+    body{
+        background-image:src('../../wwwroot/img/maintenance.jpg');
+    }
+    .card{
+        padding:20px;
+        width:700px;
+        margin-left:200px;
+    }
+</style>
 

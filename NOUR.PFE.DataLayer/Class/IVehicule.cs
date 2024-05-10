@@ -12,6 +12,7 @@ namespace NOUR.PFE.DataLayer.Class
         Entities.Vehicule GetOneByType(Type type);
         bool Add(Entities.Vehicule vehicule);
         bool Update(Entities.Vehicule vehicule);
+        bool UpdateVehiculeStatus(Entities.Vehicule vehicule);
         bool Remove(Entities.Vehicule vehicule);
         Entities.Vehicule GetOne(int vehiculeId);
 

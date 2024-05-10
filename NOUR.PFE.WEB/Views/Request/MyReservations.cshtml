@@ -1,0 +1,137 @@
+﻿@model NOUR.PFE.WEB.Models.RequestViewModel
+@{
+    Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
+
+}
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+@{
+    NOUR.PFE.Entities.User curUser = null;
+    string strUser = HttpContextAccessor.HttpContext.Session.GetString("User");
+
+    if (!string.IsNullOrEmpty(strUser))
+    {
+        curUser = Newtonsoft.Json.JsonConvert.DeserializeObject<NOUR.PFE.Entities.User>(strUser);
+    }
+}
+
+<div class="container p-2">
+    <div class="row pt-5">
+        <div class="col-6">
+            <h1 style="margin-left:10px">My Reservations</h1>
+        </div>
+        <div class="col-6">
+            <a asp-controller="Request" asp-action="Create" class="btn btn-primary" style="margin-left:300px">
+                <i class="fas fa-plus"></i> &nbsp; Make a reservation
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="card">
+
+    <div class="card-body">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+
+                    <th>Vehicle's Type</th>
+                    <th>Mission's Date</th>
+                    <th>Mission's Address</th>
+                    <th>Status</th>
+
+                    @*mch kemlin ki tezel details yatl3oulk details lkol*@
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var request in Model.Requests)
+                {
+                    @if (curUser.Id == request.User.Id)
+                    {
+                        <tr>
+                            <td>@request.VehiculeType.TypeName</td>
+                            <td>@request.MissionDate</td>
+                            <td>@request.MissionAddress</td>
+                            <td>
+                                @{
+                                    switch (request.status.Id)
+                                    {
+                                        case 1:
+                                            <span class="badge badge-success">@request.status.Name</span>
+                                            break;
+                                        case 2:
+                                            <span class="badge badge-warning">@request.status.Name</span>
+                                            break;
+                                        case 3:
+                                            <span class="badge badge-danger">@request.status.Name</span>
+                                            break;
+                                    }
+                                }
+                            </td>
+
+                            <td>
+
+                                @{
+                                    switch (request.status.Id)
+                                    {
+                                        case 1:
+
+                                            <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info" style="margin-left:105px">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+
+                                            break;
+
+                                        case 2:
+
+                                            <!-- Edit Button -->
+                                            <a href="@Url.Action("Edit", "Request", new { id = request.Id })" class="btn btn-primary" style="margin-left:50px;margin-right:10px">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+
+                                            <!-- Delete Button -->
+                                            <a href="@Url.Action("Delete", "Request", new { id = request.Id })" class="btn btn-danger" style="margin-right:10px">
+                                                <i class="fas fa-trash"></i>
+
+                                            </a>
+
+                                            <!-- Details Button -->
+                                            <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info">
+                                                <i class="fa fa-info-circle"></i>
+
+                                            </a>
+                                            break;
+                                        case 3:
+                                            <a href="@Url.Action("Delete", "Request", new { id = request.Id })" class="btn btn-danger" style="margin-left:105px; margin-right:10px" >
+                                                <i class="fas fa-trash"></i>
+
+                                            </a>
+
+                                            <a href="@Url.Action("Details", "Request", new { id = request.Id })" class="btn btn-info" style="margin-right:10px">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                              
+                                            break;
+                                    }
+
+                                }
+
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<style>
+    .btn-warning .btn-primary {
+        width: 50px;
+    }
+
+</style>
+
+
+

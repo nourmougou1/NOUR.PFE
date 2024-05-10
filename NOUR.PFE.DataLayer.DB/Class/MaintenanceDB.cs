@@ -40,6 +40,7 @@ namespace NOUR.PFE.DataLayer.DB
                         command.Parameters.Add("@maintenanceAddress", SqlDbType.VarChar);
                         command.Parameters["@maintenanceAddress"].Value = maintenance.Address;
 
+
                         conn.Open();
                         Ret = command.ExecuteNonQuery();
                     }
@@ -462,7 +463,32 @@ namespace NOUR.PFE.DataLayer.DB
 
         public bool Remove(Maintenance maintenance)
         {
-            throw new NotImplementedException();
+            int Ret = -1;
+
+            try
+            {
+                using (SqlConnection conn = new SqlConnection(SettingDB.ConnStr))
+                {
+                    using (SqlCommand command = new SqlCommand("sp_vehicule_maintenance_delete", conn))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+
+                        command.Parameters.Add("@maintenanceId", SqlDbType.Int);
+                        command.Parameters["@maintenanceId"].Value = maintenance.Id;
+
+
+                        conn.Open();
+                        Ret = command.ExecuteNonQuery();
+                    }
+                }
+
+                return Ret > -1;
+            }
+            catch (Exception ex)
+            {
+                string strEx = ex.Message;
+                throw;
+            }
         }
         private enum enumQryMaintenanceGetAll
         {

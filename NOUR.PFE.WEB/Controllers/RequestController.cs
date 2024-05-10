@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.ConstrainedExecution;
 
 namespace NOUR.PFE.WEB.Controllers
 {
@@ -26,9 +27,29 @@ namespace NOUR.PFE.WEB.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            Entities.User _User = JsonConvert.DeserializeObject<Entities.User>(HttpContext.Session.GetString("User"));
+
+
             RequestViewModel _Model = new RequestViewModel();
-            _Model.Requests = Repository.Request.GetAll();
-            return View("Index", _Model);
+            _Model.Requests = Repository.Request.GetAll((_User.UserRole.Id != (int)Entities.Enumeration.Enumeration.UserRole.ADMIN) ? _User.Id : -1);
+            if (_User.Id == 1)
+            {
+                return View("Index", _Model);
+            }
+            else
+            {
+                return View("MyReservations", _Model);
+            }
+        }
+
+        [HttpGet]
+        public IActionResult MyReservations()
+        {
+            Entities.User _User = JsonConvert.DeserializeObject<Entities.User>(HttpContext.Session.GetString("User"));
+
+            RequestViewModel _Model = new RequestViewModel();
+            _Model.Requests = Repository.Request.GetAll(_User.Id);
+            return View("MyReservations", _Model);
         }
 
         [HttpGet]
@@ -67,17 +88,21 @@ namespace NOUR.PFE.WEB.Controllers
         {
             {
                 if (ModelState.IsValid)
+
                 {
 
                     Entities.Request Req = Repository.Request.GetOneById(id);
                     Req.status = new NOUR.PFE.Entities.Class.RequestStatus() { Id = (int)Entities.Enumeration.Enumeration.enumReqStat.Confirmed };
                     Req.Vehicule = Repository.Vehicule.GetOne(_Model.VehiculeId);
                     Repository.Request.Update(Req);
-
                     Req.Vehicule.Status = new NOUR.PFE.Entities.VehiculeStatus() { Status_id = (int)Entities.Enumeration.Enumeration.VehiculeStat.Reserved };
-                    // Utils.Mailing.sendMailHtml("NAWARA", _Model.User.Email, "HOTIX",
-                    // "RESERVATION", $"Your Reservation has been confirmed, \n Check you account for more details", "developpement@hotixsoft.com",
-                    //"hD@123456", "mail.bmail.tn", 465, true, false);
+                    Repository.Vehicule.UpdateVehiculeStatus(Req.Vehicule);
+
+                    _Model.User = Repository.User.GetOne(Req.User.Id);
+
+                    Utils.Mailing.sendMailHtml("Hotix", _Model.User.Email, "HOTIX",
+                    "RESERVATION", $"Hello {Req.User.FirstName}, we are pleased to inform you that your reservation request has been successfully confirmed. We have assigned the vehicle : {Req.Vehicule.Imm}", "developpement@hotixsoft.com",
+                    "hD@123456", "mail.bmail.tn", 465, true, false);
 
                     return RedirectToAction(nameof(Index));
                 }
@@ -87,14 +112,23 @@ namespace NOUR.PFE.WEB.Controllers
 
         }
 
-        public IActionResult Refuse(int id)
+        public IActionResult Refuse(int id, Models.RequestViewModel _Model)
         {
-            Entities.Request request = Repository.Request.GetOneById(id);
-            if (request != null)
+            Entities.Request Req = Repository.Request.GetOneById(id);
+            if (Req != null)
             {
-                request.status.Id = 3;
+                Req.status = new NOUR.PFE.Entities.Class.RequestStatus() { Id = (int)Entities.Enumeration.Enumeration.enumReqStat.Refused };
+                Req.Vehicule = new Entities.Vehicule() { Id = -1 };
+                Repository.Request.Update(Req);
+
+                _Model.User = Repository.User.GetOne(Req.User.Id);
+
+                Utils.Mailing.sendMailHtml("Hotix", _Model.User.Email, "HOTIX",
+                   "RESERVATION", $"Hello, We regret to inform you that your reservation request has been refused. ", "developpement@hotixsoft.com",
+                   "hD@123456", "mail.bmail.tn", 465, true, false);
             }
-            return RedirectToAction("Index", "Request");
+
+            return RedirectToAction(nameof(Index));
         }
 
         public ActionResult Create()
@@ -127,7 +161,7 @@ namespace NOUR.PFE.WEB.Controllers
 
                 if (Repository.Request.Add(request))
                 {
-                    return RedirectToAction(nameof(Index));
+                    return RedirectToAction(nameof(MyReservations));
                 }
             }
 
@@ -139,6 +173,7 @@ namespace NOUR.PFE.WEB.Controllers
         {
 
             var request = Repository.Request.GetOneById(id);
+
             return View(request);
         }
 
@@ -153,12 +188,18 @@ namespace NOUR.PFE.WEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(Entities.Request request)
         {
+            Entities.User _User = JsonConvert.DeserializeObject<Entities.User>(HttpContext.Session.GetString("User"));
 
             try
             {
 
                 Repository.Request.Remove(request);
-                return RedirectToAction(nameof(Index));
+                if (_User.Id == 1)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                    return RedirectToAction(nameof(MyReservations));
             }
 
             catch
@@ -181,6 +222,7 @@ namespace NOUR.PFE.WEB.Controllers
 
                 return View(_Model);
             }
+
             catch (Exception ex)
             {
                 ErrorViewModel _EModel = new ErrorViewModel() { RequestId = String.Concat("Request.Edit ", Environment.NewLine, ex.Message) };

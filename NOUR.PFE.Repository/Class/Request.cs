@@ -18,10 +18,10 @@ namespace NOUR.PFE.Repository
             Request_DL = new RequestDB();
         }
 
-        public static Entities.Requests GetAll()
+        public static Entities.Requests GetAll(int UserID = -1)
         {
             return (Request_DL != null) 
-                ? new Entities.Requests(Request_DL.GetAll())
+                ? new Entities.Requests(Request_DL.GetAll(UserID))
                 : null;
 
         }

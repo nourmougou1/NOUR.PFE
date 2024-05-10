@@ -72,32 +72,6 @@
 
                         </div>
                         <br/>
-
-                        <label asp-for="Request.status.Name">Status</label>
-
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-pen"></i></span>
-                            </div>
-                            <input asp-for="Request.status.Name" type="string" class="form-control">
-                            <span asp-validation-for="Request.status.Name" class="text-danger"></span>
-                        </div>
-                        <br/>
-
-                        <label asp-for="VehiculeId">Vehicule</label>
-                    <div class="form-group select">
-                        <div class="input-group">
-                            <Select asp-for="VehiculeId"  class="form-control"
-                            asp-items="@(new SelectList(Model.vehicules,"Id", "Imm"))"  style="width: 100%;">
-                            <span class="input-group-text"><i class="fa fa-users"></i></span>
-
-                            <option id="0" value="0">-- select --</option>
-
-                            </select>
-                            <span asp-validation-for="VehiculeId" class="text-danger"></span>
-                        </div>
-                    </div>
-
                         <div class="card-footer" style="">
                             <tr>
                                 <td>
@@ -121,9 +95,8 @@
 
 <style>
     .card {
-        margin-left: 300px;
-        width: 500px;
-        margin-top: 50px;
+        margin-left: 200px;
+        width: 700px;
     }
 
     h2 {
@@ -133,9 +106,6 @@
     .btn {
         width: 100px;
     }
-
-
-
     .card-title {
         margin-left: 185px;
     }

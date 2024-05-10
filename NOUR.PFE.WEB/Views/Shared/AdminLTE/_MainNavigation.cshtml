@@ -86,7 +86,8 @@
 
                 @if ((curUser != null)
                 && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-                ))
+                || ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.RESPO)
+                )))
                 {
 
                     <li class="nav-item menu-open">
@@ -128,7 +129,8 @@
                 }
                 @if ((curUser != null)
                 && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-                ))
+                || ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.RESPO)
+                )))
                 {
                     <li class="nav-item menu-open">
                         <a class="nav-link">
@@ -159,6 +161,8 @@
                         </ul>
                     </li>
                 }
+
+
                 <li class="nav-item menu-open">
                     <a class="nav-link">
                         <i class="fa fa-bell" style="margin-right:10px"></i>
@@ -170,7 +174,8 @@
                     <ul class="nav nav-treeview">
                         @if ((curUser != null)
                         && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-                        ))
+                        || ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.RESPO)
+                        )))
                         {
                             <li class="nav-item">
                                 <a asp-controller="Request" asp-action="Index" class="nav-link">
@@ -181,24 +186,11 @@
                                 </a>
                             </li>
 
-                        }
-                        @if ((curUser != null)
-                        && ((curUser.UserRole.Id == (int)NOUR.PFE.Entities.Enumeration.Enumeration.UserRole.ADMIN)
-                        ))
-                        {
                             <li class="nav-item">
-                                <a asp-controller="ApprovedReservation" asp-action="Index" class="nav-link">
+                                <a asp-controller="Vehicule" asp-action="AffectedVehicule" class="nav-link">
                                     <i class="fas fa-list" style="margin-right:10px"></i>
                                     <p>
-                                        Affected reservations
-                                    </p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a asp-controller="PendingReservation" asp-action="Index" class="nav-link">
-                                    <i class="fas fa-list" style="margin-right:10px"></i>
-                                    <p>
-                                        pending reservations
+                                        Affected vehicles
                                     </p>
                                 </a>
                             </li>
@@ -209,26 +201,23 @@
                         ))
                         {
                             <li class="nav-item">
-                                <a asp-controller="Request" asp-action="Index" class="nav-link">
-                                    <i class="fas fa-list" style="margin-right:10px"></i>
+                                <a asp-controller="Request" asp-action="Create" class="nav-link">
+                                    <i class="fa fa-plus" style="margin-right:10px"></i>
                                     <p>
                                         Make a reservation
                                     </p>
                                 </a>
                             </li>
 
-
                             <li class="nav-item">
-                                <a asp-controller="Request" asp-action="Index" class="nav-link">
+                                <a asp-controller="Request" asp-action="MyReservations" class="nav-link">
                                     <i class="fas fa-list" style="margin-right:10px"></i>
                                     <p>
                                         My reservations
                                     </p>
                                 </a>
                             </li>
-
                         }
-
                     </ul>
                 </li>
             </ul>

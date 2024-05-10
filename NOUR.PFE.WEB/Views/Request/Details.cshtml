@@ -1,7 +1,23 @@
 ﻿@model NOUR.PFE.Entities.Request
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 @{
     Layout = "~/Views/Shared/AdminLTE/_Layout.cshtml";
 }
+
+
+
+
+@{
+    NOUR.PFE.Entities.User curUser = null;
+    string strUser = HttpContextAccessor.HttpContext.Session.GetString("User");
+
+    if (!string.IsNullOrEmpty(strUser))
+    {
+        curUser = Newtonsoft.Json.JsonConvert.DeserializeObject<NOUR.PFE.Entities.User>(strUser);
+    }
+}
+
 <section class="content-header">
     <div class="container-fluid">
 
@@ -20,7 +36,9 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <strong><i class="fa fa-calendar"></i> Mission's Date</strong>
-                            <p class="text-muted"> @Model.MissionDate.ToString("dd/MM/yyyy")</p>
+                            <p class="text-muted">
+                                @{if(@Model.MissionDate != null) @Model.MissionDate.ToString("dd/MM/yyyy");}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -39,18 +57,37 @@
                             <strong><i class="fa fa-check"></i> Status</strong>
                             <p class="text-muted">
                                 @Html.DisplayFor(model => model.status.Name)
-                               @*  @{
-                                    switch (Model.status.Id)
-                                    {
-                                        case 1:
-                                            <span class="badge badge-success">@Html.DisplayFor(model => model.status.Name)</span>
-                                            break;
-                                        case 2:
-                                            <span class="badge badge-warning">@Html.DisplayFor(model => model.status.Name)</span>
-                                            break;
+                                @*  @{
+                                switch (Model.status.Id)
+                                {
+                                case 1:
+                                <span class="badge badge-success">@Html.DisplayFor(model => model.status.Name)</span>
+                                break;
+                                case 2:
+                                <span class="badge badge-warning">@Html.DisplayFor(model => model.status.Name)</span>
+                                break;
 
-                                    }
+                                }
                                 } *@
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fa fa-truck"></i> Vehicle's Type</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.VehiculeType.TypeName)
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <strong><i class="fa fa-car"></i> Vehicle's Reg Number</strong>
+                            <p class="text-muted">
+                                @Html.DisplayFor(model => model.Vehicule.Imm)
                             </p>
                         </div>
                     </div>
@@ -65,36 +102,46 @@
                         </div>
                     </div>
                 </div>
-                <hr>
-
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <strong><i class="fa fa-truck"></i> Vehicle's Type</strong>
-                            <p class="text-muted">
-                                @Html.DisplayFor(model => model.VehiculeType.TypeName)
-                            </p>
-                        </div>
-                    </div>
-                </div>
 
                 <hr>
                 <div class="row">
                     <div class="col-12">
                     </div>
                     <div class="col-12">
-                        <a class="btn btn-success float-right" href='@Url.Action("Edit", "Request", new { id = @Model.Id })'>
-                            <i class="fa fa-check"></i>
-                            Affect
-                        </a>
-                        <a class="btn btn-danger float-right" href='@Url.Action("Edit", "Request", new { id = @Model.Id })' style="margin-right:20px">
-                            <i class="fa fa-trash"></i>
-                            Refuse
-                        </a>
-                        <a class="btn btn-warning  float-left" href='@Url.Action("Index", "Request")'>
-                            <i class="fas fa-arrow-left"></i>
-                            Back
-                        </a>
+                        @if ((Model.status.Id == 1) && (Model.status.Id == 3))
+                        {
+                            <a class="btn btn-danger float-right" href='@Url.Action("Delete", "Request", new { id = @Model.Id })' style="margin-right:20px">
+                                <i class="fa fa-trash"></i>
+                                Delete
+                            </a>
+                            <a class="btn btn-warning  float-left" href='@Url.Action("Index", "Request")'>
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </a>
+                        }
+                        else if ((Model.status.Id == 2)&&(curUser.Id==1))
+                        {
+                            <a class="btn btn-success float-right" href='@Url.Action("Edit", "Request", new { id = @Model.Id })'>
+                                <i class="fa fa-check"></i>
+                                Affect
+                            </a>
+                            <a class="btn btn-danger float-right" href='@Url.Action("Edit", "Request", new { id = @Model.Id })' style="margin-right:20px">
+                                <i class="fa fa-trash"></i>
+                                Refuse
+                            </a>
+                            <a class="btn btn-warning  float-left" href='@Url.Action("Index", "Request")'>
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </a>
+                        }
+                        else
+                        {
+
+                            <a class="btn btn-warning  float-left" href='@Url.Action("Index", "Request")'>
+                                <i class="fas fa-arrow-left"></i>
+                                Back
+                            </a>
+                        }
                     </div>
                 </div>
             </div>
@@ -106,7 +153,6 @@
     .card {
         width: 600px;
         margin-left: 250px;
-        margin-top: 50px;
+        margin-top: 10px;
         padding: 20px;
-    }
 </style>
